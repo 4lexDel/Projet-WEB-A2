@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(177, 177, 177);
+}
+
+h1{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.searching{
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.searching ul{
+    list-style: none;
+}
