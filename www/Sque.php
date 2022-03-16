@@ -12,16 +12,18 @@
 </head>
 
 <body>
-    <header id="Header">
+    <header id="header">
+        <?php include "header.php" ?>
     </header>
     <main>
     </main>
-    <footer id="Footer">
+    <footer id="footer">
+        <?php include "footer.php" ?>
     </footer>
+
     <script src="./assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="./assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/script/script.js"></script>
-    <!--<script src=";/assets/script/scriptWKS.js"></script>-->
 </body>
 
 </html>
