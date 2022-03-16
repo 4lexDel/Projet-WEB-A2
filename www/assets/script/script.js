@@ -35,3 +35,7 @@ window.onload = () => {
         else document.querySelector('#villes').innerHTML = '<ul><li>Aucune(s) ville(s) trouvée(s)</li><ul>';
     })
 }
+$(function(){
+$("#Header").load("Header.html"); 
+$("#Footer").load("Footer.html");
+});
