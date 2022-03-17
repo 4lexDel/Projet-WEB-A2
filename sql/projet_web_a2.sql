@@ -279,7 +279,7 @@ CREATE TABLE `skill` (
 
 --
 -- Structure de la table `users`
---
+--  
 
 CREATE TABLE `users` (
   `idUser` int(11) NOT NULL,
