@@ -1,0 +1,5 @@
+SIGNUP : ajout des données + verif
+
+Probleme lien actif dans le header ==> petite condition php/ ou petit code jquery pour switch les class
+
+Partie creation !

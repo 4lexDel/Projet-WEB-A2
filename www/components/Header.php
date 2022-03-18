@@ -23,6 +23,7 @@
             <li><a href="./home.php" class="nav-link px-4 link-secondary">Accueil</a></li>
             <li><a href="./recherche.php" class="nav-link px-4 link-dark">Recherche de stage</a></li>
             <li><a href="./candidature.php" class="nav-link px-4 link-dark">Mes candidatures</a></li>
+            <li><a href="./creation.php" class="nav-link px-4 link-dark">Espace création</a></li>
         </ul>
 
         <div class="col-md-2 text-end">

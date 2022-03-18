@@ -1,6 +1,8 @@
 <?php
 
-class Users{
+class Locality{
+    private $idLocality;
+    private $idCity;
 
     public function __construct(){
 
@@ -10,12 +12,9 @@ class Users{
 
     }
 
-    public function selectUsersLogin(&$sqlClient, &$data, &$nbRow, &$nbCol, $login, $password){
+    public function selectLocality(&$sqlClient, &$data, &$nbRow, &$nbCol){
         try {
-            $stmt = $sqlClient->prepare("SELECT * FROM users WHERE login=? AND password=?");
-
-            $stmt->bindParam(1, $login);
-            $stmt->bindParam(2, $password);
+            $stmt = $sqlClient->prepare("SELECT * FROM locality");
             
             $stmt->execute();
 
@@ -23,11 +22,7 @@ class Users{
             $nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
-
-            /*echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
-            echo "<br>";
-            print_r($data);*/
-
+            
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;

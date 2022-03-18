@@ -15,3 +15,8 @@ h1{
 .searching ul{
     list-style: none;
 }
+
+label{
+    text-decoration : underline; 
+    font-weight : bold;
+}

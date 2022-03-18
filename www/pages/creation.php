@@ -66,7 +66,7 @@
                 <br><br>
                 <div class="row">
                     <div class="col-sm-2">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Rechercher</button>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit">création</button>
                     </div>
                     <!--<div class="col-sm-6">
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>

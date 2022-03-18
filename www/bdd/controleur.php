@@ -1,20 +1,21 @@
 <?php
 
 require_once "../bdd/table/users.php";
+require_once "../bdd/table/locality.php";
 
 class Controleur{
     private $mysqlClient;
-    private $stmt;
 
     private $_users; 
+    private $_locality; 
 
     public function __construct(){
         $this->_users = new Users();
+        $this->_locality = new Locality();
 
         try {
-            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_web_a2;charset=utf8', 'root', '');
+            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_a2_web;charset=utf8', 'root', '');
         } catch (Exception $e) {
-            // En cas d'erreur, on affiche un message et on arrête tout
             die('Erreur : ' . $e->getMessage());
         }
     }
@@ -23,4 +24,8 @@ class Controleur{
         $this->_users->selectUsersLogin($this->mysqlClient, $data, $nbRow, $nbCol, $login, $password);
     }
 
+    public function selectLocality(&$data, &$nbRow, &$nbCol){
+        $this->_locality->selectLocality($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+    
 }
