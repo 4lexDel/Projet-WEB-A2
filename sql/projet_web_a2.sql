@@ -2,9 +2,9 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : jeu. 17 mars 2022 à 11:36
--- Version du serveur : 10.4.22-MariaDB
+-- Hôte : localhost
+-- Généré le : ven. 18 mars 2022 à 14:16
+-- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -44,6 +44,112 @@ CREATE TABLE `belong` (
   `idUser` int(11) NOT NULL,
   `idSchoolYear` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `belong`
+--
+
+INSERT INTO `belong` (`idUser`, `idSchoolYear`) VALUES
+(1, 2),
+(2, 3),
+(3, 4),
+(4, 5),
+(5, 1),
+(6, 2),
+(7, 3),
+(8, 4),
+(9, 5),
+(10, 1),
+(11, 2),
+(12, 3),
+(13, 4),
+(14, 5),
+(15, 1),
+(16, 2),
+(17, 3),
+(18, 4),
+(19, 5),
+(20, 1),
+(21, 2),
+(22, 3),
+(23, 4),
+(24, 5),
+(25, 1),
+(26, 2),
+(27, 3),
+(28, 4),
+(29, 5),
+(30, 1),
+(31, 2),
+(32, 3),
+(33, 4),
+(34, 5),
+(35, 1),
+(36, 2),
+(37, 3),
+(38, 4),
+(39, 5),
+(40, 1),
+(41, 2),
+(42, 3),
+(43, 4),
+(44, 5),
+(45, 1),
+(46, 2),
+(47, 3),
+(48, 4),
+(49, 5),
+(50, 1),
+(51, 2),
+(52, 3),
+(53, 4),
+(54, 5),
+(55, 1),
+(56, 2),
+(57, 3),
+(58, 4),
+(59, 5),
+(60, 1),
+(61, 2),
+(62, 3),
+(63, 4),
+(64, 5),
+(65, 1),
+(66, 2),
+(67, 3),
+(68, 4),
+(69, 5),
+(70, 1),
+(71, 2),
+(72, 3),
+(73, 4),
+(74, 5),
+(75, 1),
+(76, 2),
+(77, 3),
+(78, 4),
+(79, 5),
+(80, 1),
+(81, 2),
+(82, 3),
+(83, 4),
+(84, 5),
+(85, 1),
+(86, 2),
+(87, 3),
+(88, 4),
+(89, 5),
+(90, 1),
+(91, 2),
+(92, 3),
+(93, 4),
+(94, 5),
+(95, 1),
+(96, 2),
+(97, 3),
+(98, 4),
+(99, 5),
+(100, 1);
 
 -- --------------------------------------------------------
 
@@ -92,6 +198,27 @@ CREATE TABLE `correspond` (
   `idSector` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `correspond`
+--
+
+INSERT INTO `correspond` (`idCompany`, `idSector`) VALUES
+(1, 9),
+(2, 10),
+(3, 1),
+(4, 6),
+(5, 3),
+(6, 10),
+(7, 6),
+(8, 2),
+(9, 4),
+(10, 1),
+(11, 1),
+(12, 3),
+(13, 9),
+(14, 8),
+(15, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +249,22 @@ CREATE TABLE `intership` (
   `idCompany` int(11) NOT NULL,
   `idLocality` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `intership`
+--
+
+INSERT INTO `intership` (`idInternship`, `intership`, `startDate`, `endDate`, `WageMonth`, `releaseDate`, `nbPlace`, `descInternship`, `idCompany`, `idLocality`) VALUES
+(1, 'NOM', '2022-04-04', '2022-07-04', 600, '2022-02-02', 3, "Cannabis (les cannabis) est un genre botanique qui rassemble des plantes annuelles de la famille des Cannabaceae. Ce sont toutes des plantes originaires d\'Asie centrale ou d\'Asie du Sud. La classification dans ce genre est encore discutée. Selon la majorité des auteurs il contiendrait une seule espèce, le Chanvre cultivé (Cannabis sativa L.), parfois subdivisée en plusieurs sous-espèces1, généralement sativa, indica et ruderalis (syn. spontanea), tandis que d\'autres considèrent que ce sont de simples variétés. Les plantes riches en fibres et pauvres en Tétrahydrocannabinol (THC) donnent le « chanvre agricole » qui pousse dans les zones tempérées, exploité pour ses sous-produits (fibres, graines...) aux usages industriels variés, tandis que le « chanvre indien », qui pousse en climat équatorial, est au contraire très riche en résine et exploité pour ses propriétés médicales et psychotropes.", 6, 12),
+(2, 'NOM', '2022-04-29', '2022-09-29', 700, '2022-02-02', 1, 'A remplir', 15, 20),
+(3, 'NOM', '2022-04-18', '2022-05-18', 750, '2022-02-02', 1, 'A remplir', 13, 25),
+(4, 'NOM', '2022-05-24', '2022-11-24', 800, '2022-02-02', 3, 'A remplir', 8, 20),
+(5, 'NOM', '2022-05-01', '2022-08-01', 1000, '2022-02-02', 3, 'A remplir', 1, 1),
+(6, 'NOM', '2022-06-14', '2022-11-29', 800, '2022-02-02', 3, 'A remplir', 3, 28),
+(7, 'NOM', '2022-08-04', '2022-09-14', 1, '2022-02-02', 2, 'A remplir', 11, 8),
+(8, 'NOM', '2022-04-27', '2022-07-27', 777, '2022-02-02', 2, 'A remplir', 2, 3),
+(9, 'NOM', '2022-05-14', '2022-11-11', 666, '2022-02-02', 3, 'A remplir', 7, 11),
+(10, 'NOM', '2022-05-01', '2022-06-01', 25, '2022-02-02', 1, 'A remplir', 10, 7);
 
 -- --------------------------------------------------------
 
@@ -181,6 +324,27 @@ CREATE TABLE `locate` (
   `idCompany` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `locate`
+--
+
+INSERT INTO `locate` (`idLocality`, `idCompany`) VALUES
+(1, 1),
+(2, 9),
+(3, 2),
+(7, 10),
+(8, 11),
+(11, 7),
+(12, 6),
+(13, 4),
+(17, 12),
+(20, 8),
+(20, 15),
+(21, 5),
+(25, 13),
+(27, 14),
+(28, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +355,42 @@ CREATE TABLE `need` (
   `idSkill` int(11) NOT NULL,
   `idInternship` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `need`
+--
+
+INSERT INTO `need` (`idSkill`, `idInternship`) VALUES
+(1, 1),
+(1, 2),
+(1, 4),
+(1, 6),
+(1, 7),
+(1, 9),
+(3, 1),
+(3, 3),
+(3, 4),
+(3, 6),
+(3, 8),
+(3, 9),
+(5, 1),
+(5, 3),
+(5, 5),
+(5, 6),
+(5, 8),
+(5, 10),
+(7, 2),
+(7, 3),
+(7, 5),
+(7, 7),
+(7, 8),
+(7, 10),
+(9, 2),
+(9, 4),
+(9, 5),
+(9, 7),
+(9, 9),
+(9, 10);
 
 -- --------------------------------------------------------
 
@@ -237,6 +437,17 @@ CREATE TABLE `schoolyear` (
   `idLocality` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `schoolyear`
+--
+
+INSERT INTO `schoolyear` (`idSchoolYear`, `schoolYear`, `idUser`, `idLocality`) VALUES
+(1, 'CPI A2 INFO', 1, 5),
+(2, 'CPIA2 GENE', 12, 5),
+(3, 'CPI A1', 45, 5),
+(4, 'CPI A3 FISE GENE', 66, 5),
+(5, 'CPI A3 FISA INFO', 72, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -275,11 +486,27 @@ CREATE TABLE `skill` (
   `skill` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `skill`
+--
+
+INSERT INTO `skill` (`idSkill`, `skill`) VALUES
+(1, 'autonome'),
+(2, 'php'),
+(3, 'structure des matériaux'),
+(4, 'C++'),
+(5, 'MySql'),
+(6, 'Word'),
+(7, 'Excel'),
+(8, 'Réseau'),
+(9, 'GitHub'),
+(10, 'html');
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `users`
---  
+--
 
 CREATE TABLE `users` (
   `idUser` int(11) NOT NULL,
@@ -396,6 +623,7 @@ INSERT INTO `users` (`idUser`, `userSecondName`, `userFirstName`, `login`, `pass
 (99, 'FAYOLLE ', 'Adéodat', 'fayot', '753951', 4),
 (100, 'ARNOUX ', 'Pascal', 'pasca', 'black', 2),
 (101, 'admin ', 'admin', 'admin', 'admin', 1);
+
 --
 -- Index pour les tables déchargées
 --
@@ -517,7 +745,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT pour la table `intership`
 --
 ALTER TABLE `intership`
-  MODIFY `idInternship` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInternship` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `locality`
@@ -535,7 +763,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `schoolyear`
 --
 ALTER TABLE `schoolyear`
-  MODIFY `idSchoolYear` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSchoolYear` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `sector`
@@ -547,13 +775,13 @@ ALTER TABLE `sector`
 -- AUTO_INCREMENT pour la table `skill`
 --
 ALTER TABLE `skill`
-  MODIFY `idSkill` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSkill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- Contraintes pour les tables déchargées
