@@ -14,13 +14,15 @@
 <body>
 
     <?php
+    require_once "../bdd/controleur.php";
+
     session_start();
 
     $auth = 0;
 
     if (!isset($_SESSION["AUTH"])) {
         if (isset($_POST["mdp"], $_POST["login"])) {
-            try {
+            /*try {
                 // On se connecte à MySQL
                 $mysqlClient = new PDO('mysql:host=localhost;dbname=projet_web_a2;charset=utf8', 'root', '');
 
@@ -33,7 +35,7 @@
 
                 $nbRow = $stmt->rowCount();           //Contenu des tables
                 $nbCol = $stmt->columnCount();
-
+16
                 $data = $stmt->fetchAll();
 
                 echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
@@ -49,7 +51,22 @@
             } catch (Exception $e) {
                 // En cas d'erreur, on affiche un message et on arrête tout
                 die('Erreur : ' . $e->getMessage());
-            }
+            }*/
+            $data;
+            $nbRow;
+            $nbCol;
+
+            $controleur = new Controleur();
+            $controleur->selectUsersLogin($data, $nbRow, $nbCol, $_POST["login"], $_POST["mdp"]);
+
+            if ($nbRow > 0) {
+                $auth = 1;                                       //L'utilisateur est t'il existant ?
+                $_SESSION['auth'] = true;
+            } else $auth = -1;
+
+            echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
+            echo "<br>";
+            print_r($data);
         }
     }
     if (isset($_SESSION['auth']) && $_SESSION['auth']) {
@@ -108,7 +125,7 @@
         </div>
     </div>
 
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 
