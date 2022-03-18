@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
 <body>
@@ -90,8 +90,8 @@
 
                             </div>
                             <div class="col-sm-6">
-                                <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>
-
+                                <!--<button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>-->
+                                <button type="button" class="w-100 btn btn-secondary btn-lg" id="SignInForm" onclick="window.location.href='signup.php';">Sign up</button>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <script src="./assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 
