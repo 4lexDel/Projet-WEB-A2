@@ -19,7 +19,7 @@
                 <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                 <span class="fs-5 fw-semibold">List group</span>
             </a>
-            <div class="list-group list-group-flush border-bottom scrollarea">
+            <div class="list-group list-group-flush border-bottom scrollarea" style="max-height: 500px; margin-bottom: 10px; overflow:scroll; -webkit-overflow-scrolling: touch;">
                 <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                     <div class="d-flex w-100 align-items-center justify-content-between">
                         <strong class="mb-1">Titre</strong>
