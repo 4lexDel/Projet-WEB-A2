@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 
 <body>
@@ -64,7 +64,7 @@
             <div class="col-sm-3">
                 <br><br><br><br><br>
                 <form class="form-signin" action="login.php" method="post">
-                    <img class="mb-4" src="assets\img\logo.png" alt="" width="60" height="60">
+                    <img class="mb-4" src="../assets\img\logo.png" alt="" width="60" height="60">
                     <h1 class="h3 mb-3 fw-normal">Please login</h1>
 
                     <div class="form-floating">

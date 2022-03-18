@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/style/style.css">
 </head>
 
@@ -15,13 +15,18 @@
 
     <?php
     session_start();
+
+
+
+    
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <!-- ajouter des parametres pour differencier le role   -->
             <div class="col-sm-4">
                 <br><br><br>
-                <form class="form-signin" action="login.php" method="post">                         <!--Alternative button js-->
+                <form class="form-signin" action="signup.php" method="post">
+                    <!--Alternative button js-->
                     <img class="mb-4" src="assets\img\logo.png" alt="" width="60" height="60">
                     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -41,7 +46,15 @@
                     </ul>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" name="login" placeholder="Login">
+                        <input type="text" class="form-control" id="secondName" name="secondName" placeholder="Second name">
+                        <label for="floatingInput">Second name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name">
+                        <label for="floatingInput">First name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Login">
                         <label for="floatingInput">Login</label>
                     </div>
                     <div class="form-floating">
@@ -55,26 +68,37 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="student-tab">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
-                                <label for="floatingInput">Promotion</label>
+                                <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
+                                    <!--<nom>test</nom>-->
+                                    <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
+                                    <option value="test">Promotion</option>
+                                </select>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="delegate" role="tabpanel" aria-labelledby="delegate-tab">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
-                                <label for="floatingInput">Promotion</label>
+                                <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
+                                    <!--<nom>test</nom>-->
+                                    <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
+                                    <option value="test">Promotion1</option>
+                                    <option value="test">Promotion2</option>
+                                    <option value="test">Promotion3</option>
+                                </select>
                             </div>
-                            Autorisation ?
+                            <!--Autorisation ?-->
                         </div>
                         <div class="tab-pane fade" id="pilote" role="tabpanel" aria-labelledby="pilote-tab">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="floatingInput" name="promo" placeholder="Quel promotion dirigez-vous ?">
-                                <label for="floatingInput">Promotion</label>
+                                <select class="form-control" id="floatingInput" name="promo" placeholder="Quel promotion dirigez-vous ?">
+                                    <!--<nom>test</nom>-->
+                                    <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
+                                    <option value="test">Promotion</option>
+                                </select>
                             </div>
-                            AJOUT ?
+                            <!--AJOUT ?-->
                         </div>
                         <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
-                            ADMIN
+                            <!--ADMIN-->
                         </div>
                     </div>
                     <br>
@@ -87,7 +111,6 @@
                             </div>
                             <div class="col-sm-6">
                                 <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>
-
                             </div>
                         </div>
                     </div>
@@ -107,7 +130,7 @@
     </div>
 
 
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 
