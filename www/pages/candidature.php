@@ -14,6 +14,26 @@
 <body>
     <?php include "../components/header.php" ?>
     <main>
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
+        <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
+            <button class="nav-link active" id="Wishlist-tab" data-bs-toggle="tab" data-bs-target="#Wishlist" type="button"
+                role="tab" aria-controls="Wishlist" aria-selected="true" style="width: 100%">Wishlist</button>
+        </li>
+        <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
+            <button class="nav-link" id="Candi-tab" data-bs-toggle="tab" data-bs-target="#Candi" type="button"
+                role="tab" aria-controls="Candi" aria-selected="false" style="width: 100%">Mes Candidatures</button>
+        </li>
+    </ul>   
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="Wishlist" role="tabpanel" aria-labelledby="Wishlist-tab">
+            <div class="form-floating">
+            </div>
+        </div>
+        <div class="tab-pane fade" id="Candi" role="tabpanel" aria-labelledby="Candi-tab">
+            <div class="form-floating">
+            </div>
+        </div>
+    </div> 
         <div style="flex-direction: row; display: flex;flex-wrap: wrap;">
             <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 30%;"><!--Side Nav Bar Miniatures Stage-->
                 <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
@@ -108,19 +128,25 @@
                     </a>
                 </div>
             </div>
-            <div style="width: 65%;margin-left: 4%;background:white;" ><!--Infos Stage Précis-->
-                <div>
+            <!--Infos Stage Précis-->
+            <div style="width: 70%;background:white;" >
+                <!--Header Stage-->
+                <div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
                     <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
-                    <h1 display="inline">Titre</h1>
+                    <h1 display="inline" style="margin-left: 1em;">Titre</h1>
                 </div>
-                <div style="display:flex;justify-content: space-evenly;">
+                <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
+                <!--Boutons-->
                 <div>
                     <button type="button" class="btn btn-primary">Primary</button>
                     <button type="button" class="btn btn-primary">Primary</button>
                 </div>
-                    <li style="display: inline;">Statut</li>
+                <!--Informations Statut-->
+                    <li style="display: inline;">Statut :</li>
                 </div>
-                <p>
+                <div style="margin: 1em;">
+                    <!--Description du stage-->
+                    <p>
 Les loutres (Lutrinae) sont une sous-famille de mammifères carnivores de la famille des mustélidés. Il existe plusieurs espèces de loutres, caractérisées par de courtes pattes, des doigts griffus et palmés (aux pattes avant et arrière) et une longue queue.
 Cette sous-famille a été décrite pour la première fois en 1838 par le zoologiste Charles-Lucien Bonaparte.
 Dans de nombreux pays, les loutres ont disparu de tout ou partie de leur aire naturelle de répartition, de même que les castors qui partageaient leur milieu de vie. Ces deux espèces-clé font l'objet depuis un siècle environ de protection et de programmes ou projets de réintroduction2 ou confortement de populations par translocation3. La loutre étant particulièrement discrète elle fait souvent l'objet d'un suivi par recherche d'indice (poils, marquage de territoire, pièges photographiques) et d'un suivi télémétrique par puce électronique4,5.
@@ -130,7 +156,8 @@ Contrairement à l'ours blanc ou au dauphin, la loutre ne dispose pas d'une épa
 Elle peut vivre jusqu'à 20 ans en captivité. Mais en milieu naturel son espérance de vie varie entre 5 et 10 ans. La loutre est un animal souvent solitaire. Les loutrons restent avec leur mère huit mois en moyenne et parfois jusqu'à dix-huit mois7.
 Habitat et comportement
 La loutre peut rester en apnée jusqu’à huit minutes sous l’eau.
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
     </main>
