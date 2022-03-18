@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
                 <br><br><br>
                 <form class="form-signin" action="signup.php" method="post">
                     <!--Alternative button js-->
-                    <img class="mb-4" src="assets\img\logo.png" alt="" width="60" height="60">
+                    <img class="mb-4" src="../assets\img\logo.png" alt="" width="60" height="60">
                     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -130,7 +130,7 @@
     </div>
 
 
-    <script src="./assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendors/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 

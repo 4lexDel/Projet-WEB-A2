@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-primary">Sign-up</button>
                 -->
             <form class="bi me-2" action="home.php" method="post">
-                <a href="./profil.php"><img class="bi me-2" src="assets\img\profil.jpg" alt="" width="60" height="60"></a>
+                <a href="./profil.php"><img class="bi me-2" src="../assets\img\profil.jpg" alt="" width="60" height="60"></a>
 
                 <button class="btn btn-danger" type="submit" name="disconnect" value="true">Disconnect</button>
             </form>
