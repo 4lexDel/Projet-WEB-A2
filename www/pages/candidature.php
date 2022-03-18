@@ -110,7 +110,7 @@
             </div>
             <div style="width: 65%;margin-left: 4%;background:white;" ><!--Infos Stage Précis-->
                 <div>
-                    <img src="./assets/img/stage.png" alt="Stage.png" width="100px">
+                    <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
                     <h1 display="inline">Titre</h1>
                 </div>
                 <div style="display:flex;justify-content: space-evenly;">
