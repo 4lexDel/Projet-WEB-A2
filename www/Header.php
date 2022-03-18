@@ -1,5 +1,6 @@
 <?php
-    /* // Mit en commentaire le temps de modifier les autres pages.
+    /*
+    // Mit en commentaire le temps de modifier les autres pages.
     session_start();
 
     if (isset($_POST["disconnect"])) {
