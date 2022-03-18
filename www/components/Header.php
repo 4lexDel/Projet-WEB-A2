@@ -1,5 +1,5 @@
 <?php
-    /*
+    
     // Mit en commentaire le temps de modifier les autres pages.
     session_start();
 
@@ -12,7 +12,7 @@
         header("Location: ./login.php");
         exit();
     }
-    */
+    
     ?>
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-white">
         <a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
