@@ -35,8 +35,17 @@ class Users{
     }
 
     public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
+        echo "SELECT * 
+        FROM users 
+        INNER JOIN belong ON users.idUser = belong.idUser 
+        INNER JOIN schoolYear ON belong.idSchoolYear = schoolYear.idSchoolYear 
+        WHERE userSecondName like '%?%' AND userFirstName like '%?%' AND schoolYear like '%?%';";
         try {
-            $stmt = $sqlClient->prepare("SELECT * FROM users NATURAL JOIN schoolYear WHERE userSecondName like '%?%' AND userFirstName like '%?%' schoolYear like '%?%'");
+            $stmt = $sqlClient->prepare("SELECT * 
+            FROM users 
+            INNER JOIN belong ON users.idUser = belong.idUser 
+            INNER JOIN schoolYear ON belong.idSchoolYear = schoolYear.idSchoolYear 
+            WHERE userSecondName like '%?%' AND userFirstName like '%?%' AND schoolYear like '%?%';");
 
             $stmt->bindParam(1, $secondName);
             $stmt->bindParam(2, $firstName);

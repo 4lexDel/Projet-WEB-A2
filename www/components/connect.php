@@ -1,6 +1,6 @@
 <?php  
     // Mit en commentaire le temps de modifier les autres pages.
-    /*
+    
     session_start();
 
     if (isset($_POST["disconnect"])) {
@@ -17,5 +17,5 @@
         header("Location: ./login.php");
         exit();
     }
-    */
+    
 ?>

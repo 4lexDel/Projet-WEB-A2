@@ -183,6 +183,7 @@
                             $nbRow; 
                             $nbCol;
 
+                            $controleur = new Controleur();
                             $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
 
                             for ($j = 0; $j < $nbRow; $j++) {
