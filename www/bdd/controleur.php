@@ -4,6 +4,7 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
+require_once "../bdd/table/skill.class.php";
 
 class Controleur{
     private $mysqlClient;
@@ -12,12 +13,14 @@ class Controleur{
     private $_locality; 
     private $_sector;
     private $_schoolYear;
+    private $_skill;
 
     public function __construct(){
         $this->_users = new Users();
         $this->_locality = new Locality();
         $this->_sector = new Sector();
         $this->_schoolYear = new SchoolYear();
+        $this->_skill = new Skill();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_a2_web;charset=utf8', 'root', '');
@@ -42,5 +45,7 @@ class Controleur{
         $this->_schoolYear->selectSchoolYear($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    
+    public function selectSkill(&$data, &$nbRow, &$nbCol){
+        $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
 }
