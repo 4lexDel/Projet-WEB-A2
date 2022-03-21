@@ -32,7 +32,7 @@
             </div>
             <div class="mb-3">
                 <label for="descInternship" class="form-label">Description Stage</label>
-                <textarea class="form-control" id="descInternship" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"' maxlength="500"></textarea>
+                <textarea class="form-control" id="descInternship" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"' maxlength="400"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
