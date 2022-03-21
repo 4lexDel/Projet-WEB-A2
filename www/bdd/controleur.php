@@ -1,20 +1,30 @@
 <?php
 
-require_once "../bdd/table/users.php";
+require_once "../bdd/table/users.class.php";
+require_once "../bdd/table/locality.class.php";
+require_once "../bdd/table/sector.class.php";
+require_once "../bdd/table/schoolYear.class.php";
+require_once "../bdd/table/skill.class.php";
 
 class Controleur{
     private $mysqlClient;
-    private $stmt;
 
     private $_users; 
+    private $_locality; 
+    private $_sector;
+    private $_schoolYear;
+    private $_skill;
 
     public function __construct(){
         $this->_users = new Users();
+        $this->_locality = new Locality();
+        $this->_sector = new Sector();
+        $this->_schoolYear = new SchoolYear();
+        $this->_skill = new Skill();
 
         try {
-            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_web_a2;charset=utf8', 'root', '');
+            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_a2_web;charset=utf8', 'root', '');
         } catch (Exception $e) {
-            // En cas d'erreur, on affiche un message et on arrête tout
             die('Erreur : ' . $e->getMessage());
         }
     }
@@ -23,4 +33,19 @@ class Controleur{
         $this->_users->selectUsersLogin($this->mysqlClient, $data, $nbRow, $nbCol, $login, $password);
     }
 
+    public function selectLocality(&$data, &$nbRow, &$nbCol){
+        $this->_locality->selectLocality($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+    
+    public function selectSector(&$data, &$nbRow, &$nbCol){
+        $this->_sector->selectSector($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+
+    public function selectSchoolYear(&$data, &$nbRow, &$nbCol){
+        $this->_schoolYear->selectSchoolYear($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+
+    public function selectSkill(&$data, &$nbRow, &$nbCol){
+        $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
 }

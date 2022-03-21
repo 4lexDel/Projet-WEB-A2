@@ -1,12 +1,6 @@
 <?php
 
 class Users{
-    private $idUser;
-    private $userSecondName;
-    private $userFirstName;
-    private $login;
-    private $password;
-    private $idRole;
 
     public function __construct(){
 

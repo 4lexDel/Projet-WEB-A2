@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <?php include '../components/header.php' ?>
+    <?php require "../components/connect.php" ?>
+    <?php include '../components/header.html' ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">
