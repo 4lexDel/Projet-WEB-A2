@@ -14,102 +14,32 @@
 <body>
     <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <br><br>
-            <form action="" class="form-signin">
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="objet">Objet</label>
-                        <br><br>
-                        <select name="objet" id="objetSelect" class="form-select col-md-2">
-                            <option value="etudiant" data-bs-target="#test1">Etudiant</option>
-                            <option value="delegue" data-bs-target="#test2">Délégué</option>
-                            <option value="pilote">Pilote</option>
-                            <option value="entreprise">Entreprise</option>
-                            <option value="offreStage">Offre de stage</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 formSelect">
-                        <div class="searchInfo">
-                            <label for="objet">Quoi ?</label>
-                            <br><br>
-                            <input type="text" name="searchInfo" id="searchInfoText" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2 formSelect">
-                        <div class="localitySelect">
-                            <label for="objet">Ville</label>
-                            <br><br>
-                            <select name="citySelect" id="citySelect" class="form-select col-md-2">
-                                <option value="all">Peu importe</option>
-
-                                <?php
-                                require "../bdd/controleur.php";
-                                $data;
-                                $nbRow;
-                                $nbCol;
-
-                                $controleur = new Controleur();
-                                $controleur->selectLocality($data, $nbRow, $nbCol);
-
-                                for ($j = 0; $j < $nbRow; $j++) {
-                                    $value = $data[$j][$nbCol - 1];
-                                    echo '<option value="' . $value . '">' . $value . '</option>';
-                                }
-
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col-sm-2">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">création</button>
-                    </div>
-                    <!--<div class="col-sm-6">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    </div>-->
-                </div>
-            </form>
-            <br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
+        <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
+            <button class="nav-link active" id="Entreprise-tab" data-bs-toggle="tab" data-bs-target="#Entreprise" type="button" role="tab" aria-controls="Entreprise" aria-selected="true" style="width: 100%">Entreprise</button>
+        </li>
+        <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
+            <button class="nav-link" id="Annonce-tab" data-bs-toggle="tab" data-bs-target="#Annonce" type="button" role="tab" aria-controls="Annonce" aria-selected="false" style="width: 100%">Mes Annonce</button>
+        </li>
+    </ul>
+    <br>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="Entreprise" role="tabpanel" aria-labelledby="Entreprise-tab">
+            <div class="form-floating">
+                <?php include "./creation/entreprise.php" ?>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="Annonce" role="tabpanel" aria-labelledby="Annonce-tab">
+            <div class="form-floating">
+                <?php include "./creation/annonce.php" ?>
+                <!-- C'est pas fini, voir comm dans annonce.html-->
+            </div>
         </div>
     </div>
-
-
-
-
-
     <?php include "../components/footer.php" ?>
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/script/script.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("#objetSelect").change(function() {
-                switch ($("#objetSelect").val) {
-                    case "entreprise":
-                        <?php include "./creation/entreprise.php" ?>
-                        break;
-
-                    case "offreStage":
-                        <?php include "./creation/annonce.php" ?>
-                        break;
-                }
-
-                $(".formSelect").html(`
-                
-                
-                
-                `);
-            });
-        });
-    </script>
 </body>
 
 </html>
