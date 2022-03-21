@@ -23,16 +23,24 @@
         $nbCol;
 
         require "../bdd/controleur.php";
-        echo $_SESSION['idUser'];
+        
 
         // retourne le save des offres des satges en prenant en compte le user 
-        
+
         $controleur = new Controleur();
         $controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
 
-        var_dump($data);
 
-        echo $data["intership"];     
+        //print_r ($data);
+        for ($row=0; $row < $nbRow; $row++) {
+            for ($col=0; $col < $nbCol; $col++) { 
+
+                echo $data[$row][$col];
+                
+            }
+        }
+
+
 
 
 
