@@ -14,7 +14,7 @@
 <body>
     <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
-
+    
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
@@ -94,11 +94,11 @@
             $("#objetSelect").change(function() {
                 switch ($("#objetSelect").val) {
                     case "entreprise":
-                        <?php include "entreprise.php" ?>
+                        <?php include "./creation/entreprise.php" ?>
                         break;
 
                     case "offreStage":
-                        <?php include "annonce.php" ?>
+                        <?php include "./creation/annonce.php" ?>
                         break;
                 }
 
