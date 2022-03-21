@@ -158,26 +158,33 @@
                         Elle peut vivre jusqu'à 20 ans en captivité. Mais en milieu naturel son espérance de vie varie entre 5 et 10 ans. La loutre est un animal souvent solitaire. Les loutrons restent avec leur mère huit mois en moyenne et parfois jusqu'à dix-huit mois7.
                         Habitat et comportement
                         La loutre peut rester en apnée jusqu’à huit minutes sous l’eau.
-                    </p>
+                    
+                </div>
+            </div>
+        </div>
+
+        </p>
 
 
                     <?php 
                     $data;
-                    $user_id = 101;
+                    $nbRow;
+                    $nbCol;
+
                     
                     // retourne le save des offres des satges en prenant en compte le user 
 
                     $controleur = new Controleur();
-                    $controleur->select_wish_list_from_user($data,$user_id);
+                    $controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
+
+                    echo $nbRow;
 
                     
 
 
 
                     ?>
-                </div>
-            </div>
-        </div>
+
     </main>
     <?php include "../components/footer.php" ?>
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>

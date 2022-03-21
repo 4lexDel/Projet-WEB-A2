@@ -23,6 +23,7 @@ class Controleur{
         $this->_sector = new Sector();
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
+        $this->_users_wish = new wish_list();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
@@ -52,8 +53,9 @@ class Controleur{
     }
 
     public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
-        $this->_users->selectUsersSearch($this->mysqlClient, $this->data, $this->nbRow, $this->nbCol, $secondName, $firstName, $schoolYear);
+        $this->_users->selectUsersSearch($this->mysqlClient, $data, $nbRow, $nbCol, $secondName, $firstName, $schoolYear);
     }
+
     public function select_wish_list_from_user(&$data,$user_id){
         
 
