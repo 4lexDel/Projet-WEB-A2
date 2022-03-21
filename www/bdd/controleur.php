@@ -23,6 +23,7 @@ class Controleur{
         $this->_sector = new Sector();
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
+        $this->_users_wish = new wish_list();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
