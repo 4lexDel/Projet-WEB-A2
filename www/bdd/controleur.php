@@ -4,7 +4,7 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/candidature.class.php";
+require_once "../bdd/table/wish_list.class.php";
 require_once "../bdd/table/skill.class.php";
 
 
