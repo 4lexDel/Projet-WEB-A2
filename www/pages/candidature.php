@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php include "../components/header.php" ?>
+    <?php require "../components/connect.php" ?>
+    <?php include "../components/header.html" ?>
     <main>
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
             <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">

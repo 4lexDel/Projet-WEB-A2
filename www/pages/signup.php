@@ -106,7 +106,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <!--<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>-->
-                                <button type="button" class="w-100 btn btn-primary btn-lg" id="SignInForm" onclick="window.location.href='login.php';">Login</button>
+                                <button type="button" class="w-100 btn btn-primary btn-lg" id="SignInForm" onclick="window.location.href='login.php';">Back to login</button>
 
                             </div>
                             <div class="col-sm-6">

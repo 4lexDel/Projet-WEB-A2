@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php include "../components/header.php" ?>
+    <?php require "../components/connect.php" ?>
+    <?php include "../components/header.html" ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -20,7 +21,7 @@
             <div class="col-sm-2 element">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="bacskground-color: rgb(140, 140, 140); border-radius:10px;margin:10px; padding:10px;">
+                        <div style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -116,9 +117,30 @@
                                             }
                                             ?>
                                         </select>
+                                        <br>
                                     </div>
                                 </div>
                                 <br>
+                                <div class="col-mdd-2">
+                                    <div class="skillSelect">
+                                        <label for="skill">Compétences</label>
+                                        <br><br>
+                                        <select name="skillSelect" id="skillSelect" class="form-select col-md-2">
+                                            <option value="all">Peu importe</option>
+
+                                            <?php
+                                            $controleur->selectSkill($data, $nbRow, $nbCol);
+
+                                            for ($j = 0; $j < $nbRow; $j++) {
+                                                $value = $data[$j]["skill"];
+                                                echo '<option value="' . $value . '">' . $value . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                        <br>
+                                    </div>
+                                </div>
+                                <br><br><br>
                                 <div class="col-mdd-2">
                                     <div class="wageRange">
                                         <label for="wageRange">Salaire minimal : </label>
@@ -145,8 +167,10 @@
                 </form>
             </div>
 
-            <div class="col-sm-9 element" style="basckground-color: rgb(140, 140, 140); border-radius:10px;margin:10px; padding:10px;">
-                                            
+            <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
+                <?php
+
+                ?>
             </div>
 
             <br><br><br><br><br><br><br>
@@ -168,7 +192,7 @@
         $(document).ready(function() {
             function hideForm() {
                 //$('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange').attr("disabled",true);
-                $('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange').parent().hide();
+                $('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange, #skillSelect').parent().hide();
                 //$('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange').parent().css("opacity", "0.3");
             }
 
@@ -212,7 +236,7 @@
 
                     case "offreStage":
                         hideForm();
-                        showElement($('#localitySelect, #sectorSelect, #searchInfo, #wageRange'));
+                        showElement($('#localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect'));
                         break;
                 }
             }
