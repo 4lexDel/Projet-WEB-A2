@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/vendors/jqueryUI/jquery-ui.min.css">
-    <link rel="stylesheet" href="../assets/style/stylee.css">
+    <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <div class="col-sm-2 element">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
+                        <div style="background-color: rgb(150, 150, 150);border-radius:10px ;margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -164,6 +164,7 @@
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                     </div>-->
                     </div>
+                    <br>
                 </form>
             </div>
 
@@ -211,9 +212,6 @@
                 ?>
             </div>
 
-            <br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br>
         </div>
     </div>
 
