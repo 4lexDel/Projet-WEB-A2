@@ -4,6 +4,9 @@
 
     if (isset($_POST["disconnect"])) {
         if (isset($_SESSION["auth"])) unset($_SESSION["auth"]);
+        if (isset($_SESSION["login"])) unset($_SESSION["login"]);
+        if (isset($_SESSION["secondName"])) unset($_SESSION["secondName"]);
+        if (isset($_SESSION["firstName"])) unset($_SESSION["firstName"]);
     }
 
     //$_SESSION['auth'] = true;

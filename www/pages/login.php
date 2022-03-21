@@ -67,6 +67,13 @@
             echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
             echo "<br>";
             print_r($data);
+            echo '<br> LOGIN : ' . $data[0]["login"];
+            echo '<br> NOM : ' . $data[0]["userSecondName"];
+            echo '<br> PRENOM : ' . $data[0]["userFirstName"];
+
+            $_SESSION['login'] = $data[0]["login"];
+            $_SESSION['secondName'] = $data[0]["userSecondName"];             //On recup les données clients
+            $_SESSION['firstName'] = $data[0]["userFirstName"];
         }
     }
     if (isset($_SESSION['auth']) && $_SESSION['auth']) {
