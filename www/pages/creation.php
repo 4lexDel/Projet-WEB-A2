@@ -93,24 +93,12 @@
         $(document).ready(function() {
             $("#objetSelect").change(function() {
                 switch ($("#objetSelect").val) {
-                    case "etudiant":
-                        //nom, prenom, promo
-                        break;
-
-                    case "delegue":
-
-                        break;
-
-                    case "pilote":
-
-                        break;
-
                     case "entreprise":
-
+                        <?php include "entreprise.php" ?>
                         break;
 
                     case "offreStage":
-
+                        <?php include "annonce.php" ?>
                         break;
                 }
 
