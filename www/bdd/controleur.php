@@ -50,4 +50,8 @@ class Controleur{
     public function selectSkill(&$data, &$nbRow, &$nbCol){
         $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
     }
+
+    public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
+        $this->_users->selectUsersSearch($this->$sqlClient, $this->$data, $this->$nbRow, $this->$nbCol, $secondName, $firstName, $schoolYear);
+    }
 }
