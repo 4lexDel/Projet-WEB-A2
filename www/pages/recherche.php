@@ -173,6 +173,7 @@
                         switch ($_GET["object"]) {
                             case "etudiant":
                                 #secondName, #firstName, #schoolYearSelect
+                                
                                
                                 break;
         
