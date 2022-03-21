@@ -162,7 +162,33 @@
                 </form>
             </div>
 
-            <div class="col-sm-7 element" style="background-color: rgb(150, 150, 150); border-radius:10px ;margin:10px; padding:10px; height: 800px; overflow: scroll;">
+            <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); 
+                                                border-radius:10px;
+                                                margin:10px; 
+                                                padding:10px;
+                                                display:flex;
+                                                justify-content: space-evenly;
+                                                align-items: center;">
+                
+                <div style="width: 30%;height: 60%;border-radius: 15px;background-color: white;"><!--Carte-->
+                    <!--Header de l'annonce-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
+                        <p>Nom Entreprise</p>
+                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
+                    </div>
+                    <!--Description du stage-->
+                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
+                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                    </p>
+                    <!--Boutons-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                    </div>
+                </div>
                 <?php
                 if (isset($_GET["objet"])) {
                     //echo $_GET["objet"];
@@ -207,7 +233,6 @@
                 }
                 ?>
             </div>
-
         </div>
     </div>
 

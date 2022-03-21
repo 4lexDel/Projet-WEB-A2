@@ -15,7 +15,7 @@
             </div>
             <div class="mb-3">
                 <label for="descCompany" class="form-label">Description Entreprise</label>
-                <textarea name="descCompany" class="form-control" id="descCompany" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"' maxlength="500"></textarea>
+                <textarea name="descCompany" class="form-control" id="descCompany" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"' maxlength="400"></textarea>
             </div>
             <div class="mb-3 form-check" style="display: flex;justify-content: center;">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
