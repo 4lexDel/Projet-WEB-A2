@@ -18,10 +18,10 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
-            <div class="col-sm-2 element">
+            <div class="col-sm-2 element" style="border-radius:10px;">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color: rgb(150, 150, 150);border-radius:10px ;margin:10px; padding:10px;">
+                        <div style="background-color: rgb(150, 150, 150);margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -150,25 +150,19 @@
                                         <output>0 €</output>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-                    <br><br>
+                    
                     <div class="row">
                         <div class="col-sm-12">
                             <button class="w-100 btn btn-lg btn-primary" type="submit">Rechercher</button>
                         </div>
-                        <!--<div class="col-sm-6">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    </div>-->
                     </div>
-                    <br>
                 </form>
             </div>
 
-            <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
+            <div class="col-sm-7 element" style="background-color: rgb(150, 150, 150); border-radius:10px ;margin:10px; padding:10px; height: 800px; overflow: scroll;">
                 <?php
                 if (isset($_GET["objet"])) {
                     //echo $_GET["objet"];
@@ -179,16 +173,18 @@
 
                             $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
 
-                            echo "<table>";
-
                             for ($j = 0; $j < $nbRow; $j++) {
-                                echo "<tr>";
-                                    echo "<td>" . $data[$j]["userSecondName"] . "</td>";
-                                    echo "<td>" . $data[$j]["userFirstName"] . "</td>";
-                                    echo "<td>" . $data[$j]["schoolYear"] . "</td>";
-                                echo "</tr>";
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
                             }
-                            echo "</table>";
 
                             break;
 
