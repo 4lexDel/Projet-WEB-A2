@@ -9,6 +9,7 @@
         if (isset($_SESSION["secondName"])) unset($_SESSION["secondName"]);
         if (isset($_SESSION["firstName"])) unset($_SESSION["firstName"]);
         if (isset($_SESSION["role"])) unset($_SESSION["role"]);
+        if (isset($_SESSION["idUser"])) unset($_SESSION["idUser"]);
     }
 
     //$_SESSION['auth'] = true;

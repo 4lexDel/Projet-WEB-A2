@@ -163,11 +163,12 @@
 
                     <?php 
                     $data;
+                    $user_id = 101;
                     
                     // retourne le save des offres des satges en prenant en compte le user 
 
                     $controleur = new Controleur();
-                    $controleur->
+                    $controleur->select_wish_list_from_user($data,$user_id);
 
                     
 
