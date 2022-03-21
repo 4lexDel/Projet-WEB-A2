@@ -51,7 +51,7 @@ class Controleur{
         $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
-        $this->_users->selectUsersSearch($this->$sqlClient, $this->$data, $this->$nbRow, $this->$nbCol, $secondName, $firstName, $schoolYear);
+    public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
+        $this->_users->selectUsersSearch($this->mysqlClient, $this->data, $this->nbRow, $this->nbCol, $secondName, $firstName, $schoolYear);
     }
 }

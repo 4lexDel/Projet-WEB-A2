@@ -62,7 +62,7 @@
                                         <label for="city">Ville</label>
                                         <br><br>
                                         <select name="localitySelect" id="localitySelect" class="form-select col-md-2">
-                                            <option value="all">Peu importe</option>
+                                            <option value="">Peu importe</option>
 
                                             <?php
                                             require "../bdd/controleur.php";
@@ -87,7 +87,7 @@
                                         <label for="schoolYearSelect">Promotion</label>
                                         <br><br>
                                         <select name="schoolYearSelect" id="schoolYearSelect" class="form-select col-md-2">
-                                            <option value="all">Peu importe</option>
+                                            <option value="">Peu importe</option>
 
                                             <?php
                                             $controleur->selectSchoolYear($data, $nbRow, $nbCol);
@@ -106,7 +106,7 @@
                                         <label for="sector">Secteur d'activité</label>
                                         <br><br>
                                         <select name="sectorSelect" id="sectorSelect" class="form-select col-md-2">
-                                            <option value="all">Peu importe</option>
+                                            <option value="">Peu importe</option>
 
                                             <?php
                                             $controleur->selectSector($data, $nbRow, $nbCol);
@@ -126,7 +126,7 @@
                                         <label for="skill">Compétences</label>
                                         <br><br>
                                         <select name="skillSelect" id="skillSelect" class="form-select col-md-2">
-                                            <option value="all">Peu importe</option>
+                                            <option value="">Peu importe</option>
 
                                             <?php
                                             $controleur->selectSkill($data, $nbRow, $nbCol);
@@ -169,31 +169,45 @@
 
             <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
                 <?php
-                    if(isset($_GET["object"])){
-                        switch ($_GET["object"]) {
-                            case "etudiant":
-                                #secondName, #firstName, #schoolYearSelect
-                                
-                               
-                                break;
-        
-                            case "delegue":
-                                #secondName, #firstName, #schoolYearSelect
-                                break;
-        
-                            case "pilote":
-                                #secondName, #firstName, #schoolYearSelect
-                                break;
-        
-                            case "entreprise":
-                                #localitySelect, #sectorSelect, #searchInfo
-                                break;
-        
-                            case "offreStage":
-                                #localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect
-                                break;
-                        }
+                if (isset($_GET["objet"])) {
+                    echo $_GET["objet"];
+                    switch ($_GET["objet"]) {
+                        case "etudiant":
+                            #secondName, #firstName, #schoolYearSelect
+
+                            echo $_GET['secondName']."<br>";
+                            echo $_GET['firstName']."<br>";
+                            echo $_GET['schoolYearSelect']."<br>";
+
+                            $data; 
+                            $nbRow; 
+                            $nbCol;
+
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo "<h2>".$data[$j]["secondName"]." ".$data[$j]["firstName"]."</h2>";
+                            }
+
+                            break;
+
+                        case "delegue":
+                            #secondName, #firstName, #schoolYearSelect
+                            break;
+
+                        case "pilote":
+                            #secondName, #firstName, #schoolYearSelect
+                            break;
+
+                        case "entreprise":
+                            #localitySelect, #sectorSelect, #searchInfo
+                            break;
+
+                        case "offreStage":
+                            #localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect
+                            break;
                     }
+                }
                 ?>
             </div>
 

@@ -76,6 +76,7 @@
             $_SESSION['secondName'] = $data[0]["userSecondName"];             //On recup les données clients
             $_SESSION['firstName'] = $data[0]["userFirstName"];
             $_SESSION['role'] = $data[0]["role"];
+            $_SESSION['idUser'] = $data[0]["idUser"];
         }
     }
     if (isset($_SESSION['auth']) && $_SESSION['auth']) {
