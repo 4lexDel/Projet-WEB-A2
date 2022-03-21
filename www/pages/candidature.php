@@ -15,6 +15,33 @@
     <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
     <main>
+
+
+        <?php
+        $data;
+        $nbRow;
+        $nbCol;
+
+        require "../bdd/controleur.php";
+        echo $_SESSION['idUser'];
+
+        // retourne le save des offres des satges en prenant en compte le user 
+        
+        $controleur = new Controleur();
+        $controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
+
+        var_dump($data);
+
+        echo $data["intership"];     
+
+
+
+
+
+        ?>
+
+
+
         <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
             <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
                 <button class="nav-link active" id="Wishlist-tab" data-bs-toggle="tab" data-bs-target="#Wishlist" type="button" role="tab" aria-controls="Wishlist" aria-selected="true" style="width: 100%">Wishlist</button>
@@ -158,32 +185,12 @@
                         Elle peut vivre jusqu'à 20 ans en captivité. Mais en milieu naturel son espérance de vie varie entre 5 et 10 ans. La loutre est un animal souvent solitaire. Les loutrons restent avec leur mère huit mois en moyenne et parfois jusqu'à dix-huit mois7.
                         Habitat et comportement
                         La loutre peut rester en apnée jusqu’à huit minutes sous l’eau.
-                    
+
                 </div>
             </div>
         </div>
 
         </p>
-
-
-                    <?php 
-                    $data;
-                    $nbRow;
-                    $nbCol;
-
-                    
-                    // retourne le save des offres des satges en prenant en compte le user 
-
-                    $controleur = new Controleur();
-                    $controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
-
-                    echo $nbRow;
-
-                    
-
-
-
-                    ?>
 
     </main>
     <?php include "../components/footer.php" ?>

@@ -4,7 +4,7 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/candidature.class.php";
+require_once "../bdd/table/wish_list.class.php";
 require_once "../bdd/table/skill.class.php";
 
 
@@ -56,7 +56,8 @@ class Controleur{
         $this->_users->selectUsersSearch($this->mysqlClient, $data, $nbRow, $nbCol, $secondName, $firstName, $schoolYear);
     }
 
-    public function select_wish_list_from_user(&$data,$user_id){
+    public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
+        $this->_users_wish->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
         
 
     }
