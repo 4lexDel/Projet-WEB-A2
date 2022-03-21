@@ -56,7 +56,8 @@ class Controleur{
         $this->_users->selectUsersSearch($this->mysqlClient, $data, $nbRow, $nbCol, $secondName, $firstName, $schoolYear);
     }
 
-    public function select_wish_list_from_user(&$data,$user_id){
+    public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
+        $this->_users_wish->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
         
 
     }
