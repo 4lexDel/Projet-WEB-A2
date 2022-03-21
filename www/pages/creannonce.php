@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
     <main>
         <div style="background: white;display: flex; width: 50%;justify-content: center;flex-direction: column;">
