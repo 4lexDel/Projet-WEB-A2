@@ -21,7 +21,7 @@
             <div class="col-sm-2 element">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
+                        <div style="background-color: rgb(150, 150, 150);border-radius:10px ;margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -164,6 +164,7 @@
                         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
                     </div>-->
                     </div>
+                    <br>
                 </form>
             </div>
 
@@ -196,25 +197,24 @@
                 </div>
                 <?php
                 if (isset($_GET["objet"])) {
-                    echo $_GET["objet"];
+                    //echo $_GET["objet"];
                     switch ($_GET["objet"]) {
                         case "etudiant":
                             #secondName, #firstName, #schoolYearSelect
 
-                            echo $_GET['secondName']."<br>";
-                            echo $_GET['firstName']."<br>";
-                            echo $_GET['schoolYearSelect']."<br>";
 
-                            $data; 
-                            $nbRow; 
-                            $nbCol;
-
-                            $controleur = new Controleur();
                             $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
 
+                            echo "<table>";
+
                             for ($j = 0; $j < $nbRow; $j++) {
-                                echo "<h2>".$data[$j]["secondName"]." ".$data[$j]["firstName"]."</h2>";
+                                echo "<tr>";
+                                    echo "<td>" . $data[$j]["userSecondName"] . "</td>";
+                                    echo "<td>" . $data[$j]["userFirstName"] . "</td>";
+                                    echo "<td>" . $data[$j]["schoolYear"] . "</td>";
+                                echo "</tr>";
                             }
+                            echo "</table>";
 
                             break;
 
