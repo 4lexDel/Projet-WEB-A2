@@ -12,7 +12,7 @@ class Users{
 
     public function selectUsersLogin(&$sqlClient, &$data, &$nbRow, &$nbCol, $login, $password){
         try {
-            $stmt = $sqlClient->prepare("SELECT * FROM users WHERE login=? AND password=?");
+            $stmt = $sqlClient->prepare("SELECT * FROM users NATURAL JOIN role WHERE login=? AND password=?");
 
             $stmt->bindParam(1, $login);
             $stmt->bindParam(2, $password);
