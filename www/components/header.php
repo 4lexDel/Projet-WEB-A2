@@ -21,7 +21,7 @@
                 <?php
                 if (isset($_SESSION["secondName"], $_SESSION["firstName"])==true) echo $_SESSION["secondName"] . " " . $_SESSION["firstName"];
                 ?>
-            </h1>
+            </h3>
             <button class="btn btn-danger" type="submit" name="disconnect" value="true">Disconnect</button>
         </form>
     </div>
