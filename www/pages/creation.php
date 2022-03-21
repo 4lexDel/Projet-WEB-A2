@@ -13,7 +13,7 @@
 
 <body>
     <?php require "../components/connect.php" ?>
-    <?php include "../components/header.html" ?>
+    <?php include "../components/header.php" ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">

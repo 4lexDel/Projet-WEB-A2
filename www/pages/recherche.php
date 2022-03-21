@@ -13,7 +13,7 @@
 
 <body>
     <?php require "../components/connect.php" ?>
-    <?php include "../components/header.html" ?>
+    <?php include "../components/header.php" ?>
 
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -61,7 +61,7 @@
                                     <div class="localitySelect">
                                         <label for="city">Ville</label>
                                         <br><br>
-                                        <select name="citySelect" id="localitySelect" class="form-select col-md-2">
+                                        <select name="localitySelect" id="localitySelect" class="form-select col-md-2">
                                             <option value="all">Peu importe</option>
 
                                             <?php
@@ -169,7 +169,31 @@
 
             <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); border-radius:10px;margin:10px; padding:10px;">
                 <?php
-
+                    if(isset($_GET["object"])){
+                        switch ($_GET["object"]) {
+                            case "etudiant":
+                                #secondName, #firstName, #schoolYearSelect
+                                
+                               
+                                break;
+        
+                            case "delegue":
+                                #secondName, #firstName, #schoolYearSelect
+                                break;
+        
+                            case "pilote":
+                                #secondName, #firstName, #schoolYearSelect
+                                break;
+        
+                            case "entreprise":
+                                #localitySelect, #sectorSelect, #searchInfo
+                                break;
+        
+                            case "offreStage":
+                                #localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect
+                                break;
+                        }
+                    }
                 ?>
             </div>
 

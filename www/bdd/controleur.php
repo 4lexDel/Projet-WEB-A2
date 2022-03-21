@@ -4,7 +4,9 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
+require_once "../bdd/table/candidature.class.php";
 require_once "../bdd/table/skill.class.php";
+
 
 class Controleur{
     private $mysqlClient;
@@ -23,7 +25,7 @@ class Controleur{
         $this->_skill = new Skill();
 
         try {
-            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=projet_a2_web;charset=utf8', 'root', '');
+            $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
@@ -47,5 +49,9 @@ class Controleur{
 
     public function selectSkill(&$data, &$nbRow, &$nbCol){
         $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+
+    public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear){
+        $this->_users->selectUsersSearch($this->$sqlClient, $this->$data, $this->$nbRow, $this->$nbCol, $secondName, $firstName, $schoolYear);
     }
 }
