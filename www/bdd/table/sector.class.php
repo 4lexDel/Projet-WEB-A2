@@ -1,20 +1,16 @@
 <?php
 
-class Locality{
-    private $idLocality;
-    private $idCity;
+class Sector{
+    private $idSector;
+    private $sector;
 
     public function __construct(){
 
     }
 
-    public function selectUsers(){
-
-    }
-
-    public function selectLocality(&$sqlClient, &$data, &$nbRow, &$nbCol){
+    public function selectSector(&$sqlClient, &$data, &$nbRow, &$nbCol){
         try {
-            $stmt = $sqlClient->prepare("SELECT * FROM locality");
+            $stmt = $sqlClient->prepare("SELECT * FROM sector");
             
             $stmt->execute();
 

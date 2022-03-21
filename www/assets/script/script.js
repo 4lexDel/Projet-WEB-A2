@@ -1,4 +1,4 @@
-
+/*
 window.onload = () => {
 
     document.querySelector('#inputPostal').addEventListener('input', function () {
@@ -38,4 +38,4 @@ window.onload = () => {
 $(function(){
 $("#Header").load("Header.html"); 
 $("#Footer").load("Footer.html");
-});
+});*/
