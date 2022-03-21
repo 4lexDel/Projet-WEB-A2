@@ -7,6 +7,7 @@
                     <option value="company1">company1</option>
                     <option value="company2">company2</option>
                     <!--Récupérer les entreprises de la personne et les injecter la dedans-->
+                    <!--Donc faut faire un script php avec la bdd-->
                 </select>
             </div>
             <div class="mb-3">
