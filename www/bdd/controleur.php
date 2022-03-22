@@ -6,6 +6,7 @@ require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
 require_once "../bdd/table/skill.class.php";
 require_once "../bdd/table/company.class.php";
+require_once "../bdd/table/internship.class.php";
 
 
 class Controleur{
@@ -17,6 +18,7 @@ class Controleur{
     private $_schoolYear;
     private $_skill;
     private $_company;
+    private $_intership;
 
     public function __construct(){
         $this->_users = new Users();
@@ -25,6 +27,7 @@ class Controleur{
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
         $this->_company = new Company();
+        $this->_intership = new Internship();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
@@ -59,6 +62,10 @@ class Controleur{
 
     public function selectCompanySearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect){
         $this->_company->selectCompanySearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $sectorSelect);
+    }
+
+    public function selectInternshipSearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $skillSelect, $wageRange){
+        $this->_intership->selectInternshipSearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $searchInfo, $localitySelect, $skillSelect, $wageRange);
     }
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){

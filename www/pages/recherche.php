@@ -167,7 +167,6 @@
             <div class="col-sm-8 element" style="background-color : rgb(140,140,140); border-radius:10px;
                                                 margin:10px; 
                                                 padding:10px;
-                                                display:flex;
                                                 justify-content: space-evenly;
                                                 align-items: center;
                                                 overflow: auto;
@@ -260,7 +259,25 @@
                             break;
 
                         case "offreStage":
-                            #localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect
+                            #$searchInfo, $localitySelect, $sectorSelect, $skillSelect, $wageRange
+                            
+                            $controleur->selectInternshipSearch($data, $nbRow, $nbCol, $_GET['searchInfo'], $_GET['localitySelect'], $_GET['skillSelect'], $_GET['wageRange']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["sector"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["company"] . " - ". $data[$j]["city"] . '</h5>';
+                                echo '<p class="card-text">'.$data[$j]["descCompany"].'</p>';
+                                echo '<div class="card-footer">'.$data[$j]["eMail"];
+                                echo '</div>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
                             break;
                     }
                 }
