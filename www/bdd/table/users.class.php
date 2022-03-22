@@ -65,8 +65,11 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$data, &$nbRow, &$nbCol, $user_id){
+    public function select_wish_list_from_user(&$sqlClient, &$string){
         try {
+            echo "hfhjgfhgfhfhgfhgfhgfhg";
+            $user_id = $_SESSION['idUser'];
+            
             $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
             
             $stmt->bindParam(1, $user_id);
@@ -92,7 +95,7 @@ class Users
                 }
             }
 
-            $str_return = '';
+            $string = '';
             
             for ($row = 0; $row < $nbRow; $row++) {
             $nom = $data[$row][1];
@@ -103,12 +106,12 @@ class Users
             $description = $data[$row][6];
             $brand = $data[$row][7];
 
-            $str_return .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+            $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                             <div class="d-flex w-100 align-items-center justify-content-between">
                                 <strong class="mb-1">'+$nom+'</strong>
                                 <small>'+$brand+'</small>
                             </div>
-                            <div class="col-10 mb-1 small">2022-04-04 2022-07-04 2022-02-02</div>
+                            <div class="col-10 mb-1 small">Début '+$date_start+' Fin '+$date_end+' Publié le '+$date_relase+'</div>
                         </a>
             
                         <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
@@ -119,10 +122,10 @@ class Users
                             <div class="col-10 mb-1 small">Texte Descriptif</div>
                         </a>'; 
             }
-            
-            
+
 
             $stmt->closeCursor();
+            
 
         } catch (\Throwable $th) {
             throw $th;

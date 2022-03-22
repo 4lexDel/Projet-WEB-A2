@@ -68,8 +68,8 @@ class Controleur{
         $this->_intership->selectInternshipSearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $skillSelect, $wageRange);
     }
 
-    public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
-        $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
+    public function select_wish_list_from_user(&$string){
+        $this->_users->select_wish_list_from_user($this->mysqlClient, $string);
     }
 
 }
