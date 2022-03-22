@@ -23,7 +23,7 @@
         $nbCol;
 
         require "../bdd/controleur.php";
-        
+
 
         // retourne le save des offres des satges en prenant en compte le user 
 
@@ -32,20 +32,53 @@
 
 
         //print_r ($data);
-        for ($row=0; $row < $nbRow; $row++) {
-            for ($col=0; $col < $nbCol; $col++) { 
+        for ($row = 0; $row < $nbRow; $row++) {
+            for ($col = 0; $col < $nbCol; $col++) {
 
                 echo $data[$row][$col];
-
             }
         }
 
+        for ($row = 0; $row < $nbRow; $row++) {
+        $nom = $data[$row][1];
+        $date_start = $data[$row][2];
+        $date_end = $data[$row][3];
+        $date_relase = $data[$row][4];
+        $nb_place = $data[$row][5];
+        $description = $data[$row][6];
+        $brand = $data[$row][7];
+    }
 
-        function template_wish(){
-            return ;
+
+        function template_wish()
+        {
+
+/*
+            <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">NOM</strong>
+                    <small>IKEA</small>
+                </div>
+                <div class="col-10 mb-1 small">2022-04-04 2022-07-04 2022-02-02</div>
+            </a>
+
+            return; */
         }
-
-
+        /*
+        NOM
+        
+        2022-04-04
+        
+        2022-07-04
+        
+        2022-02-02
+        
+        3
+        
+        Cannabis (les cannabis) est un genre botanique qui rassemble des plantes annuelles de la famille des Cannabaceae. Ce sont toutes des plantes originaires d'Asie centrale ou d'Asie du Sud. La classification dans ce genre est encore discutée. Selon la majorité des auteurs il contiendrait une seule espèce, le Chanvre cultivé (Cannabis sativa L.), parfois subdivisée en plusieurs sous-espèces1, généralement sativa, indica et ruderalis (syn. spontanea), tandis que d'autres considèrent que ce sont de simples variétés. Les plantes riches en fibres et pauvres en Tétrahydrocannabinol (THC) donnent le « chanvre agricole » qui pousse dans les zones tempérées, exploité pour ses sous-produits (fibres, graines...) aux usages industriels variés, tandis que le « chanvre indien », qui pousse en climat équatorial, est au contraire très riche en résine et exploité pour ses propriétés médicales et psychotropes.
+        
+        IKEA
+        */
 
 
 
@@ -66,18 +99,22 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="Wishlist" role="tabpanel" aria-labelledby="Wishlist-tab">
                 <div class="form-floating">
-                    <?php include"./candidature/wishlist.php" ?>
+
+                    <?php include "./candidature/wishlist.php" ?>
+
                 </div>
             </div>
             <div class="tab-pane fade" id="Candi" role="tabpanel" aria-labelledby="Candi-tab">
                 <div class="form-floating">
-                    <?php include"./candidature/candi.php" ?>
+
+                    <?php include "./candidature/candi.php" ?>
+
                 </div>
             </div>
         </div>
-        
 
-        
+
+
 
     </main>
     <?php include "../components/footer.php" ?>

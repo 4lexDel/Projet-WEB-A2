@@ -8,6 +8,7 @@
             <span class="fs-5 fw-semibold">List group</span>
         </a>
         <div class="list-group list-group-flush border-bottom scrollarea" style="max-height: 500px; margin-bottom: 10px; overflow:scroll; -webkit-overflow-scrolling: touch;">
+
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Titre</strong>
@@ -15,6 +16,7 @@
                 </div>
                 <div class="col-10 mb-1 small">Texte Descriptif</div>
             </a>
+        
             <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Titre</strong>
@@ -22,6 +24,7 @@
                 </div>
                 <div class="col-10 mb-1 small">Texte Descriptif</div>
             </a>
+        
             <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Titre</strong>

@@ -7,20 +7,20 @@ class Company
     {
     }
 
-    public function selectCompanySearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear)
+    public function selectCompanySearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect)
     {
         try {
             $stmt = $sqlClient->prepare("SELECT * 
-            FROM users
-            INNER JOIN belong ON users.idUser = belong.idUser 
-            INNER JOIN schoolYear ON belong.idSchoolYear = schoolYear.idSchoolYear 
-            INNER JOIN role ON users.idRole = role.idRole 
-            WHERE userSecondName like ? AND userFirstName like ? AND schoolYear like ? AND role = ?");
+            FROM company
+            INNER JOIN correspond ON company.idCompany = correspond.idCompany 
+            INNER JOIN sector ON sector.idSector = correspond.idSector
+            INNER JOIN locate ON locate.idCompany = company.idCompany
+            INNER JOIN locality ON locality.idLocality = locate.idLocality
+            WHERE company.company like ? AND locality.city like ? AND sector.sector like ?");
 
-            $stmt->bindValue(1, "%$secondName%");
-            $stmt->bindValue(2, "%$firstName%");
-            $stmt->bindValue(3, "%$schoolYear%");
-            $stmt->bindValue(4, "$role");
+            $stmt->bindValue(1, "%$searchInfo%");
+            $stmt->bindValue(2, "%$localitySelect%");
+            $stmt->bindValue(3, "%$sectorSelect%");
 
             $stmt->execute();
 
