@@ -18,10 +18,10 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
-            <div class="col-sm-2 element">
+            <div class="col-sm-2 element" style="border-radius:10px;margin:10px">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color: rgb(150, 150, 150);border-radius:10px ;margin:10px; padding:10px;">
+                        <div style="background-color: rgb(150, 150, 150);margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -150,21 +150,15 @@
                                         <output>0 €</output>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
-                    <br><br>
+                    
                     <div class="row">
                         <div class="col-sm-12">
                             <button class="w-100 btn btn-lg btn-primary" type="submit">Rechercher</button>
                         </div>
-                        <!--<div class="col-sm-6">
-                        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                    </div>-->
                     </div>
-                    <br>
                 </form>
             </div>
 
@@ -176,99 +170,75 @@
                                                 justify-content: space-evenly;
                                                 align-items: center;
                                                 flex-wrap: wrap;">
-                <!--Carte-->
-                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
-                    <!--Header de l'annonce-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
-                        <p>Nom Entreprise</p>
-                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
-                    </div>
-                    <!--Description du stage-->
-                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
-                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-                    </p>
-                    <!--Boutons-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                    </div>
-                </div>
-                <!--Carte-->
-                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
-                    <!--Header de l'annonce-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
-                        <p>Nom Entreprise</p>
-                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
-                    </div>
-                    <!--Description du stage-->
-                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
-                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-                    </p>
-                    <!--Boutons-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                    </div>
-                </div>
-                <!--Carte-->
-                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
-                    <!--Header de l'annonce-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
-                        <p>Nom Entreprise</p>
-                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
-                    </div>
-                    <!--Description du stage-->
-                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
-                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-                    </p>
-                    <!--Boutons-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                    </div>
-                </div>
+                
                 <?php
                 if (isset($_GET["objet"])) {
                     //echo $_GET["objet"];
                     switch ($_GET["objet"]) {
-                        case "etudiant":
+                        case "etudiant":                                                //FILTRER PAR ROLE
                             #secondName, #firstName, #schoolYearSelect
 
-
-                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
-
-                            echo "<table>";
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Etudiant", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
 
                             for ($j = 0; $j < $nbRow; $j++) {
-                                echo "<tr>";
-                                    echo "<td>" . $data[$j]["userSecondName"] . "</td>";
-                                    echo "<td>" . $data[$j]["userFirstName"] . "</td>";
-                                    echo "<td>" . $data[$j]["schoolYear"] . "</td>";
-                                echo "</tr>";
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
                             }
-                            echo "</table>";
 
                             break;
 
                         case "delegue":
                             #secondName, #firstName, #schoolYearSelect
+                            
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Délégué", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
+
                             break;
 
                         case "pilote":
                             #secondName, #firstName, #schoolYearSelect
+
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Pilote", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
+
                             break;
 
                         case "entreprise":
                             #localitySelect, #sectorSelect, #searchInfo
+
+                            
                             break;
 
                         case "offreStage":
