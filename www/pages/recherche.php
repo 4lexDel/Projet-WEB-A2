@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
-            <div class="col-sm-2 element" style="border-radius:10px;">
+            <div class="col-sm-2 element" style="border-radius:10px;margin:10px">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
                         <div style="background-color: rgb(150, 150, 150);margin:10px; padding:10px;">
@@ -166,43 +166,24 @@
                                                 border-radius:10px;
                                                 margin:10px; 
                                                 padding:10px;
-                                                display:flex;
-                                                justify-content: space-evenly;
-                                                align-items: center;">
+                                                align-items: center;
+                                                overflow: auto;
+                                                height:800px">
                 
-                <div style="width: 30%;height: 60%;border-radius: 15px;background-color: white;"><!--Carte-->
-                    <!--Header de l'annonce-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
-                        <p>Nom Entreprise</p>
-                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
-                    </div>
-                    <!--Description du stage-->
-                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
-                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-                    </p>
-                    <!--Boutons-->
-                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
-                        
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                        <button type="button" class="btn btn-primary">Primary</button>
-                    </div>
-                </div>
+                
                 <?php
                 if (isset($_GET["objet"])) {
                     //echo $_GET["objet"];
                     switch ($_GET["objet"]) {
-                        case "etudiant":
+                        case "etudiant":                                                //FILTRER PAR ROLE
                             #secondName, #firstName, #schoolYearSelect
 
-
-                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Etudiant", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
 
                             for ($j = 0; $j < $nbRow; $j++) {
                                 echo '<div class="card">';
                                 echo '<div class="card-header">';
-                                echo $data[$j]["schoolYear"];
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
 
                                 echo '<div class="card-body">';
                                 echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
@@ -216,14 +197,48 @@
 
                         case "delegue":
                             #secondName, #firstName, #schoolYearSelect
+                            
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Délégué", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
+
                             break;
 
                         case "pilote":
                             #secondName, #firstName, #schoolYearSelect
+
+                            $controleur->selectUsersSearch($data, $nbRow, $nbCol, "Pilote", $_GET['secondName'], $_GET['firstName'], $_GET['schoolYearSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
+
                             break;
 
                         case "entreprise":
                             #localitySelect, #sectorSelect, #searchInfo
+
+                            
                             break;
 
                         case "offreStage":
