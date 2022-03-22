@@ -18,42 +18,23 @@
 
 
         <?php
-        $data;
-        $nbRow;
-        $nbCol;
+        
 
         require "../bdd/controleur.php";
+        
 
-
-        // retourne le save des offres des satges en prenant en compte le user 
-
-        $controleur = new Controleur();
-        $controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
-
-
-        //print_r ($data);
-        for ($row = 0; $row < $nbRow; $row++) {
-            for ($col = 0; $col < $nbCol; $col++) {
-
-                echo $data[$row][$col];
-            }
-        }
-
-        for ($row = 0; $row < $nbRow; $row++) {
-        $nom = $data[$row][1];
-        $date_start = $data[$row][2];
-        $date_end = $data[$row][3];
-        $date_relase = $data[$row][4];
-        $nb_place = $data[$row][5];
-        $description = $data[$row][6];
-        $brand = $data[$row][7];
-    }
-
-
-        function template_wish()
-        {
-
+        //$controleur->select_wish_list_from_user($data, $nbRow, $nbCol, $_SESSION['idUser']);
 /*
+
+get des bouton return la bonne description et active dans la class le bon truc
+
+
+
+
+
+
+
+
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">NOM</strong>
@@ -62,7 +43,7 @@
                 <div class="col-10 mb-1 small">2022-04-04 2022-07-04 2022-02-02</div>
             </a>
 
-            return; */
+            return; 
         }
         /*
         NOM
