@@ -15,13 +15,15 @@
     <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
 
+    <style> label, output {color:white; font-weight:bold;}</style>
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
-            <div class="col-sm-2 element" style="border-radius:10px;margin:10px">
+            <div class="col-sm-3 element" style="border-radius:10px;margin:10px; background-color : rgb(140,140,140); ">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color: rgb(150, 150, 150);margin:10px; padding:10px;">
+                        <div style="background-color : rgb(140,140,140); margin:10px; padding:10px;">
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -162,14 +164,12 @@
                 </form>
             </div>
 
-            <div class="col-sm-9 element" style="background-color: rgb(150, 150, 150); 
-                                                border-radius:10px;
+            <div class="col-sm-8 element" style="background-color : rgb(140,140,140); border-radius:10px;
                                                 margin:10px; 
                                                 padding:10px;
                                                 align-items: center;
                                                 overflow: auto;
                                                 height:800px">
-                
                 
                 <?php
                 if (isset($_GET["objet"])) {
@@ -243,11 +243,13 @@
                             for ($j = 0; $j < $nbRow; $j++) {
                                 echo '<div class="card">';
                                 echo '<div class="card-header">';
-                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+                                echo $data[$j]["sector"];
 
                                 echo '<div class="card-body">';
-                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
-                                echo '<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>';
+                                echo '<h5 class="card-title">'. $data[$j]["company"] . " - ". $data[$j]["city"] . '</h5>';
+                                echo '<p class="card-text">'.$data[$j]["descCompany"].'</p>';
+                                echo '<div class="card-footer">'.$data[$j]["eMail"];
+                                echo '</div>';
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
