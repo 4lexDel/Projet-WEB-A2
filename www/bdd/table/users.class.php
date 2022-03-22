@@ -36,18 +36,20 @@ class Users
         }
     }
 
-    public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $secondName, $firstName, $schoolYear)
+    public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear)
     {
         try {
             $stmt = $sqlClient->prepare("SELECT * 
             FROM users
             INNER JOIN belong ON users.idUser = belong.idUser 
             INNER JOIN schoolYear ON belong.idSchoolYear = schoolYear.idSchoolYear 
-            WHERE userSecondName like ? AND userFirstName like ? AND schoolYear like ?");
+            INNER JOIN role ON users.idRole = role.idRole 
+            WHERE userSecondName like ? AND userFirstName like ? AND schoolYear like ? AND role = ?");
 
             $stmt->bindValue(1, "%$secondName%");
             $stmt->bindValue(2, "%$firstName%");
             $stmt->bindValue(3, "%$schoolYear%");
+            $stmt->bindValue(4, "$role");
 
             $stmt->execute();
 
