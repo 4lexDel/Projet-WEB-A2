@@ -1,9 +1,9 @@
 <div style="flex-direction: row; display: flex;flex-wrap: wrap;">
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 30%;">
         <!--Side Nav Bar Miniatures Stage-->
-        <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+        <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
             <svg class="bi me-2" width="30" height="24">
-                <use xlink:href="#bootstrap"></use>
+                <use xlink:href="#"></use>
             </svg>
             <span class="fs-5 fw-semibold">List group</span>
         </a>
@@ -105,7 +105,7 @@
         <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
             <!--Boutons-->
             <div>
-                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-primary">Retirer</button>
             </div>
             <!--Informations Statut-->
             <li style="display: inline;">Statut :</li>
