@@ -4,7 +4,6 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/wish_list.class.php";
 require_once "../bdd/table/skill.class.php";
 require_once "../bdd/table/company.class.php";
 
@@ -25,7 +24,6 @@ class Controleur{
         $this->_sector = new Sector();
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
-        $this->_users = new wish_list();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
@@ -59,7 +57,7 @@ class Controleur{
     }
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
-        $this->_users_wish->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
+        $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
         
 
     }
