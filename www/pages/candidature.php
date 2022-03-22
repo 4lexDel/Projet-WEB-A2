@@ -39,10 +39,30 @@
             }
         }
 
+        for ($row = 0; $row < $nbRow; $row++) {
+        $nom = $data[$row][1];
+        $date_start = $data[$row][2];
+        $date_end = $data[$row][3];
+        $date_relase = $data[$row][4];
+        $nb_place = $data[$row][5];
+        $description = $data[$row][6];
+        $brand = $data[$row][7];
+    }
+
 
         function template_wish()
         {
-            return;
+
+/*
+            <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">NOM</strong>
+                    <small>IKEA</small>
+                </div>
+                <div class="col-10 mb-1 small">2022-04-04 2022-07-04 2022-02-02</div>
+            </a>
+
+            return; */
         }
         /*
         NOM
