@@ -36,8 +36,13 @@
             for ($col=0; $col < $nbCol; $col++) { 
 
                 echo $data[$row][$col];
-                
+
             }
+        }
+
+
+        function template_wish(){
+            return ;
         }
 
 

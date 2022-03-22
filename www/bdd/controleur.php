@@ -4,7 +4,6 @@ require_once "../bdd/table/users.class.php";
 require_once "../bdd/table/locality.class.php";
 require_once "../bdd/table/sector.class.php";
 require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/wish_list.class.php";
 require_once "../bdd/table/skill.class.php";
 require_once "../bdd/table/company.class.php";
 
@@ -26,7 +25,6 @@ class Controleur{
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
         $this->_company = new Company();
-        $this->_users_wish = new wish_list();
 
         try {
             $this->mysqlClient = new PDO('mysql:host=localhost;dbname=bddweb;charset=utf8', 'root', '');
@@ -55,16 +53,16 @@ class Controleur{
         $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect){
+    public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear){
         $this->_users->selectUsersSearch($this->mysqlClient, $data, $nbRow, $nbCol, $role, $secondName, $firstName, $schoolYear);
     }
 
-    public function selectCompanySearch(&$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear){
+    public function selectCompanySearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect){
         $this->_company->selectCompanySearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $sectorSelect);
     }
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
-        $this->_users_wish->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
+        $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
         
 
     }
