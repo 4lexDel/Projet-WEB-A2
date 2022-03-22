@@ -28,7 +28,7 @@
                 <form class="form-signin" action="signup.php" method="post">
                     <!--Alternative button js-->
                     <img class="mb-4" src="../assets\img\logo.png" alt="" width="60" height="60">
-                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
