@@ -65,7 +65,7 @@ class Controleur{
     }
 
     public function selectInternshipSearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $skillSelect, $wageRange){
-        $this->_intership->selectInternshipSearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $searchInfo, $localitySelect, $skillSelect, $wageRange);
+        $this->_intership->selectInternshipSearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $skillSelect, $wageRange);
     }
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){

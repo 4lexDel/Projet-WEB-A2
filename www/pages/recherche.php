@@ -266,12 +266,14 @@
                             for ($j = 0; $j < $nbRow; $j++) {
                                 echo '<div class="card">';
                                 echo '<div class="card-header">';
-                                echo $data[$j]["sector"];
+                                echo "<strong>".$data[$j]["company"] . "</strong>" . " - Publié le : ".$data[$j]["releaseDate"];
 
                                 echo '<div class="card-body">';
-                                echo '<h5 class="card-title">'. $data[$j]["company"] . " - ". $data[$j]["city"] . '</h5>';
-                                echo '<p class="card-text">'.$data[$j]["descCompany"].'</p>';
-                                echo '<div class="card-footer">'.$data[$j]["eMail"];
+                                echo '<h5 class="card-title">'. $data[$j]["intership"] . " : ". $data[$j]["startDate"] . " - " . $data[$j]["endDate"] . '</h5>';
+                                echo '<p class="card-text">'.$data[$j]["descInternship"].'</p>';
+                                echo '<div class="card-footer">';
+                                echo '<p>Gratification : ' . $data[$j]["WageMonth"] . ' €</p>';
+                                echo '<p>Contact : ' . $data[$j]["eMail"] . '</p>';
                                 echo '</div>';
                                 echo "</div>";
                                 echo "</div>";
