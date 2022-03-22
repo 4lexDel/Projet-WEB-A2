@@ -39,6 +39,17 @@
                         <label for="passwordval" class="form-label">Confirmer Mot de passe</label>
                         <input type="text" class="form-control" id="passwordval">
                     </div>
+                    <div>
+                        <label for="floatingInput" class="form-label">Promotion</label>
+                        <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
+                            <!--<nom>test</nom>-->
+                            <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
+                            
+                            <option value="test">Promotion1</option>
+                            <option value="test">Promotion2</option>
+                            <option value="test">Promotion3</option>
+                        </select>
+                    </div>
                     <div style="display: flex;justify-content: space-evenly;margin-top: 1em;">
                         <li style="list-style: none;"></li>
                         <div>
@@ -78,6 +89,7 @@
                 </form>
             </div>
         </div>
+        <br>
         <div style="text-align: -webkit-center;">
             <h3>Entreprise 2</h3>
             <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
