@@ -25,6 +25,7 @@ class Controleur{
         $this->_sector = new Sector();
         $this->_schoolYear = new SchoolYear();
         $this->_skill = new Skill();
+        $this->_company = new Company();
         $this->_users_wish = new wish_list();
 
         try {
@@ -54,8 +55,12 @@ class Controleur{
         $this->_skill->selectSkill($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear){
+    public function selectUsersSearch(&$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect){
         $this->_users->selectUsersSearch($this->mysqlClient, $data, $nbRow, $nbCol, $role, $secondName, $firstName, $schoolYear);
+    }
+
+    public function selectCompanySearch(&$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear){
+        $this->_company->selectCompanySearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $sectorSelect);
     }
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){

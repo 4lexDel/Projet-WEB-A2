@@ -236,9 +236,23 @@
                             break;
 
                         case "entreprise":
-                            #localitySelect, #sectorSelect, #searchInfo
+                            #searchInfo, #localitySelect, #sectorSelect
 
-                            
+                            $controleur->selectCompanySearch($data, $nbRow, $nbCol, $_GET['searchInfo'], $_GET['localitySelect'], $_GET['sectorSelect']);
+
+                            for ($j = 0; $j < $nbRow; $j++) {
+                                echo '<div class="card">';
+                                echo '<div class="card-header">';
+                                echo $data[$j]["schoolYear"] . " - ". $data[$j]["role"];
+
+                                echo '<div class="card-body">';
+                                echo '<h5 class="card-title">'. $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                                echo '<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>';
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo '<br>';
+                            }
                             break;
 
                         case "offreStage":
