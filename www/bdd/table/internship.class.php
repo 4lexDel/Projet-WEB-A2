@@ -15,6 +15,7 @@ class Internship
             INNER JOIN need ON need.idInternship = intership.idInternship 
             INNER JOIN skill ON skill.idSkill = need.idSkill 
             INNER JOIN locality ON locality.idLocality = intership.idLocality 
+            INNER JOIN company ON company.idCompany = intership.idCompany 
             WHERE intership like ? AND city like ? AND skill like ? AND WageMonth >= ?");
 
             $stmt->bindValue(1, "%$searchInfo%");
