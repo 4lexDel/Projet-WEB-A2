@@ -174,9 +174,50 @@
                                                 padding:10px;
                                                 display:flex;
                                                 justify-content: space-evenly;
-                                                align-items: center;">
-                
-                <div style="width: 30%;height: 60%;border-radius: 15px;background-color: white;"><!--Carte-->
+                                                align-items: center;
+                                                flex-wrap: wrap;">
+                <!--Carte-->
+                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
+                    <!--Header de l'annonce-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
+                        <p>Nom Entreprise</p>
+                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
+                    </div>
+                    <!--Description du stage-->
+                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
+                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                    </p>
+                    <!--Boutons-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                    </div>
+                </div>
+                <!--Carte-->
+                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
+                    <!--Header de l'annonce-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
+                        <p>Nom Entreprise</p>
+                        <img src="../assets/img/logo.png" alt="" width="75px" height="75px">
+                    </div>
+                    <!--Description du stage-->
+                    <p style="word-break: break-all;margin: 1em;font-size: x-small;">
+                        WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+                    </p>
+                    <!--Boutons-->
+                    <div style="display:flex;justify-content: space-evenly;margin: 1em;">
+                        
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                        <button type="button" class="btn btn-primary">Primary</button>
+                    </div>
+                </div>
+                <!--Carte-->
+                <div style="width: 300px;height: 400px;border-radius: 15px;background-color: white; margin-top: 5px;">
                     <!--Header de l'annonce-->
                     <div style="display:flex;justify-content: space-evenly;margin: 1em;">
                         <button style="width: 50px;height: 50px;"><img src="../assets/img/coeur.png" alt="" style="width: 150%;margin-left: -25%;"></button>
