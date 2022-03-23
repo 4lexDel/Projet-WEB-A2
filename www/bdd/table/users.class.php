@@ -88,34 +88,37 @@ class Users
 
 
 
-            //print_r ($data);
+            print_r ($nbRow);
             
 
             $string = '';
+            if (isset($_GET["page"])){
+                $active = $_GET["page"];
+            }
 
             for ($row = 0; $row < $nbRow; $row++) {
-                $nom = $data[$row][1];
-                $date_start = $data[$row][2];
-                $date_end = $data[$row][3];
-                $date_relase = $data[$row][4];
-                $nb_place = $data[$row][5];
-                $description = $data[$row][6];
-                $brand = $data[$row][7];
+                $nom = $data[$row][0];
+                $date_start = $data[$row][1];
+                $date_end = $data[$row][2];
+                $date_relase = $data[$row][3];
+                $nb_place = $data[$row][4];
+                $description = $data[$row][5];
+                $brand = $data[$row][6];
+                
+                if ($active == $row){
+                    $display = 'active';
+                }else{
+                    $display = '';
+                }
 
-                $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">'. $nom .'</strong>
-                                <small>'. $brand .'</small>
-                            </div>
-                            <div class="col-10 mb-1 small">Début '. $date_start .' Fin '. $date_end .' Publié le '. $date_relase .'</div>
-                                        </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                    <strong class="mb-1">Titre</strong>
-                                    <small class="text-muted">Element 2</small>
-                                </div>
-                                <div class="col-10 mb-1 small">Texte Descriptif</div>
-                            </a>';
+                $string .= '
+                <a href="candidature.php?page='. $row .'" class="list-group-item list-group-item-action '.$display.' py-3 lh-tight" aria-current="true">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">'. $nom .'</strong>
+                        <small>'. $brand .'</small>
+                    </div>
+                <div class="col-10 mb-1 small">Début '. $date_start .' Fin '. $date_end .' Publié le '. $date_relase .'</div>
+                </a>';
             }
 
 
