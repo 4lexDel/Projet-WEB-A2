@@ -34,4 +34,27 @@ class Company
             throw $th;
         }
     }
+    public function insertNewCompany(&$sqlClient, $company, $eMail, $sector, $descCompany)
+    {
+        try {
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO company(company, nbCESIStudent, eMail, descCompany, idUser) values (? , 0, ? , ?, ?);");
+            $stmt->bindValue(1, "$company");
+            $stmt->bindValue(2, "$eMail");
+            $stmt->bindValue(3, "$descCompany");
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(4, "$idUser");
+            $stmt->execute();
+            
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO correspond(idCompany, idSector) values ((SELECT idCompany from company order by idCompany DESC limit 1),?);");
+            $stmt->bindValue(1, $sector);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
