@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc,&$name)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc, &$name)
     {
         try {
 
@@ -99,9 +99,19 @@ class Users
                 $brand = $data[$row][6];
 
                 if ($active == $row) {
-                    $display = 'active';
 
-                    $desc = $description .'  Nombre de poste --> '. $nb_place;
+                    $display = 'active';
+                    $desc .= '<button href="candidature.php?deletepage=' . $row . '" type="button" class="btn btn-primary">Retirer</button>
+                    </div>
+        
+                    <li style="display: inline;"></li>
+                </div>
+        
+        
+                <div style="margin: 1em;">
+                    
+                    <p>';
+                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -186,7 +196,6 @@ class Users
                 $stmt->execute();
 
                 $stmt->closeCursor();
-                
             } else {
                 $userCreated = -2;
             }
@@ -211,6 +220,29 @@ class Users
             $stmt->closeCursor();
 
             return $data[0]["idUser"];
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    public function delete_save(&$sqlClient, $id_page)
+    {
+        try {
+            /* delete save from id_user and row from this sql query -->
+            
+            SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` 
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;
+
+            
+            */
+            $stmt = $sqlClient->prepare("");
+
+            $stmt->bindValue(1, $id_page);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }

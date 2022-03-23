@@ -108,8 +108,10 @@
 
                             <?php
 
-                            if (isset($_POST["id"],$_POST["lettre_de_motivation"])) {
-                                
+                            if (isset($_GET["deletepage"])) {
+
+                            //$controleur->delete_save($_SESSION["id_user"]),)
+
                             }
 
 
@@ -121,17 +123,19 @@
                         </div>
                     </div>
                 </div>
-
-                <button type="button" class="btn btn-primary">Retirer</button>
+<!--
+                <button href=" "type="button" class="btn btn-primary">Retirer</button>
             </div>
-            <!--Informations Statut-->
+
             <li style="display: inline;"></li>
         </div>
 
-
         <div style="margin: 1em;">
-            <!--Description du stage-->
+            
             <p>
+
+
+                        -->
                 <?php
                 echo $desc;
                 ?>
