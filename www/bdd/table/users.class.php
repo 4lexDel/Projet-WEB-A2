@@ -115,9 +115,6 @@ class Users
                 <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
                 </a>';
             }
-
-
-            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -197,7 +194,8 @@ class Users
         }
     }
 
-    public function getUserId(&$sqlClient, $login){
+    public function getUserId(&$sqlClient, $login)
+    {
         try {
             $stmt = $sqlClient->prepare("SELECT * 
             FROM users
