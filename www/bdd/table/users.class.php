@@ -81,7 +81,6 @@ class Users
             $nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
-<<<<<<< HEAD
 
 
 
@@ -91,12 +90,9 @@ class Users
 
             //print_r ($data);
 
-=======
-            
->>>>>>> 75f45be61b35a1d5ab6c7c2940c304b621bc3481
 
             $string = '';
-            if (isset($_GET["page"])){
+            if (isset($_GET["page"])) {
                 $active = $_GET["page"];
             }
 
@@ -108,11 +104,11 @@ class Users
                 $nb_place = $data[$row][4];
                 $description = $data[$row][5];
                 $brand = $data[$row][6];
-                
-                if ($active == $row){
+
+                if ($active == $row) {
                     $display = 'active';
 
-                $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+                    $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                             <div class="d-flex w-100 align-items-center justify-content-between">
                                 <strong class="mb-1">' . $nom . '</strong>
                                 <small>' . $brand . '</small>
@@ -126,10 +122,10 @@ class Users
                                 </div>
                                 <div class="col-10 mb-1 small">Texte Descriptif</div>
                             </a>';
+                }
+
+                $stmt->closeCursor();
             }
-
-
-            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -217,7 +213,8 @@ class Users
         }
     }
 
-    public function getUserId(&$sqlClient, $login){
+    public function getUserId(&$sqlClient, $login)
+    {
         try {
             $stmt = $sqlClient->prepare("SELECT * 
             FROM users
