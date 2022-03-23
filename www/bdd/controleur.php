@@ -69,7 +69,9 @@ class Controleur{
     }
 
     public function select_wish_list_from_user(&$string){
+        
         $this->_users->select_wish_list_from_user($this->mysqlClient, $string);
     }
+
 
 }
