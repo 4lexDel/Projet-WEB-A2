@@ -70,7 +70,7 @@ class Controleur{
 
     public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
         $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
-        
-
     }
+
+    
 }

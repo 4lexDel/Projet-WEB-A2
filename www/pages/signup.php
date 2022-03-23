@@ -8,6 +8,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendors/jqueryUI/jquery-ui.min.css">
     <link rel="stylesheet" href="../assets/style/style.css">
 </head>
 
@@ -16,9 +17,21 @@
     <?php
     session_start();
 
+    if (isset($_POST["submit"])) {
+        switch ($_POST["role"]) {
+            case 'admin':
+
+                break;
+
+            default:
+                //Pilote/etudiant/
+                #secondName, firstName, login, mdp1, mdp2, promo
+                
+                break;
+        }
+    }
 
 
-    
     ?>
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -30,18 +43,18 @@
                     <img class="mb-4" src="../assets\img\logo.png" alt="" width="60" height="60">
                     <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
 
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs role" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="student-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="true">Etudiant</button>
+                            <button value="2" class="nav-link active" id="student-tab" data-bs-toggle="tab" data-bs-target="#student" type="button" role="tab" aria-controls="student" aria-selected="true">Etudiant</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="delegate-tab" data-bs-toggle="tab" data-bs-target="#delegate" type="button" role="tab" aria-controls="delegate" aria-selected="false">Délégué</button>
+                            <button value="4" class="nav-link" id="delegate-tab" data-bs-toggle="tab" data-bs-target="#delegate" type="button" role="tab" aria-controls="delegate" aria-selected="false">Délégué</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pilote-tab" data-bs-toggle="tab" data-bs-target="#pilote" type="button" role="tab" aria-controls="pilote" aria-selected="false">Pilote</button>
+                            <button value="3" class="nav-link" id="pilote-tab" data-bs-toggle="tab" data-bs-target="#pilote" type="button" role="tab" aria-controls="pilote" aria-selected="false">Pilote</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button" role="tab" aria-controls="admin" aria-selected="false">Administrateur</button>
+                            <button value="1" class="nav-link" id="admin-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button" role="tab" aria-controls="admin" aria-selected="false">Administrateur</button>
                         </li>
                     </ul>
 
@@ -69,9 +82,21 @@
                         <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="student-tab">
                             <div class="form-floating">
                                 <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
-                                    <!--<nom>test</nom>-->
-                                    <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
-                                    <option value="test">Promotion</option>
+                                    <?php
+                                    require_once "../bdd/controleur.php";
+
+                                    $data;
+                                    $nbRow;
+                                    $nbCol;
+
+                                    $controleur = new Controleur();
+                                    $controleur->selectSchoolYear($data, $nbRow, $nbCol);
+
+                                    for ($j = 0; $j < $nbRow; $j++) {
+                                        $value = $data[$j]["schoolYear"];
+                                        echo '<option value="' . $value . '">' . $value . '</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -80,21 +105,20 @@
                                 <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
                                     <!--<nom>test</nom>-->
                                     <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
-                                    <option value="test">Promotion1</option>
-                                    <option value="test">Promotion2</option>
-                                    <option value="test">Promotion3</option>
+                                    <?php
+                                    $controleur->selectSchoolYear($data, $nbRow, $nbCol);
+
+                                    for ($j = 0; $j < $nbRow; $j++) {
+                                        $value = $data[$j]["schoolYear"];
+                                        echo '<option value="' . $value . '">' . $value . '</option>';
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <!--Autorisation ?-->
                         </div>
                         <div class="tab-pane fade" id="pilote" role="tabpanel" aria-labelledby="pilote-tab">
-                            <div class="form-floating">
-                                <select class="form-control" id="floatingInput" name="promo" placeholder="Quel promotion dirigez-vous ?">
-                                    <!--<nom>test</nom>-->
-                                    <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
-                                    <option value="test">Promotion</option>
-                                </select>
-                            </div>
+
                             <!--AJOUT ?-->
                         </div>
                         <div class="tab-pane fade" id="admin" role="tabpanel" aria-labelledby="admin-tab">
@@ -106,32 +130,39 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <!--<button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>-->
-                                <button type="button" class="w-100 btn btn-primary btn-lg" id="SignInForm" onclick="window.location.href='login.php';">Back to login</button>
+                                <button type="button" class="w-100 btn btn-secondary btn-lg" id="SignInForm" onclick="window.location.href='login.php';">Back to login</button>
 
                             </div>
                             <div class="col-sm-6">
-                                <button class="w-100 btn btn-lg btn-secondary" type="submit">Sign up</button>
+                                <input type="hidden" name="role" id="roleInput" value="">
+                                <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit">Sign up</button>
                             </div>
                         </div>
                     </div>
                     <p class="mt-5 mb-3 text-muted">&copy; Projet WEB-A2 (2021-2022)</p>
                 </form>
-
-                <div class="content">
-
-                </div>
             </div>
-
-
-
-
-
         </div>
     </div>
 
 
     <script src="../assets/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#roleInput").val("etudiant");
 
+            $(".role button").click(function() {
+                $(".role button").each(function(i, obj) {
+                    if ($(obj).hasClass("active")) {
+                        //console.log($(obj).val());
+                        $("#roleInput").val($(obj).val());
+                    }
+                });
+            });
+
+        });
+    </script>
 </body>
 
 </html>
