@@ -231,14 +231,20 @@ class Users
         try {
             /* delete save from id_user and row from this sql query -->
             
-            SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` 
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;
-
-            
+           SELECT save.idInternship , save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = 101 limit 1 offset 1;
             */
-            $stmt = $sqlClient->prepare("");
+            $stmt = $sqlClient->prepare("DELETE FROM save
+            WHERE idInternship =(SELECT save.idInternship
+                        FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?) and idUser =(SELECT save.idUser
+                        FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?
+            ");
 
-            $stmt->bindValue(1, $id_page);
+
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, $id_page);
+            $stmt->bindValue(3, $_SESSION['idUser']);
+            $stmt->bindValue(4, $id_page);
 
             $stmt->execute();
 

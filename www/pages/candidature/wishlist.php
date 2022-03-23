@@ -110,7 +110,7 @@
 
                             if (isset($_GET["deletepage"])) {
 
-                            //$controleur->delete_save($_SESSION["id_user"]),)
+                            $controleur->delete_save($_GET["deletepage"]);
 
                             }
 
