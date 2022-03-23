@@ -26,7 +26,7 @@
             <!--<a href="./profil.php"><img class="bi me-2" src="../assets\img\profil.jpg" alt="" width="60" height="60"></a>-->
             <h3>
                 <?php
-                if (isset($_SESSION["secondName"], $_SESSION["firstName"]) == true) echo $_SESSION["secondName"] . " " . $_SESSION["firstName"];
+                if (isset($_SESSION["secondName"], $_SESSION["firstName"]) == true) echo '<a href="./profil.php" style="text-decoration:none; color:black;">' . $_SESSION["secondName"] . " " . $_SESSION["firstName"] . '</a>';
                 ?>
             </h3>
             <button class="btn btn-danger" type="submit" name="disconnect" value="true">Disconnect</button>

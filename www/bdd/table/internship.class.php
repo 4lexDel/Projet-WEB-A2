@@ -35,5 +35,44 @@ class Internship
             throw $th;
         }
     }
+    public function insertNewInternship(&$sqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality){
+        try {
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO intership(
+                intership,
+                startDate,
+                endDate,
+                WageMonth,
+                releaseDate,
+                nbPlace,
+                descInternship,
+                idCompany,
+                idLocality
+                ) 
+            values (
+                ?,
+                ?,
+                ?,
+                ?,
+                NOW(),
+                ?,
+                ?,
+                ?,
+                ?)
+            ;");
+            $stmt->bindValue(1,"$internship");
+            $stmt->bindValue(2,"$StartDate");
+            $stmt->bindValue(3,"$EndDate");
+            $stmt->bindValue(4,"$WageMonth");
+            $stmt->bindValue(5,"$nbPlace");
+            $stmt->bindValue(6,"$descInternship");
+            $stmt->bindValue(7,"$company");
+            $stmt->bindValue(8,"$locality");
+            $stmt->execute();
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
 
