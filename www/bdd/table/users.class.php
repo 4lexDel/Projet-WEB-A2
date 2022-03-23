@@ -120,9 +120,79 @@ class Users
 
 
             $stmt->closeCursor();
-
         } catch (\Throwable $th) {
             throw $th;
         }
     }
+
+    public function userExist(&$sqlClient, $login)
+    {
+        try {
+            $stmt = $sqlClient->prepare("SELECT * FROM users WHERE login = ?");
+            $stmt->bindValue(1, "$login");
+            $stmt->execute();
+
+            $nbCol = $stmt->columnCount();
+
+            $stmt->closeCursor();
+
+            if ($nbCol > 0) {
+                return true;
+            }
+
+            return false;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function insertUser(&$sqlClient, $secondName, $firstName, $login, $mdp, $role, &$userCreated)
+    {
+        try {
+            if (!$this->userExist($sqlClient, $login)) {
+                $stmt = $sqlClient->prepare("INSERT INTO users(userSecondName, userFirstName, login, password, idRole) VALUES(?, ?, ?, ?, ?); ");
+
+                $stmt->bindValue(1, "$secondName");
+                $stmt->bindValue(2, "$firstName");
+                $stmt->bindValue(3, "$login");
+                $stmt->bindValue(4, "$mdp");
+                $stmt->bindValue(5, "$role");
+
+                $stmt->execute();
+
+                $stmt->closeCursor();
+            }
+            else{
+                $userCreated = -2;
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function insertUserInPromo(&$sqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated)
+    {
+        try {
+            if (!$this->userExist($sqlClient, $login)) {
+                $stmt = $sqlClient->prepare("INSERT INTO users(userSecondName, userFirstName, login, password, idRole) VALUES(?, ?, ?, ?, ?); ");
+
+                $stmt->bindValue(1, "$secondName");
+                $stmt->bindValue(2, "$firstName");
+                $stmt->bindValue(3, "$login");
+                $stmt->bindValue(4, "$mdp");
+                $stmt->bindValue(5, "$role");
+
+                $stmt->execute();
+
+                $stmt->closeCursor();
+                echo $promo;
+            }
+            else{
+                $userCreated = -2;
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
 }
