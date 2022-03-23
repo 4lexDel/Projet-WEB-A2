@@ -22,36 +22,6 @@
 
     if (!isset($_SESSION["AUTH"])) {
         if (isset($_POST["mdp"], $_POST["login"])) {
-            /*try {
-                // On se connecte à MySQL
-                $mysqlClient = new PDO('mysql:host=localhost;dbname=projet_web_a2;charset=utf8', 'root', '');
-
-                $stmt = $mysqlClient->prepare("SELECT * FROM users WHERE login=? AND password=?");
-
-                $stmt->bindParam(1, $_POST["login"]);
-                $stmt->bindParam(2, $_POST["mdp"]);
-
-                $stmt->execute();
-
-                $nbRow = $stmt->rowCount();           //Contenu des tables
-                $nbCol = $stmt->columnCount();
-16
-                $data = $stmt->fetchAll();
-
-                echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
-                echo "<br>";
-                print_r($data);
-
-                $stmt->closeCursor();
-
-                if ($nbRow > 0) {
-                    $auth = 1;                                       //L'utilisateur est t'il existant ?
-                    $_SESSION['auth'] = true;
-                } else $auth = -1;
-            } catch (Exception $e) {
-                // En cas d'erreur, on affiche un message et on arrête tout
-                die('Erreur : ' . $e->getMessage());
-            }*/
             $data;
             $nbRow;
             $nbCol;

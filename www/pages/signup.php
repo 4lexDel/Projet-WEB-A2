@@ -15,20 +15,35 @@
 <body>
 
     <?php
+    require "../bdd/controleur.php";
+
     session_start();
 
+    $userCreated = 0;
+
     if (isset($_POST["submit"])) {
-        switch ($_POST["role"]) {
-            case 'admin':
+        if ($_POST["mdp1"] == $_POST["mdp2"]) {
+            $userCreated = 1;
 
-                break;
+            $controleur = new Controleur();
 
-            default:
-                //Pilote/etudiant/
-                #secondName, firstName, login, mdp1, mdp2, promo
-                
-                break;
-        }
+            switch ($_POST["role"]) {
+                case '1':
+                case '3':
+                    $controleur->insertUser($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["role"], $userCreated);
+
+                    break;
+
+                default:
+                    //Pilote/etudiant/
+                    #secondName, firstName, login, mdp1, mdp2, promo
+                    $controleur->insertUserInPromo($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["promo"], $_POST["role"], $userCreated);
+
+                    break;
+            }
+
+            
+        } else $userCreated = -1;
     }
 
 
@@ -138,6 +153,14 @@
                                 <button class="w-100 btn btn-lg btn-primary" name="submit" type="submit">Sign up</button>
                             </div>
                         </div>
+                    </div>
+                    <br>
+                    <div class="content">
+                        <?php
+                        if ($userCreated == 1) echo '<div class="alert alert-success" role="alert">Création réussi !</div>';
+                        elseif ($userCreated == -1) echo '<div class="alert alert-danger" role="alert">Erreur saisie mot de passe !</div>';
+                        elseif ($userCreated == -2) echo '<div class="alert alert-danger" role="alert">Utilisateur déja existant !</div>';
+                        ?>
                     </div>
                     <p class="mt-5 mb-3 text-muted">&copy; Projet WEB-A2 (2021-2022)</p>
                 </form>
