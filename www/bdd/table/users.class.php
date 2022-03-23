@@ -65,8 +65,11 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$data, &$nbRow, &$nbCol, $user_id){
+    public function select_wish_list_from_user(&$sqlClient, &$string){
         try {
+            echo "hfhjgfhgfhfhgfhgfhgfhg";
+            $user_id = $_SESSION['idUser'];
+            
             $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
             
             $stmt->bindParam(1, $user_id);
@@ -78,13 +81,56 @@ class Users
 
             $data = $stmt->fetchAll();
 
+
+            
+            // retourne le save des offres des satges en prenant en compte le user 
+            
+            
+            
+            //print_r ($data);
+            for ($row = 0; $row < $nbRow; $row++) {
+                for ($col = 0; $col < $nbCol; $col++) {
+            
+                    echo $data[$row][$col];
+                }
+            }
+
+            $string = '';
+            
+            for ($row = 0; $row < $nbRow; $row++) {
+            $nom = $data[$row][1];
+            $date_start = $data[$row][2];
+            $date_end = $data[$row][3];
+            $date_relase = $data[$row][4];
+            $nb_place = $data[$row][5];
+            $description = $data[$row][6];
+            $brand = $data[$row][7];
+
+            $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <strong class="mb-1">'+$nom+'</strong>
+                                <small>'+$brand+'</small>
+                            </div>
+                            <div class="col-10 mb-1 small">Début '+$date_start+' Fin '+$date_end+' Publié le '+$date_relase+'</div>
+                        </a>
+            
+                        <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <strong class="mb-1">Titre</strong>
+                                <small class="text-muted">Element 2</small>
+                            </div>
+                            <div class="col-10 mb-1 small">Texte Descriptif</div>
+                        </a>'; 
+            }
+
+
             $stmt->closeCursor();
+            
+
         } catch (\Throwable $th) {
             throw $th;
         }
         
-    }
+    }    
 
-
-    
 }

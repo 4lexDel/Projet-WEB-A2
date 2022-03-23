@@ -1,5 +1,5 @@
 <div style="text-align: -webkit-center;">
-    <div style="background: white;display: flex; width: 50%;justify-content: center;flex-direction: column;text-align: center;">
+    <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
         <form style="margin: 1em;">
             <div class="mb-3">
                 <label for="company" class="form-label">Nom de l'Entreprise</label>
