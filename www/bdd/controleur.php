@@ -85,4 +85,7 @@ class Controleur{
     public function selectUsersCompany(&$data, &$nbRow, &$nbCol){
         $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
     }
+    public function insertNewInternship($company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality){
+        $this->_intership->insertNewInternship($this->mysqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality);
+    }
 }
