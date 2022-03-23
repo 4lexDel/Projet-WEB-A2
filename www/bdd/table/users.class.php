@@ -68,7 +68,7 @@ class Users
     public function select_wish_list_from_user(&$sqlClient, &$string)
     {
         try {
-            echo "hfhjgfhgfhfhgfhgfhgfhg";
+            
             $user_id = $_SESSION['idUser'];
 
             $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
@@ -89,12 +89,7 @@ class Users
 
 
             //print_r ($data);
-            for ($row = 0; $row < $nbRow; $row++) {
-                for ($col = 0; $col < $nbCol; $col++) {
-
-                    echo $data[$row][$col];
-                }
-            }
+            
 
             $string = '';
 
@@ -109,19 +104,18 @@ class Users
 
                 $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                             <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">' + $nom + '</strong>
-                                <small>' + $brand + '</small>
+                                <strong class="mb-1">'. $nom .'</strong>
+                                <small>'. $brand .'</small>
                             </div>
-                            <div class="col-10 mb-1 small">Début ' + $date_start + ' Fin ' + $date_end + ' Publié le ' + $date_relase + '</div>
-                        </a>
-            
-                        <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">Titre</strong>
-                                <small class="text-muted">Element 2</small>
-                            </div>
-                            <div class="col-10 mb-1 small">Texte Descriptif</div>
-                        </a>';
+                            <div class="col-10 mb-1 small">Début '. $date_start .' Fin '. $date_end .' Publié le '. $date_relase .'</div>
+                                        </a>
+                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <strong class="mb-1">Titre</strong>
+                                    <small class="text-muted">Element 2</small>
+                                </div>
+                                <div class="col-10 mb-1 small">Texte Descriptif</div>
+                            </a>';
             }
 
 
