@@ -1,5 +1,7 @@
 <?php
-
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/bdd/controleur.php";
+require_once($path);
 ?>
 <div style="text-align: -webkit-center;">
     <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
@@ -7,10 +9,19 @@
             <div class="mb-3">
                 <label for="company" class="form-label">Entreprise</label>
                 <select class="form-control" id="company">
-                    <option value="company1">company1</option>
-                    <option value="company2">company2</option>
-                    <!--Récupérer les entreprises de la personne et les injecter la dedans-->
-                    <!--Donc faut faire un script php avec la bdd-->
+                    <?php
+                        $path = $_SERVER['DOCUMENT_ROOT'];
+                        $path .= "/bdd/controleur.php";
+                        require_once($path);
+                        $data;
+                        $nbRow;
+                        $nbCol;
+                        $controleur = new Controleur();
+                        $controleur->selectUsersCompany($data, $nbRow, $nbCol);
+                        for ($j = 0; $j < $nbRow; $j++) {
+                            echo '<option value="' . $data[$j]["idCompany"] . '">' . $data[$j]["company"] . '</option>';
+                        }
+                    ?>
                 </select>
             </div>
             <div class="mb-3">

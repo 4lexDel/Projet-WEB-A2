@@ -34,6 +34,29 @@ if (!isset($_SESSION["AUTH"])) {
                     <option value="3">Secteur 3</option>
                 </select>
             </div>
+            <div class="localitySelect">
+                <label for="city">Ville</label>
+                <select name="localitySelect" id="localitySelect" class="form-select col-md-2">
+                    <option value="">Peu importe</option>
+
+                    <?php
+                    $path = $_SERVER['DOCUMENT_ROOT'];
+                    $path .= "/bdd/controleur.php";
+                    require_once($path);
+                    $data;
+                    $nbRow;
+                    $nbCol;
+
+                    $controleur = new Controleur();
+                    $controleur->selectLocality($data, $nbRow, $nbCol);
+
+                    for ($j = 0; $j < $nbRow; $j++) {
+                        $value = $data[$j]["city"];
+                        echo '<option value="' . $value . '">' . $value . '</option>';
+                    }
+                    ?>
+                </select>
+            </div>
             <div class="mb-3">
                 <label for="descCompany" class="form-label">Description Entreprise</label>
                 <textarea name="descCompany" class="form-control" id="descCompany" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"' maxlength="400"></textarea>

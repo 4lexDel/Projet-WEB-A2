@@ -82,4 +82,7 @@ class Controleur{
     public function insertNewCompany($company, $eMail, $sector, $descCompany){
         $this->_company->insertNewCompany($this->mysqlClient,$company, $eMail, $sector, $descCompany);
     }
+    public function selectUsersCompany(&$data, &$nbRow, &$nbCol){
+        $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
 }

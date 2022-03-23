@@ -57,4 +57,23 @@ class Company
             throw $th;
         }
     }
+    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol){
+        try {
+            $stmt = $sqlClient->prepare(
+            "SELECT idCompany, company from company where idUser = ?");
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(1, "$idUser");
+
+            $stmt->execute();
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+            $nbCol = $stmt->columnCount();
+
+            $data = $stmt->fetchAll();
+            
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
