@@ -8,10 +8,11 @@ if (!isset($_SESSION["AUTH"])) {
         echo $_POST["eMail"].'<br>';
         echo $_POST["descCompany"].'<br>';
         echo $_POST["Sector"].'<br>';
+        echo $_POST["locality"].'<br>';
         echo $_SESSION["idUser"];
 
         $controleur = new Controleur();
-        $controleur->insertNewCompany($_POST["company"],$_POST["eMail"],$_POST["Sector"],$_POST["descCompany"]);
+        $controleur->insertNewCompany($_POST["company"],$_POST["eMail"],$_POST["Sector"],$_POST["descCompany"], $_POST["locality"]);
     }
 }
 ?>
@@ -34,13 +35,10 @@ if (!isset($_SESSION["AUTH"])) {
                     <option value="3">Secteur 3</option>
                 </select>
             </div>
-            <div class="localitySelect">
+            <div class="locality">
                 <label for="city">Ville</label>
-                <select name="localitySelect" id="localitySelect" class="form-select col-md-2">
-                    <option value="">Peu importe</option>
-
+                <select name="locality" id="locality" class="form-select col-md-2">
                     <?php
-
                     $data;
                     $nbRow;
                     $nbCol;
@@ -49,8 +47,7 @@ if (!isset($_SESSION["AUTH"])) {
                     $controleur->selectLocality($data, $nbRow, $nbCol);
 
                     for ($j = 0; $j < $nbRow; $j++) {
-                        $value = $data[$j]["city"];
-                        echo '<option value="' . $value . '">' . $value . '</option>';
+                        echo '<option value="' . $data[$j]["idLocality"] . '">' . $data[$j]["city"] . '</option>';
                     }
                     ?>
                 </select>
