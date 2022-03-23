@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc)
     {
         try {
             
@@ -99,6 +99,8 @@ class Users
                 
                 if ($active == $row){
                     $display = 'active';
+
+                    $desc = $description .'  Nombre de poste --> '. $nb_place;
                 }else{
                     $display = '';
                 }
