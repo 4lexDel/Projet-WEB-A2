@@ -31,7 +31,7 @@
         </div>
         <div class="tab-pane fade" id="Annonce" role="tabpanel" aria-labelledby="Annonce-tab">
             <div class="form-floating">
-                <?php include "../creation/annonce.php" ?>
+                <?php include "./creation/annonce.php" ?>
                 <!-- C'est pas fini, voir comm dans annonce.html-->
             </div>
         </div>
