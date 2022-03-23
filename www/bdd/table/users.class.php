@@ -82,7 +82,6 @@ class Users
 
             $data = $stmt->fetchAll();
 
-
             $string = '';
             if (isset($_GET["page"])) {
                 $active = $_GET["page"];
@@ -131,13 +130,15 @@ class Users
             $stmt->bindValue(1, "$login");
             $stmt->execute();
 
-            $nbCol = $stmt->columnCount();
+            $data = $stmt->fetchAll();
+
+            //print_r($data);
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
 
             $stmt->closeCursor();
 
-            if ($nbCol > 0) {
-                echo "$login";
-
+            if ($nbRow > 0) {
                 return true;
             }
 
@@ -157,7 +158,7 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, "$role");
+                $stmt->bindValue(5, $role);
 
                 $stmt->execute();
 
@@ -180,15 +181,37 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, "$role");
+                $stmt->bindValue(5, $role);
+
+                //echo "ROLE : $role";
 
                 $stmt->execute();
 
                 $stmt->closeCursor();
-                echo "USER";
+                
             } else {
                 $userCreated = -2;
             }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function getUserId(&$sqlClient, $login){
+        try {
+            $stmt = $sqlClient->prepare("SELECT * 
+            FROM users
+            WHERE login = ?");
+
+            $stmt->bindValue(1, "$login");
+
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            $stmt->closeCursor();
+
+            return $data[0]["idUser"];
         } catch (\Throwable $th) {
             throw $th;
         }
