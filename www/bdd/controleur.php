@@ -92,4 +92,3 @@ class Controleur{
         $this->_users->delete_save($this->mysqlClient,$id_user,$id_internship);
     }
 }
-//zeazeaz
