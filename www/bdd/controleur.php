@@ -72,4 +72,5 @@ class Controleur{
         $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
     }
 
+    
 }
