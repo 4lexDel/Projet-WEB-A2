@@ -1,6 +1,5 @@
 <?php
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/bdd/controleur.php";
+$path ="../bdd/controleur.php";
 require_once($path);
 ?>
 <div style="text-align: -webkit-center;">
@@ -10,9 +9,6 @@ require_once($path);
                 <label for="company" class="form-label">Entreprise</label>
                 <select class="form-control" id="company">
                     <?php
-                        $path = $_SERVER['DOCUMENT_ROOT'];
-                        $path .= "/bdd/controleur.php";
-                        require_once($path);
                         $data;
                         $nbRow;
                         $nbCol;
