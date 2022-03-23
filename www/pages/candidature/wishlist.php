@@ -13,7 +13,7 @@
 
 
 
-<!--
+            <!--
 
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
@@ -42,9 +42,9 @@
 
             $controleur = new Controleur();
             $string = '';
-            $controleur->select_wish_list_from_user($string);
+            $desc = '';
+            $controleur->select_wish_list_from_user($string, $desc);
             echo $string;
-
 
             ?>
 
@@ -62,7 +62,30 @@
         <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
             <!--Boutons-->
             <div>
-                <button type="button" class="btn btn-primary">Postuler</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Postuler
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">CV et Lettre de motivation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <button type="button" class="btn btn-primary">Postuler</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="button" class="btn btn-primary">Retirer</button>
             </div>
             <!--Informations Statut-->
@@ -73,10 +96,10 @@
         <div style="margin: 1em;">
             <!--Description du stage-->
             <p>
-                
-                Cannabis (les cannabis) est un genre botanique qui rassemble des plantes annuelles de la famille des Cannabaceae. Ce sont toutes des plantes originaires d'Asie centrale ou d'Asie du Sud. La classification dans ce genre est encore discutée. Selon la majorité des auteurs il contiendrait une seule espèce, le Chanvre cultivé (Cannabis sativa L.), parfois subdivisée en plusieurs sous-espèces1, généralement sativa, indica et ruderalis (syn. spontanea), tandis que d'autres considèrent que ce sont de simples variétés. Les plantes riches en fibres et pauvres en Tétrahydrocannabinol (THC) donnent le « chanvre agricole » qui pousse dans les zones tempérées, exploité pour ses sous-produits (fibres, graines...) aux usages industriels variés, tandis que le « chanvre indien », qui pousse en climat équatorial, est au contraire très riche en résine et exploité pour ses propriétés médicales et psychotropes.
+                <?php
+                echo $desc;
+                ?>
 
-                Nombre de place -->3
             </p>
 
         </div>
