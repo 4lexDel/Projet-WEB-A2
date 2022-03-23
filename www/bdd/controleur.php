@@ -72,5 +72,11 @@ class Controleur{
         $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
     }
 
-    
+    public function insertUser($secondName, $firstName, $login, $mdp, $role, &$userCreated){
+        $this->_users->insertUser($this->mysqlClient, $secondName, $firstName, $login, $mdp, $role, $userCreated);
+    }
+
+    public function insertUserInPromo($secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated){
+        $this->_users->insertUserInPromo($this->mysqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, $userCreated);
+    }
 }
