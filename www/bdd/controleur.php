@@ -68,8 +68,8 @@ class Controleur{
         $this->_intership->selectInternshipSearch($this->mysqlClient, $data, $nbRow, $nbCol, $searchInfo, $localitySelect, $skillSelect, $wageRange);
     }
 
-    public function select_wish_list_from_user(&$data, &$nbRow, &$nbCol, $user_id){
-        $this->_users->select_wish_list_from_user($this->mysqlClient, $data, $nbRow, $nbCol, $user_id);
+    public function select_wish_list_from_user(&$string, &$desc){
+        $this->_users->select_wish_list_from_user($this->mysqlClient, $string, $desc);
     }
 
     public function insertUser($secondName, $firstName, $login, $mdp, $role, &$userCreated){
@@ -78,5 +78,11 @@ class Controleur{
 
     public function insertUserInPromo($secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated){
         $this->_users->insertUserInPromo($this->mysqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, $userCreated);
+    }
+    public function insertNewCompany($company, $eMail, $sector, $descCompany, $locality){
+        $this->_company->insertNewCompany($this->mysqlClient,$company, $eMail, $sector, $descCompany, $locality);
+    }
+    public function selectUsersCompany(&$data, &$nbRow, &$nbCol){
+        $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 }

@@ -34,4 +34,52 @@ class Company
             throw $th;
         }
     }
+    public function insertNewCompany(&$sqlClient, $company, $eMail, $sector, $descCompany, $locality)
+    {
+        try {
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO company(company, nbCESIStudent, eMail, descCompany, idUser) values (? , 0, ? , ?, ?);");
+            $stmt->bindValue(1, "$company");
+            $stmt->bindValue(2, "$eMail");
+            $stmt->bindValue(3, "$descCompany");
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(4, "$idUser");
+            $stmt->execute();
+            
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO correspond(idCompany, idSector) values ((SELECT idCompany from company order by idCompany DESC limit 1),?);");
+            $stmt->bindValue(1, $sector);
+
+            $stmt->execute();
+
+            $stmt = $sqlClient->prepare(
+            "INSERT INTO locate(idLocality ,idCompany) values (? ,(SELECT idCompany from company order by idCompany DESC limit 1));");
+            $stmt->bindValue(1, $locality);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol){
+        try {
+            $stmt = $sqlClient->prepare(
+            "SELECT idCompany, company from company where idUser = ?");
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(1, "$idUser");
+
+            $stmt->execute();
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+            $nbCol = $stmt->columnCount();
+
+            $data = $stmt->fetchAll();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

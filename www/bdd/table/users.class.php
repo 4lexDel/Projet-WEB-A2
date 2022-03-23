@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc)
     {
         try {
 
@@ -81,6 +81,7 @@ class Users
             $nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
+<<<<<<< HEAD
 
 
 
@@ -90,17 +91,26 @@ class Users
 
             //print_r ($data);
 
+=======
+            
+>>>>>>> 75f45be61b35a1d5ab6c7c2940c304b621bc3481
 
             $string = '';
+            if (isset($_GET["page"])){
+                $active = $_GET["page"];
+            }
 
             for ($row = 0; $row < $nbRow; $row++) {
-                $nom = $data[$row][1];
-                $date_start = $data[$row][2];
-                $date_end = $data[$row][3];
-                $date_relase = $data[$row][4];
-                $nb_place = $data[$row][5];
-                $description = $data[$row][6];
-                $brand = $data[$row][7];
+                $nom = $data[$row][0];
+                $date_start = $data[$row][1];
+                $date_end = $data[$row][2];
+                $date_relase = $data[$row][3];
+                $nb_place = $data[$row][4];
+                $description = $data[$row][5];
+                $brand = $data[$row][6];
+                
+                if ($active == $row){
+                    $display = 'active';
 
                 $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                             <div class="d-flex w-100 align-items-center justify-content-between">

@@ -26,7 +26,7 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="Entreprise" role="tabpanel" aria-labelledby="Entreprise-tab">
             <div class="form-floating">
-                <?php include "./creation/entreprise.php" ?>
+                <?php include "./creation/entreprise.php";?>
             </div>
         </div>
         <div class="tab-pane fade" id="Annonce" role="tabpanel" aria-labelledby="Annonce-tab">
