@@ -81,14 +81,6 @@ class Users
             $nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
-
-
-
-            // retourne le save des offres des satges en prenant en compte le user 
-
-
-
-            print_r ($nbRow);
             
 
             $string = '';
