@@ -1,3 +1,6 @@
+<?php
+
+?>
 <div style="text-align: -webkit-center;">
     <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
         <form style="margin: 1em;">
