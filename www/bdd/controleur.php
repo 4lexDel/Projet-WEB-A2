@@ -86,6 +86,6 @@ class Controleur{
         $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
     }
     public function delete_save($id_user,$id_internship){
-        $this->_users->delete_save($this->mysqlClient,$id_user,$id_internship);
+        //$this->_users->delete_save($this->mysqlClient,$id_user,$id_internship);
     }
 }
