@@ -3,7 +3,13 @@
 $path = "../bdd/controleur.php";
 require_once($path);
 if (!isset($_SESSION["AUTH"])) {
-    if (isset($_POST["company"], $_POST["eMail"], $_POST["descCompany"])) {
+    if (isset(
+        $_POST["company"],
+        $_POST["eMail"],
+        $_POST["descCompany"],
+        $_POST["Sector"],
+        $_POST["locality"])
+    ) {
         echo $_POST["company"].'<br>';
         echo $_POST["eMail"].'<br>';
         echo $_POST["descCompany"].'<br>';
@@ -12,7 +18,13 @@ if (!isset($_SESSION["AUTH"])) {
         echo $_SESSION["idUser"];
 
         $controleur = new Controleur();
-        $controleur->insertNewCompany($_POST["company"],$_POST["eMail"],$_POST["Sector"],$_POST["descCompany"], $_POST["locality"]);
+        $controleur->insertNewCompany(
+            $_POST["company"],
+            $_POST["eMail"],
+            $_POST["Sector"],
+            $_POST["descCompany"], 
+            $_POST["locality"]
+        );
     }
 }
 ?>
