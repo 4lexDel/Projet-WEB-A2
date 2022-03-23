@@ -35,6 +35,7 @@
                     break;
 
                 default:
+                echo "test";
                     //Pilote/etudiant/
                     #secondName, firstName, login, mdp1, mdp2, promo
                     $controleur->insertUserInPromo($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["promo"], $_POST["role"], $userCreated);

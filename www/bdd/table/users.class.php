@@ -143,6 +143,8 @@ class Users
             $stmt->closeCursor();
 
             if ($nbCol > 0) {
+                echo "$login";
+
                 return true;
             }
 
@@ -191,7 +193,7 @@ class Users
                 $stmt->execute();
 
                 $stmt->closeCursor();
-                echo $promo;
+                echo "USER";
             }
             else{
                 $userCreated = -2;
