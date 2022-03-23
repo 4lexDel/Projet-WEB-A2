@@ -68,7 +68,7 @@ class Users
     public function select_wish_list_from_user(&$sqlClient, &$string)
     {
         try {
-            
+
             $user_id = $_SESSION['idUser'];
 
             $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
@@ -89,7 +89,7 @@ class Users
 
 
             //print_r ($data);
-            
+
 
             $string = '';
 
@@ -104,10 +104,10 @@ class Users
 
                 $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                             <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">'. $nom .'</strong>
-                                <small>'. $brand .'</small>
+                                <strong class="mb-1">' . $nom . '</strong>
+                                <small>' . $brand . '</small>
                             </div>
-                            <div class="col-10 mb-1 small">Début '. $date_start .' Fin '. $date_end .' Publié le '. $date_relase .'</div>
+                            <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
                                         </a>
                             <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
                                 <div class="d-flex w-100 align-items-center justify-content-between">
@@ -132,13 +132,15 @@ class Users
             $stmt->bindValue(1, "$login");
             $stmt->execute();
 
-            $nbCol = $stmt->columnCount();
+            $data = $stmt->fetchAll();
+
+            //print_r($data);
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
 
             $stmt->closeCursor();
 
-            if ($nbCol > 0) {
-                echo "$login";
-
+            if ($nbRow > 0) {
                 return true;
             }
 
@@ -158,13 +160,12 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, "$role");
+                $stmt->bindValue(5, $role);
 
                 $stmt->execute();
 
                 $stmt->closeCursor();
-            }
-            else{
+            } else {
                 $userCreated = -2;
             }
         } catch (\Throwable $th) {
@@ -182,14 +183,23 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, "$role");
+                $stmt->bindValue(5, $role);
+
+                //echo "ROLE : $role";
 
                 $stmt->execute();
 
                 $stmt->closeCursor();
-                echo "USER";
-            }
-            else{
+
+                $stmt = $sqlClient->prepare("INSERT INTO belong(idUser, idSchoolYear) VALUES(?, ?); ");
+
+                $stmt->bindValue(1, $this->getUserId($sqlClient, $login));
+                $stmt->bindValue(2, "$promo");
+
+                $stmt->execute();
+
+                $stmt->closeCursor();
+            } else {
                 $userCreated = -2;
             }
         } catch (\Throwable $th) {
@@ -197,4 +207,23 @@ class Users
         }
     }
 
+    public function getUserId(&$sqlClient, $login){
+        try {
+            $stmt = $sqlClient->prepare("SELECT * 
+            FROM users
+            WHERE login = ?");
+
+            $stmt->bindValue(1, "$login");
+
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            $stmt->closeCursor();
+
+            return $data[0]["idUser"];
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

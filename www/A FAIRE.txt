@@ -6,3 +6,6 @@ Partie creation !
 
 
 AJouTE D'ElemeNt DanS la WhIshIlist
+
+
+Pagination
