@@ -43,7 +43,8 @@
             $controleur = new Controleur();
             $string = '';
             $desc = '';
-            $controleur->select_wish_list_from_user($string, $desc);
+            $name = '';
+            $controleur->select_wish_list_from_user($string, $desc, $name);
             echo $string;
 
             ?>
@@ -57,7 +58,7 @@
         <!--Header Stage-->
         <div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
             <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
-            <h1 display="inline" style="margin-left: 1em;">NOM</h1>
+            <h1 display="inline" style="margin-left: 1em;"><?= $name;?></h1>
         </div>
         <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
             <!--Boutons-->

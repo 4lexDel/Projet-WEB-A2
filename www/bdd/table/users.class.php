@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc,&$name)
     {
         try {
 
@@ -102,6 +102,7 @@ class Users
                     $display = 'active';
 
                     $desc = $description . '  Nombre de poste --> ' . $nb_place;
+                    $name = $nom;
                 } else {
                     $display = '';
                 }
