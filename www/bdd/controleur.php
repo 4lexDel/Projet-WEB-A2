@@ -79,4 +79,7 @@ class Controleur{
     public function insertUserInPromo($secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated){
         $this->_users->insertUserInPromo($this->mysqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, $userCreated);
     }
+    public function insertNewCompany($company, $eMail, $sector, $descCompany){
+        $this->_company->insertNewCompany($this->mysqlClient,$company, $eMail, $sector, $descCompany);
+    }
 }

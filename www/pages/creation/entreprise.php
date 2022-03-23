@@ -1,10 +1,17 @@
 <?php
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= "/bdd/controleur.php";
+require_once($path);
 if (!isset($_SESSION["AUTH"])) {
     if (isset($_POST["company"], $_POST["eMail"], $_POST["descCompany"])) {
         echo $_POST["company"].'<br>';
         echo $_POST["eMail"].'<br>';
         echo $_POST["descCompany"].'<br>';
-        
+        echo $_POST["Sector"].'<br>';
+        echo $_SESSION["idUser"];
+
+        $controleur = new Controleur();
+        $controleur->insertNewCompany($_POST["company"],$_POST["eMail"],$_POST["Sector"],$_POST["descCompany"]);
     }
 }
 ?>
@@ -18,6 +25,14 @@ if (!isset($_SESSION["AUTH"])) {
             <div class="mb-3">
                 <label for="eMail" class="form-label">Email Entreprise</label>
                 <input name="eMail" type="email" class="form-control" id="eMail">
+            </div>
+            <div class="mb-3">
+                <label for="Sector" class="form-label">Secteur</label>
+                <select name="Sector" id="Sector" class="form-control">
+                    <option value="1">Secteur 1</option>
+                    <option value="2">Secteur 2</option>
+                    <option value="3">Secteur 3</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="descCompany" class="form-label">Description Entreprise</label>
