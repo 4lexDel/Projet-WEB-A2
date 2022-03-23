@@ -101,7 +101,7 @@ class Users
                 if ($active == $row) {
                     $display = 'active';
 
-                    $desc = $description . '  Nombre de poste --> ' . $nb_place;
+                    $desc = $description .'  Nombre de poste --> '. $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';

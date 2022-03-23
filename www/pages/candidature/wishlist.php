@@ -58,7 +58,7 @@
         <!--Header Stage-->
         <div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
             <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
-            <h1 display="inline" style="margin-left: 1em;"><?= $name;?></h1>
+            <h1 display="inline" style="margin-left: 1em;"><?= $name; ?></h1>
         </div>
         <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
             <!--Boutons-->
@@ -70,19 +70,54 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg modal-fullscreen-xxl-down">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">CV et Lettre de motivation</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                <button type="button" class="btn btn-primary">Postuler</button>
-                            </div>
+
+
+
+                            <form action="candidature.php" method="post">
+
+                                <div class="modal-body">
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" name="cv" style="height: 300px"></textarea>
+                                        <label for="floatingTextarea">CV</label>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" name="lettre_de_motivation" style="height: 300px"></textarea>
+                                        <label for="floatingTextarea">Lettre de Motivation</label>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+
+                                    <button type="submit" class="btn btn-primary">Postuler</button>
+                                </div>
+
+                            </form>
+
+                            <?php
+
+                            if (isset($_POST["id"],$_POST["lettre_de_motivation"])) {
+                                
+                            }
+
+
+                            ?>
+
+
+
+
                         </div>
                     </div>
                 </div>
