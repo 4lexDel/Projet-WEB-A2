@@ -1,6 +1,6 @@
 <?php
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/bdd/controleur.php";
+
+$path = "../bdd/controleur.php";
 require_once($path);
 if (!isset($_SESSION["AUTH"])) {
     if (isset($_POST["company"], $_POST["eMail"], $_POST["descCompany"])) {
@@ -40,9 +40,7 @@ if (!isset($_SESSION["AUTH"])) {
                     <option value="">Peu importe</option>
 
                     <?php
-                    $path = $_SERVER['DOCUMENT_ROOT'];
-                    $path .= "/bdd/controleur.php";
-                    require_once($path);
+
                     $data;
                     $nbRow;
                     $nbCol;
