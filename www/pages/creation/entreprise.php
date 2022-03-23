@@ -1,5 +1,6 @@
 <?php
-$path ="../bdd/controleur.php";
+
+$path = "../bdd/controleur.php";
 require_once($path);
 if (!isset($_SESSION["AUTH"])) {
     if (isset($_POST["company"], $_POST["eMail"], $_POST["descCompany"])) {
