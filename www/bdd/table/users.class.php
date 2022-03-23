@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc,&$name)
     {
         try {
 
@@ -82,18 +82,11 @@ class Users
 
             $data = $stmt->fetchAll();
 
-
-
-            // retourne le save des offres des satges en prenant en compte le user 
-
-
-
-            //print_r ($data);
-
-
             $string = '';
             if (isset($_GET["page"])) {
                 $active = $_GET["page"];
+            } else {
+                $active = 0;
             }
 
             for ($row = 0; $row < $nbRow; $row++) {
@@ -108,23 +101,20 @@ class Users
                 if ($active == $row) {
                     $display = 'active';
 
-                    $string .= '<a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <strong class="mb-1">' . $nom . '</strong>
-                                <small>' . $brand . '</small>
-                            </div>
-                            <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
-                                        </a>
-                            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                                <div class="d-flex w-100 align-items-center justify-content-between">
-                                    <strong class="mb-1">Titre</strong>
-                                    <small class="text-muted">Element 2</small>
-                                </div>
-                                <div class="col-10 mb-1 small">Texte Descriptif</div>
-                            </a>';
+                    $desc = $description .'  Nombre de poste --> '. $nb_place;
+                    $name = $nom;
+                } else {
+                    $display = '';
                 }
 
-                $stmt->closeCursor();
+                $string .= '
+                <a href="candidature.php?page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">' . $nom . '</strong>
+                        <small>' . $brand . '</small>
+                    </div>
+                <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
+                </a>';
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -196,15 +186,7 @@ class Users
                 $stmt->execute();
 
                 $stmt->closeCursor();
-
-                $stmt = $sqlClient->prepare("INSERT INTO belong(idUser, idSchoolYear) VALUES(?, ?); ");
-
-                $stmt->bindValue(1, $this->getUserId($sqlClient, $login));
-                $stmt->bindValue(2, "$promo");
-
-                $stmt->execute();
-
-                $stmt->closeCursor();
+                
             } else {
                 $userCreated = -2;
             }
