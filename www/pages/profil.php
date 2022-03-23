@@ -12,8 +12,8 @@
 </head>
 
 <body>
+    <?php require_once "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
-    <?php include "../components/connect.php" ?>
     <main>
         <div style="text-align: -webkit-center;">
             <h3>Profil</h3>
@@ -44,7 +44,7 @@
                         <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
                             <!--<nom>test</nom>-->
                             <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
-                            
+
                             <option value="test">Promotion1</option>
                             <option value="test">Promotion2</option>
                             <option value="test">Promotion3</option>
@@ -57,7 +57,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -85,7 +85,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -113,7 +113,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>

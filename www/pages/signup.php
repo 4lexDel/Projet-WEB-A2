@@ -35,7 +35,6 @@
                     break;
 
                 default:
-                echo "test";
                     //Pilote/etudiant/
                     #secondName, firstName, login, mdp1, mdp2, promo
                     $controleur->insertUserInPromo($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["promo"], $_POST["role"], $userCreated);
@@ -109,8 +108,9 @@
                                     $controleur->selectSchoolYear($data, $nbRow, $nbCol);
 
                                     for ($j = 0; $j < $nbRow; $j++) {
+                                        $id = $data[$j]["idSchoolYear"];
                                         $value = $data[$j]["schoolYear"];
-                                        echo '<option value="' . $value . '">' . $value . '</option>';
+                                        echo '<option value="' . $id . '">' . $value . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -125,8 +125,9 @@
                                     $controleur->selectSchoolYear($data, $nbRow, $nbCol);
 
                                     for ($j = 0; $j < $nbRow; $j++) {
+                                        $id = $data[$j]["idSchoolYear"];
                                         $value = $data[$j]["schoolYear"];
-                                        echo '<option value="' . $value . '">' . $value . '</option>';
+                                        echo '<option value="' . $id . '">' . $value . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -174,7 +175,7 @@
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#roleInput").val("etudiant");
+            $("#roleInput").val("2");
 
             $(".role button").click(function() {
                 $(".role button").each(function(i, obj) {
