@@ -40,12 +40,18 @@
 
             require "../bdd/controleur.php";
 
+            
+
             $controleur = new Controleur();
             $string = '';
             $desc = '';
             $name = '';
             $controleur->select_wish_list_from_user($string, $desc, $name);
             echo $string;
+
+            if (isset($_POST["lettre_de_motivation"],$_POST["cv"])) {
+                $controleur->postuler($_POST["cv"],$_POST["lettre_de_motivation"]);
+            }
 
             ?>
 
@@ -106,24 +112,13 @@
 
                             </form>
 
-                            <?php
-
-                            if (isset($_GET["deletepage"])) {
-
-                            $controleur->delete_save($_GET["deletepage"]);
-
-                            }
-
-
-                            ?>
-
 
 
 
                         </div>
                     </div>
                 </div>
-<!--
+                <!--
                 <button href=" "type="button" class="btn btn-primary">Retirer</button>
             </div>
 
@@ -138,15 +133,28 @@
                         -->
                 <?php
                 echo $desc;
+
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(E_ALL);
+
+                if (isset($_GET["delete"],$_GET["page"])) {
+
+                    $controleur->delete_save($_GET["page"]);
+                }
+
+                
+
+
                 ?>
 
-            </p>
+                </p>
+
+            </div>
+
 
         </div>
 
 
+
     </div>
-
-
-
-</div>

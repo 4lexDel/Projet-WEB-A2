@@ -78,7 +78,7 @@ class Users
             $stmt->execute();
 
             $nbRow = $stmt->rowCount();           //Contenu des tables
-            $nbCol = $stmt->columnCount();
+            //$nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
 
@@ -101,16 +101,16 @@ class Users
                 if ($active == $row) {
 
                     $display = 'active';
-                    $desc .= '<button href="candidature.php?deletepage=' . $row . '" type="button" class="btn btn-primary">Retirer</button>
+
+                    $desc .= '<a href="candidature.php?delete=1&page=' . $row . '" >
+                    <button type="button" class="btn btn-primary">Retirer
+                    </button></a>
                     </div>
-        
                     <li style="display: inline;"></li>
-                </div>
-        
-        
-                <div style="margin: 1em;">
-                    
+                    </div>
+                    <div style="margin: 1em;">
                     <p>';
+                    
                     $desc .= $description . '  Nombre de poste --> ' . $nb_place;
                     $name = $nom;
                 } else {
@@ -235,16 +235,38 @@ class Users
             FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = 101 limit 1 offset 1;
             */
             $stmt = $sqlClient->prepare("DELETE FROM save
-            WHERE idInternship =(SELECT save.idInternship
-                        FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?) and idUser =(SELECT save.idUser
-                        FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?
-            ");
+            WHERE idInternship = ( SELECT save.idInternship
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.") 
+            AND idUser = ( SELECT save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.")");
 
+/*
+            echo $id_page;
+            echo $_SESSION['idUser'];
 
             $stmt->bindValue(1, $_SESSION['idUser']);
             $stmt->bindValue(2, $id_page);
             $stmt->bindValue(3, $_SESSION['idUser']);
             $stmt->bindValue(4, $id_page);
+*/
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function postuler(&$sqlClient, $cv, $lettre_de_motivation,$id_page){
+        try {
+            $stmt = $sqlClient->prepare("");
+
+
+
+            $stmt->bindValue(1, $cv);
+            $stmt->bindValue(2, $lettre_de_motivation);
+            $stmt->bindValue(3, $id_page);
+            
 
             $stmt->execute();
 
