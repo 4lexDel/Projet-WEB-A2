@@ -49,9 +49,20 @@
             $controleur->select_wish_list_from_user($string, $desc, $name);
             echo $string;
 
-            if (isset($_POST["lettre_de_motivation"],$_POST["cv"])) {
-                $controleur->postuler($_POST["cv"],$_POST["lettre_de_motivation"]);
+            if (isset($_GET["page"])) {
+                $current_page = $_GET['page'];
             }
+            
+
+            //echo $current_page;
+            
+            if (isset($_POST["lettre_de_motivation"],$_POST["cv"],$_POST["nb_page"])) {
+                $controleur->postuler($_POST["cv"],$_POST["lettre_de_motivation"],$_POST["nb_page"]);
+            }
+
+
+
+
 
             ?>
 
@@ -103,7 +114,7 @@
 
                                 </div>
 
-
+<!--
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
 
@@ -118,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-                <!--
+                
                 <button href=" "type="button" class="btn btn-primary">Retirer</button>
             </div>
 
@@ -139,8 +150,8 @@
                 error_reporting(E_ALL);
 
                 if (isset($_GET["delete"],$_GET["page"])) {
-
                     $controleur->delete_save($_GET["page"]);
+
                 }
 
                 

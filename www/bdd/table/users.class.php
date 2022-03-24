@@ -102,7 +102,16 @@ class Users
 
                     $display = 'active';
 
-                    $desc .= '<a href="candidature.php?delete=1&page=' . $row . '" >
+                    $desc .= '<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Postuler</button>
+                    <input type="hidden"  name="nb_page" value="'.$row.'" >
+                    </div> 
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    <a href="candidature.php?delete=1&page='.$row.'" >
                     <button type="button" class="btn btn-primary">Retirer
                     </button></a>
                     </div>
@@ -111,7 +120,7 @@ class Users
                     <div style="margin: 1em;">
                     <p>';
                     
-                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                    $desc .= $description.'  Nombre de poste --> '.$nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -259,14 +268,24 @@ class Users
 
     public function postuler(&$sqlClient, $cv, $lettre_de_motivation,$id_page){
         try {
-            $stmt = $sqlClient->prepare("");
 
+            echo "In user postuler";
 
+            $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
+            VALUES(
+                (".$_SESSION['idUser']."),
+                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page."),
+                ('?'),
+                ('?')
+            );");
 
             $stmt->bindValue(1, $cv);
             $stmt->bindValue(2, $lettre_de_motivation);
-            $stmt->bindValue(3, $id_page);
             
+            echo ($_SESSION["idUser"]);
+            echo ($id_page);
+            echo ($cv);
+            echo ($lettre_de_motivation);
 
             $stmt->execute();
 
