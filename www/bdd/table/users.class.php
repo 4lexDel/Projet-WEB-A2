@@ -78,7 +78,7 @@ class Users
             $stmt->execute();
 
             $nbRow = $stmt->rowCount();           //Contenu des tables
-            $nbCol = $stmt->columnCount();
+            //$nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
 
@@ -101,17 +101,26 @@ class Users
                 if ($active == $row) {
 
                     $display = 'active';
-                    $desc .= '<button href="candidature.php?deletepage=' . $row . '" type="button" class="btn btn-primary">Retirer</button>
+
+                    $desc .= '<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Postuler</button>
+                    <input type="hidden"  name="nb_page" value="'.$row.'" >
+                    </div> 
+                    </form>
                     </div>
-        
+                    </div>
+                    </div>
+                    <a href="candidature.php?delete=1&page='.$row.'" >
+                    <button type="button" class="btn btn-primary">Retirer
+                    </button></a>
+                    </div>
                     <li style="display: inline;"></li>
-                </div>
-        
-        
-                <div style="margin: 1em;">
-                    
+                    </div>
+                    <div style="margin: 1em;">
                     <p>';
-                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                    
+                    $desc .= $description.'  Nombre de poste --> '.$nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -231,14 +240,52 @@ class Users
         try {
             /* delete save from id_user and row from this sql query -->
             
-            SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` 
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;
-
-            
+           SELECT save.idInternship , save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = 101 limit 1 offset 1;
             */
-            $stmt = $sqlClient->prepare("");
+            $stmt = $sqlClient->prepare("DELETE FROM save
+            WHERE idInternship = ( SELECT save.idInternship
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.") 
+            AND idUser = ( SELECT save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.")");
 
-            $stmt->bindValue(1, $id_page);
+/*
+            echo $id_page;
+            echo $_SESSION['idUser'];
+
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, $id_page);
+            $stmt->bindValue(3, $_SESSION['idUser']);
+            $stmt->bindValue(4, $id_page);
+*/
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function postuler(&$sqlClient, $cv, $lettre_de_motivation,$id_page){
+        try {
+
+            echo "In user postuler";
+
+            $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
+            VALUES(
+                (".$_SESSION['idUser']."),
+                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page."),
+                ('?'),
+                ('?')
+            );");
+
+            $stmt->bindValue(1, $cv);
+            $stmt->bindValue(2, $lettre_de_motivation);
+            
+            echo ($_SESSION["idUser"]);
+            echo ($id_page);
+            echo ($cv);
+            echo ($lettre_de_motivation);
 
             $stmt->execute();
 

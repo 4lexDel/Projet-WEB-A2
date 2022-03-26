@@ -88,7 +88,10 @@ class Controleur{
     public function insertNewInternship($company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality){
         $this->_intership->insertNewInternship($this->mysqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality);
     }
-    public function delete_save($id_user,$id_internship){
-        $this->_users->delete_save($this->mysqlClient,$id_user,$id_internship);
+    public function delete_save($id_page){
+        $this->_users->delete_save($this->mysqlClient, $id_page);
+    }
+    public function postuler($cv,$lettre_de_motivation,$id_page){
+        $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
     }
 }
