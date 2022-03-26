@@ -2,10 +2,47 @@ SIGNUP : ajout des données + verif
 
 Probleme lien actif dans le header ==> petite condition php/ ou petit code jquery pour switch les class
 
-Partie creation !
-
 
 AJouTE D'ElemeNt DanS la WhIshIlist
 
 
 Pagination
+
+
+----------------------------------------Candidature----------------------------------------
+
+Suivis
+
+
+
+----------------------------------------Modération----------------------------------------
+
+Acces ou non à l'espace creation
+Suppression et modiff
+Création de compte
+
+
+----------------------------------------TRY CATCH !!!!!!!!!!!!!!----------------------------------------
+
+
+----------------------------------------Creation----------------------------------------
+- possibilité de voir nos entreprises
+- verifier qu'on exploite bien toute la BDD !!
+- Et les modiffs ?
+
+
+
+----------------------------------------Video d'anglais !!----------------------------------------
+
+
+
+----------------------------------------SIGNUP----------------------------------------
+Finir les insert
+
+
+
+----------------------------------------RECHERCHE----------------------------------------
+Continuer les boutons !
+
+
+----------------------------------------PWA----------------------------------------

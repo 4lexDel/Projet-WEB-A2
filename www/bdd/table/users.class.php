@@ -198,7 +198,7 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, $role);
+                $stmt->bindValue(5, $role);             //A CONTINUER §§§§§§§§§§§§§§§§§§§
 
                 //echo "ROLE : $role";
 

@@ -1,12 +1,12 @@
 <?php
 
-require_once "../bdd/table/users.class.php";
-require_once "../bdd/table/locality.class.php";
-require_once "../bdd/table/sector.class.php";
-require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/skill.class.php";
-require_once "../bdd/table/company.class.php";
-require_once "../bdd/table/internship.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/users.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/locality.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/sector.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/schoolYear.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/skill.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/company.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/internship.class.php";
 
 
 class Controleur{
@@ -93,5 +93,8 @@ class Controleur{
     }
     public function postuler($cv,$lettre_de_motivation,$id_page){
         $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
+    }
+    public function deleteCompany($id){
+        $this->_company->deleteCompany($this->mysqlClient, $id);
     }
 }

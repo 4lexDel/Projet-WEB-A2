@@ -35,7 +35,7 @@
                     break;
 
                 default:
-                    //Pilote/etudiant/
+                    //Del/etudiant/
                     #secondName, firstName, login, mdp1, mdp2, promo
                     $controleur->insertUserInPromo($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["promo"], $_POST["role"], $userCreated);
 
