@@ -28,3 +28,8 @@ label, output {
     font-weight : bold;
     color : black;
 }
+
+.card-header{
+    display:flex; 
+    justify-content:space-between;
+}

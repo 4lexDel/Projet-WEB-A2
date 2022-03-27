@@ -198,12 +198,17 @@ class Users
                 $stmt->bindValue(2, "$firstName");
                 $stmt->bindValue(3, "$login");
                 $stmt->bindValue(4, "$mdp");
-                $stmt->bindValue(5, $role);             //A CONTINUER §§§§§§§§§§§§§§§§§§§
-
-                //echo "ROLE : $role";
+                $stmt->bindValue(5, $role);
 
                 $stmt->execute();
+                $stmt->closeCursor();
 
+                $stmt = $sqlClient->prepare("INSERT INTO belong(idUser, idSchoolYear) VALUES(?, ?); ");
+
+                $stmt->bindValue(1, $this->getUserId($sqlClient, $login));
+                $stmt->bindValue(2, "$promo");
+
+                $stmt->execute();
                 $stmt->closeCursor();
             } else {
                 $userCreated = -2;
@@ -269,6 +274,7 @@ class Users
     public function postuler(&$sqlClient, $cv, $lettre_de_motivation, $id_page)
     {
         try {
+            session_start();
 
             echo "In user postuler";
 
@@ -283,7 +289,7 @@ class Users
             $stmt->bindValue(1, $cv);
             $stmt->bindValue(2, $lettre_de_motivation);
 
-            echo ($_SESSION["idUser"]);
+            echo ($_SESSION["idUser"]);                                     //SESSION
             echo ($id_page);
             echo ($cv);
             echo ($lettre_de_motivation);
@@ -299,6 +305,8 @@ class Users
     public function addToWishList(&$sqlClient, $id)
     {
         try {
+            session_start();
+
             $stmt = $sqlClient->prepare("SELECT * FROM save WHERE idUser = ? AND idInternship = ?");
             $stmt->bindValue(1, $_SESSION['idUser']);
             $stmt->bindValue(2, "$id");
@@ -319,6 +327,49 @@ class Users
 
                 $stmt->closeCursor();
             }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteUser(&$sqlClient, $id)
+    {
+        echo "go";
+        try {
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM correspond where idCompany = ?"
+            );
+          /*  $stmt->bindValue(1, "$id");                         //correspond      EVALUATE/ BELONG/ APPLYFOR/ SAVE
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM locate where idCompany = ?"
+            );                                                  //locate
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM evaluate where idCompany = ?"          //evaluate
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM intership where idCompany = ?"          //internship
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM company where idCompany = ?"       //company
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();*/
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -21,6 +21,8 @@ Acces ou non à l'espace creation
 Suppression et modiff
 Création de compte
 
+Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
+
 
 ----------------------------------------TRY CATCH !!!!!!!!!!!!!!----------------------------------------
 

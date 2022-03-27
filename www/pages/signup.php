@@ -28,7 +28,7 @@
             $controleur = new Controleur();
 
             switch ($_POST["role"]) {
-                case '1':
+                case '1':   //Admin/pilote
                 case '3':
                     $controleur->insertUser($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["role"], $userCreated);
 
