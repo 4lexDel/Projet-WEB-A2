@@ -101,4 +101,7 @@ class Controleur{
     public function deleteCompany($id){
         $this->_company->deleteCompany($this->mysqlClient, $id);
     }
+    public function deleteUser($id){
+        $this->_user->deleteUser($this->mysqlClient, $id);
+    }
 }
