@@ -11,7 +11,10 @@ if(isset($_GET["type"], $_GET["id"], $_GET["objet"])){
             if($_GET["type"] == "delete") $controleur->deleteCompany($_GET["id"]);
 
             break;
+
+            case 'internship':
+                if($_GET["type"] == "save") $controleur->addToWishList($_GET["id"]);
+
+                break;
     }
 }
-
-?>

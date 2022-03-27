@@ -105,13 +105,13 @@ class Users
                     $desc .= '<div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button type="submit" class="btn btn-primary">Postuler</button>
-                    <input type="hidden"  name="nb_page" value="'.$row.'" >
+                    <input type="hidden"  name="nb_page" value="' . $row . '" >
                     </div> 
                     </form>
                     </div>
                     </div>
                     </div>
-                    <a href="candidature.php?delete=1&page='.$row.'" >
+                    <a href="candidature.php?delete=1&page=' . $row . '" >
                     <button type="button" class="btn btn-primary">Retirer
                     </button></a>
                     </div>
@@ -119,8 +119,8 @@ class Users
                     </div>
                     <div style="margin: 1em;">
                     <p>';
-                    
-                    $desc .= $description.'  Nombre de poste --> '.$nb_place;
+
+                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -245,11 +245,11 @@ class Users
             */
             $stmt = $sqlClient->prepare("DELETE FROM save
             WHERE idInternship = ( SELECT save.idInternship
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.") 
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ") 
             AND idUser = ( SELECT save.idUser
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page.")");
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ")");
 
-/*
+            /*
             echo $id_page;
             echo $_SESSION['idUser'];
 
@@ -266,22 +266,23 @@ class Users
         }
     }
 
-    public function postuler(&$sqlClient, $cv, $lettre_de_motivation,$id_page){
+    public function postuler(&$sqlClient, $cv, $lettre_de_motivation, $id_page)
+    {
         try {
 
             echo "In user postuler";
 
             $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
             VALUES(
-                (".$_SESSION['idUser']."),
-                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ".$_SESSION['idUser']." limit 1 offset ".$id_page."),
+                (" . $_SESSION['idUser'] . "),
+                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . "),
                 ('?'),
                 ('?')
             );");
 
             $stmt->bindValue(1, $cv);
             $stmt->bindValue(2, $lettre_de_motivation);
-            
+
             echo ($_SESSION["idUser"]);
             echo ($id_page);
             echo ($cv);
@@ -290,6 +291,34 @@ class Users
             $stmt->execute();
 
             $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function addToWishList(&$sqlClient, $id)
+    {
+        try {
+            $stmt = $sqlClient->prepare("SELECT * FROM save WHERE idUser = ? AND idInternship = ?");
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, "$id");
+            $stmt->execute();
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+
+            $stmt->closeCursor();
+
+            if ($nbRow == 0) {
+                $stmt = $sqlClient->prepare("INSERT INTO save (idUser, idInternship) VALUES(?, ?)");
+
+                $stmt->bindValue(1, $_SESSION['idUser']);
+                $stmt->bindValue(2, "$id");
+                $stmt->execute();
+
+                $data = $stmt->fetchAll();
+
+                $stmt->closeCursor();
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
