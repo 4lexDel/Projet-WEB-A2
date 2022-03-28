@@ -94,7 +94,7 @@ if (!isset($_SESSION["AUTH"])) {
             </div>
             <div class="mb-3">
                 <label for="skill" class="form-label">Compétences</label>
-                <select name="skill[]" class="form-control" required id="skill" multiple>
+                <select name="skill[]" class="form-select" required id="skill" multiple>
                     <?php
                         $data;
                         $nbRow;
