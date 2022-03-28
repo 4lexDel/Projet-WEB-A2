@@ -115,7 +115,7 @@ class Users
                     </div>
                     </div>
                     </div>
-                    <a href="candidature.php?delete=1&page=' . $row . '" >
+                    <a href="candidature.php?wish=1&delete=1&page=' . $row . '" >
                     <button type="button" class="btn btn-primary">Retirer
                     </button></a>
                     </div>
@@ -131,7 +131,7 @@ class Users
                 }
 
                 $string .= '
-                <a href="candidature.php?page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
+                <a href="candidature.php?wish=1&page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
                     <div class="d-flex w-100 align-items-center justify-content-between">
                         <strong class="mb-1">' . $nom . '</strong>
                         <small>' . $brand . '</small>
@@ -454,7 +454,7 @@ public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$na
                 </div>
                 </div>
                 </div>
-                <a href="candidature.php?delete=1&page=' . $row . '" >
+                <a href="candidature.php?wish=0&delete=1&page=' . $row . '" >
                 <button type="button" class="btn btn-primary">Retirer
                 </button></a>
                 </div>
@@ -470,7 +470,7 @@ public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$na
             }
 
             $string .= '
-            <a href="candidature.php?page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
+            <a href="candidature.php?wish=0&page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">' . $nom . '</strong>
                     <small>' . $brand . '</small>
