@@ -83,27 +83,35 @@ class Controleur{
     public function insertUserInPromo($secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated){
         $this->_users->insertUserInPromo($this->mysqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, $userCreated);
     }
+
     public function insertNewCompany($company, $eMail, $sector, $descCompany, $locality){
         $this->_company->insertNewCompany($this->mysqlClient,$company, $eMail, $sector, $descCompany, $locality);
     }
+
     public function selectUsersCompany(&$data, &$nbRow, &$nbCol){
         $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
     }
+
     public function insertNewInternship($company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skill){
         $this->_intership->insertNewInternship($this->mysqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skill);
     }
+
     public function delete_save($id_page){
         $this->_users->delete_save($this->mysqlClient, $id_page);
     }
+
     public function postuler($cv,$lettre_de_motivation,$id_page){
         $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
     }
+
     public function deleteCompany($id){
         $this->_company->deleteCompany($this->mysqlClient, $id);
     }
+
     public function deleteUser($id){
         $this->_user->deleteUser($this->mysqlClient, $id);
     }
+
     public function selectSkills(&$data, &$nbRow, &$nbCol){
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
     }

@@ -22,7 +22,6 @@ if (!isset($_SESSION["AUTH"])) {
         foreach ($_POST["skill"] as $skill) {
             echo $skill.'<br>';
         }
-        echo $_POST["skill"].'<br>';
         echo $_SESSION["idUser"];
 
         $controleur = new Controleur();
@@ -78,7 +77,7 @@ if (!isset($_SESSION["AUTH"])) {
                 <label for="nbPlace" class="form-label">Nombre de place</label>
                 <input name="nbPlace" type="number" class="form-control" id="nbPlace">
             </div>
-            <div class="locality">
+            <div class="mb-3">
                 <label for="city">Ville</label>
                 <select name="locality" id="locality" class="form-select col-md-2">
                     <?php
@@ -95,7 +94,7 @@ if (!isset($_SESSION["AUTH"])) {
             </div>
             <div class="mb-3">
                 <label for="skill" class="form-label">Compétences</label>
-                <select name="skill" class="form-control" id="skill" multiple>
+                <select name="skill[]" class="form-control" id="skill" multiple>
                     <?php
                         $data;
                         $nbRow;
