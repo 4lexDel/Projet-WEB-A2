@@ -21,7 +21,7 @@
         error_reporting(E_ALL);
 
 
-        
+
         if (isset($_GET["wish"])) {
 
             if ($_GET["wish"] == 1) {
