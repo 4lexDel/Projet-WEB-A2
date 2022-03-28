@@ -32,12 +32,6 @@ Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
 - verifier qu'on exploite bien toute la BDD !!
 - Et les modiffs ?
 
-
-
-----------------------------------------Video d'anglais !!----------------------------------------
-
-
-
 ----------------------------------------SIGNUP----------------------------------------
 Finir les insert
 
