@@ -36,7 +36,7 @@ Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
 - possibilité de voir nos entreprises               ==> osef ou checkbox dans la recherche
 - verifier qu'on exploite bien toute la BDD !!
 
-- Et les modiffs ?                                                                          ==> modal dans espace recherche
+- Et les modiffs ?   ==> modal dans espace recherche
 
 ----------------------------------------SIGNUP----------------------------------------
 Finir les insert
@@ -54,3 +54,9 @@ Continuer les boutons !
 BUG :
 
 - Nom collé dans la recherche
+
+
+
+Questions ??
+ - Ou sont les status des applyfor ???
+ - 

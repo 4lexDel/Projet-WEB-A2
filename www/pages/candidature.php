@@ -20,7 +20,7 @@
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
         
-        if ($_GET["wish"] == 1) {
+        if (isset($_GET["wish"]) == 1) {
 
             $wish_nav = 'active';
             $candi_nav = '';
