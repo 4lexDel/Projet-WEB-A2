@@ -65,7 +65,7 @@
                                             <option value="">Peu importe</option>
 
                                             <?php
-                                            require "../bdd/controleur.php";
+                                            require_once "../bdd/controleur.php";
                                             $data;
                                             $nbRow;
                                             $nbCol;

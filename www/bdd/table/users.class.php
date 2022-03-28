@@ -39,12 +39,11 @@ class Users
     public function selectUsersSearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $role, $secondName, $firstName, $schoolYear)
     {
         try {
-            $stmt = $sqlClient->prepare("SELECT * 
-            FROM users
-            INNER JOIN belong ON users.idUser = belong.idUser 
+            $stmt = $sqlClient->prepare("SELECT users.idUser, userSecondName, userFirstName, role.idRole, role.role, schoolYear.idSchoolYear, schoolYear.schoolYear 
+            FROM users INNER JOIN belong ON users.idUser = belong.idUser 
             INNER JOIN schoolYear ON belong.idSchoolYear = schoolYear.idSchoolYear 
-            INNER JOIN role ON users.idRole = role.idRole 
-            WHERE userSecondName like ? AND userFirstName like ? AND schoolYear like ? AND role = ?");
+            INNER JOIN role ON users.idRole = role.idRole
+            WHERE userSecondName like ? AND userFirstName like ? AND schoolYear.schoolYear like ? AND role.role = ?");
 
             $stmt->bindValue(1, "%$secondName%");
             $stmt->bindValue(2, "%$firstName%");
@@ -204,7 +203,7 @@ class Users
     {
         try {
             if (!$this->userExist($sqlClient, $login)) {
-                $stmt = $sqlClient->prepare("INSERT INTO users(userSecondName, userFirstName, login, password, idRole) VALUES(?, ?, ?, ?, ?); ");
+                $stmt = $sqlClient->prepare("INSERT INTO users(userSecondName, userFirstName, login, password, idRole) VALUES(?, ?, ?, ?, ?);");
 
                 $stmt->bindValue(1, "$secondName");
                 $stmt->bindValue(2, "$firstName");
@@ -217,8 +216,11 @@ class Users
 
                 $stmt = $sqlClient->prepare("INSERT INTO belong(idUser, idSchoolYear) VALUES(?, ?); ");
 
+                echo "test id : " . $this->getUserId($sqlClient, $login);
+                echo "school id : " . $promo;
+
                 $stmt->bindValue(1, $this->getUserId($sqlClient, $login));
-                $stmt->bindValue(2, "$promo");
+                $stmt->bindValue(2, $promo);
 
                 $stmt->execute();
                 $stmt->closeCursor();
@@ -375,13 +377,19 @@ class Users
             $stmt->execute();
             $stmt->closeCursor();
 
-
             $stmt = $sqlClient->prepare(
-                "SET FOREIGN_KEY_CHECKS = 0"
+                "UPDATE schoolYear SET idUser = null WHERE idUser = ?"       //user
             );
+            $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
 
+            $stmt = $sqlClient->prepare(
+                "UPDATE company SET idUser = null WHERE idUser = ?"       //user
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
                 "DELETE FROM users where idUser = ?"       //user
@@ -390,12 +398,6 @@ class Users
             $stmt->execute();
             $stmt->closeCursor();
 
-
-            $stmt = $sqlClient->prepare(
-                "SET FOREIGN_KEY_CHECKS = 1"
-            );
-            $stmt->execute();
-            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }
