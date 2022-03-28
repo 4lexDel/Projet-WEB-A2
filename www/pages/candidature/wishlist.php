@@ -131,10 +131,12 @@
                                 <?php
                                 echo $desc;
 
+                                
 
-                                if (isset($_GET["page"])) {
-                                    $current_page = $_GET['page'];
-                                }
+
+
+
+                                
 
 
 

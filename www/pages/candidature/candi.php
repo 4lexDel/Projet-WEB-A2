@@ -77,21 +77,27 @@
                 La loutre peut rester en apnée jusqu’à huit minutes sous l’eau.
             
                 -->
-            
 
 
-            <?php
-            echo $desc;
 
-            if (isset($_GET["delete"], $_GET["page_candi"])) {
-                $controleur->delete_candidature_save($_GET["page_candi"]);
-            }
-           
-            ?>
-
-            </p>
+        <?php
+        echo $desc;
 
 
-        </div>
+
+        if (isset($_GET["delete"], $_GET["page_candi"])) {
+            $controleur->delete_candidature_save($_GET["page_candi"]);
+        }
+
+
+
+
+
+        ?>
+
+        </p>
+
+
     </div>
+</div>
 </div>

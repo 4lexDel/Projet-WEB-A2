@@ -19,19 +19,34 @@
         ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-        
-        if (isset($_GET["wish"]) == 1) {
 
-            $wish_nav = 'active';
-            $candi_nav = '';
-            $wish_tab = 'show active';
-            $candi_tab = '';
+
+        
+        if (isset($_GET["wish"])) {
+
+            if ($_GET["wish"] == 1) {
+
+                $wish_nav = 'active';
+                $candi_nav = '';
+                $wish_tab = 'show active';
+                $candi_tab = '';
+            }
+            if ($_GET["wish"] == 0) {
+
+                $wish_nav = '';
+                $candi_nav = 'active';
+                $wish_tab = '';
+                $candi_tab = 'show active';
+            }
         } else {
+
             $wish_nav = '';
             $candi_nav = 'active';
             $wish_tab = '';
             $candi_tab = 'show active';
         }
+
+
 
         echo '
 
@@ -49,8 +64,8 @@
 
                 <div class="form-floating">
                 ';
-                include "./candidature/wishlist.php";
-                echo '
+        include "./candidature/wishlist.php";
+        echo '
                 </div>
 
             </div>
@@ -59,8 +74,8 @@
 
                 <div class="form-floating">
                 ';
-                include "./candidature/candi.php";
-                echo '
+        include "./candidature/candi.php";
+        echo '
                 </div>
 
             </div>
