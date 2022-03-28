@@ -14,6 +14,8 @@
 <body>
     <?php require_once "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
+    <?php include "./modifs/profil.php" ?>
+    <?php include "./modifs/company.php" ?>
     <main>
         <div style="text-align: -webkit-center;">
             <h3>Profil</h3>
@@ -42,13 +44,23 @@
                     <div>
                         <label for="floatingInput" class="form-label">Promotion</label>
                         <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
-                            <!--<nom>test</nom>-->
-                            <!--<libellé>Quel promotion dirigez-vous ?</libellé>-->
+                                    <?php
+                                    require_once "../bdd/controleur.php";
 
-                            <option value="test">Promotion1</option>
-                            <option value="test">Promotion2</option>
-                            <option value="test">Promotion3</option>
-                        </select>
+                                    $data;
+                                    $nbRow;
+                                    $nbCol;
+
+                                    $controleur = new Controleur();
+                                    $controleur->selectSchoolYear($data, $nbRow, $nbCol);
+
+                                    for ($j = 0; $j < $nbRow; $j++) {
+                                        $id = $data[$j]["idSchoolYear"];
+                                        $value = $data[$j]["schoolYear"];
+                                        echo '<option value="' . $id . '">' . $value . '</option>';
+                                    }
+                                    ?>
+                                </select>
                     </div>
                     <div style="display: flex;justify-content: space-evenly;margin-top: 1em;">
                         <li style="list-style: none;"></li>
@@ -61,7 +73,7 @@
                 </form>
             </div>
         </div>
-        <?php include_once("./modifs/myCompany.php")?>
+        <?php include_once("./modifs/myCompanies.php")?>
         <!--
         <br>
         <div style="text-align: -webkit-center;">
@@ -87,7 +99,6 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
