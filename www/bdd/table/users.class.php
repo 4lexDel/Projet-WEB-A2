@@ -305,6 +305,9 @@ class Users
             $stmt->execute();
 
             $stmt->closeCursor();
+
+            $this->delete_save($sqlClient, $id_page);
+
         } catch (\Throwable $th) {
             throw $th;
         }
