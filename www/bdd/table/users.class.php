@@ -259,8 +259,8 @@ class Users
     public function delete_save(&$sqlClient, $id_page)
     {
         try {
-            
-        
+
+
             $stmt = $sqlClient->prepare("DELETE FROM save
             WHERE idInternship = ( SELECT save.idInternship
             FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?) 
@@ -269,9 +269,9 @@ class Users
 
 
             $stmt->bindValue(1, $_SESSION['idUser']);
-            $stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT );
+            $stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT);
             $stmt->bindValue(3, $_SESSION['idUser']);
-            $stmt->bindValue(4, (int) $id_page, PDO::PARAM_INT );
+            $stmt->bindValue(4, (int) $id_page, PDO::PARAM_INT);
 
             $stmt->execute();
 
@@ -288,7 +288,7 @@ class Users
         try {
             //session_start();
 
-           
+
             $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
             VALUES(
                 (?),
@@ -299,8 +299,8 @@ class Users
 
             $stmt->bindValue(1, $_SESSION['idUser']);
             $stmt->bindValue(2, $_SESSION['idUser']);
-            $stmt->bindValue(3, (int) $id_page, PDO::PARAM_INT );
-            
+            $stmt->bindValue(3, (int) $id_page, PDO::PARAM_INT);
+
             $stmt->bindValue(4, $cv);
             $stmt->bindValue(5, $lettre_de_motivation);
 
@@ -309,7 +309,6 @@ class Users
             $stmt->closeCursor();
 
             $this->delete_save($sqlClient, $id_page);
-
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -393,11 +392,10 @@ class Users
 
             $stmt = $sqlClient->prepare(
                 "DELETE FROM users where idUser = ?"       //user
-            );  
+            );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
-
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -408,91 +406,108 @@ class Users
 
 
 
-public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$name)
-{
-    try {
+    public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$name)
+    {
+        try {
 
-        $user_id = $_SESSION['idUser'];
+            $user_id = $_SESSION['idUser'];
 
-        $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
+            $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ?;');
 
-        $stmt->bindParam(1, $user_id);
+            $stmt->bindParam(1, $user_id);
 
-        $stmt->execute();
+            $stmt->execute();
 
-        $nbRow = $stmt->rowCount();           //Contenu des tables
-        //$nbCol = $stmt->columnCount();
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+            //$nbCol = $stmt->columnCount();
 
-        $data = $stmt->fetchAll();
+            $data = $stmt->fetchAll();
 
-        $string = '';
-        if (isset($_GET["page"])) {
-            $active = $_GET["page"];
-        } else {
-            $active = 0;
-        }
-
-        for ($row = 0; $row < $nbRow; $row++) {
-            $nom = $data[$row][0];
-            $date_start = $data[$row][1];
-            $date_end = $data[$row][2];
-            $date_relase = $data[$row][3];
-            $nb_place = $data[$row][4];
-            $description = $data[$row][5];
-            $brand = $data[$row][6];
-
-            if ($active == $row) {
-
-                $display = 'active';
-
-                $desc .= '<div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="submit" class="btn btn-primary">Postuler</button>
-                <input type="hidden"  name="nb_page" value="' . $row . '" >
-                </div> 
-                </form>
-                </div>
-                </div>
-                </div>
-                <a href="candidature.php?wish=0&delete=1&page=' . $row . '" >
-                <button type="button" class="btn btn-primary">Retirer
-                </button></a>
-                </div>
-                <li style="display: inline;"></li>
-                </div>
-                <div style="margin: 1em;">
-                <p>';
-
-                $desc .= $description . '  Nombre de poste --> ' . $nb_place;
-                $name = $nom;
+            $string = '';
+            if (isset($_GET["page_candi"])) {
+                $active = $_GET["page_candi"];
             } else {
-                $display = '';
+                $active = 0;
             }
 
-            $string .= '
-            <a href="candidature.php?wish=0&page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
+            for ($row = 0; $row < $nbRow; $row++) {
+                $nom = $data[$row][0];
+                $date_start = $data[$row][1];
+                $date_end = $data[$row][2];
+                $date_relase = $data[$row][3];
+                $nb_place = $data[$row][4];
+                $description = $data[$row][5];
+                $brand = $data[$row][6];
+
+                if ($active == $row) {
+
+                    $display = 'active';
+
+                    $desc .= '<div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
+                <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
+                <h1 display="inline" style="margin-left: 1em;">' . $nom . '</h1>
+            </div>
+            <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
+                    <div>
+                    <a href="candidature.php?wish=1&delete=1&page_candi=' . $row . '" >
+                    <button type="button" class="btn btn-primary">Retirer
+                    </button></a>
+                    </div>
+                <li style="display: inline;">Statut :</li>
+            </div>
+            <div style="margin: 1em;">
+                <p>
+
+
+                
+
+
+                    
+                ';
+
+                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                } else {
+                    $display = '';
+                }
+
+                $string .= '
+            <a href="candidature.php?wish=0&page_candi=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">' . $nom . '</strong>
                     <small>' . $brand . '</small>
                 </div>
             <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
             </a>';
+            }
+        } catch (\Throwable $th) {
+            throw $th;
         }
-    } catch (\Throwable $th) {
-        throw $th;
     }
-}
+
+    public function delete_candidature_save(&$sqlClient, $id_page)
+    {
+        try {
 
 
+            $stmt = $sqlClient->prepare("DELETE FROM applyfor
+            WHERE idInternship = ( SELECT applyfor.idInternship
+            FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ? limit 1 offset ?) 
+            AND idUser = ( SELECT applyfor.idUser
+            FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ? limit 1 offset ?)");
 
 
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT);
+            $stmt->bindValue(3, $_SESSION['idUser']);
+            $stmt->bindValue(4, (int) $id_page, PDO::PARAM_INT);
 
+            $stmt->execute();
 
-
-
-
-
-
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 
 
 }// end user class

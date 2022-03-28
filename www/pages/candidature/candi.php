@@ -9,7 +9,7 @@
         </a>
         <div class="list-group list-group-flush border-bottom scrollarea" style="max-height: 500px; margin-bottom: 10px; overflow:scroll; -webkit-overflow-scrolling: touch;">
 
-
+            <!--
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <strong class="mb-1">Titre</strong>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-10 mb-1 small">Texte Descriptif</div>
             </a>
-
+-->
 
             <?php
 
@@ -47,20 +47,24 @@
     <!--Infos Stage Précis-->
     <div style="width: 70%;background:white;">
         <!--Header Stage-->
+        <!--
         <div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
             <img src="../assets/img/stage.png" alt="Stage.png" width="100px">
             <h1 display="inline" style="margin-left: 1em;">Titre</h1>
         </div>
         <div style="display:flex;justify-content: space-evenly;margin-top: 1em;">
-            <!--Boutons-->
-            <div>
-                <button type="button" class="btn btn-primary">Retirer</button>
-            </div>
-            <!--Informations Statut-->
+            
+            <form action="candidature.php" method="post">
+                <div>
+                    <button type="submit" class="btn btn-primary">Retirer</button>
+                    <input type="hidden"  name="nb_page" value="2" >
+                </div>
+            </form>
+           
             <li style="display: inline;">Statut :</li>
         </div>
         <div style="margin: 1em;">
-            <!--Description du stage-->
+            
             <p>
                 Les loutres (Lutrinae) sont une sous-famille de mammifères carnivores de la famille des mustélidés. Il existe plusieurs espèces de loutres, caractérisées par de courtes pattes, des doigts griffus et palmés (aux pattes avant et arrière) et une longue queue.
                 Cette sous-famille a été décrite pour la première fois en 1838 par le zoologiste Charles-Lucien Bonaparte.
@@ -71,7 +75,23 @@
                 Elle peut vivre jusqu'à 20 ans en captivité. Mais en milieu naturel son espérance de vie varie entre 5 et 10 ans. La loutre est un animal souvent solitaire. Les loutrons restent avec leur mère huit mois en moyenne et parfois jusqu'à dix-huit mois7.
                 Habitat et comportement
                 La loutre peut rester en apnée jusqu’à huit minutes sous l’eau.
+            
+                -->
+            
+
+
+            <?php
+            echo $desc;
+
+            if (isset($_GET["delete"], $_GET["page_candi"])) {
+                $controleur->delete_candidature_save($_GET["page_candi"]);
+            }
+           
+            ?>
+
             </p>
+
+
         </div>
     </div>
 </div>

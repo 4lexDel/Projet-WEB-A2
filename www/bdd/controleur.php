@@ -76,6 +76,8 @@ class Controleur{
         $this->_users->select_candidature_from_user($this->mysqlClient, $string, $desc, $name);
     }
 
+ 
+
     public function addToWishList($id){
         $this->_users->addToWishList($this->mysqlClient, $id);
     }
@@ -103,6 +105,12 @@ class Controleur{
     public function delete_save($id_page){
         $this->_users->delete_save($this->mysqlClient, $id_page);
     }
+
+    public function delete_candidature_save($id_page){
+        $this->_users->delete_candidature_save($this->mysqlClient, $id_page);
+    }
+
+
 
     public function postuler($cv,$lettre_de_motivation,$id_page){
         $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
