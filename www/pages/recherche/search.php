@@ -24,7 +24,7 @@ if (isset($_GET["objet"])) {
 
                 echo "</div>";
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . " " . $data[$j]["userFirstName"] . '</h5>';
                 echo "</div>";
                 echo "</div>";
                 echo '<br>';
@@ -54,7 +54,7 @@ if (isset($_GET["objet"])) {
 
                 echo "</div>";
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . " " . $data[$j]["userFirstName"] . '</h5>';
                 echo "</div>";
                 echo "</div>";
                 echo '<br>';
@@ -84,7 +84,7 @@ if (isset($_GET["objet"])) {
 
                 echo "</div>";
                 echo '<div class="card-body">';
-                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . $data[$j]["userFirstName"] . '</h5>';
+                echo '<h5 class="card-title">' . $data[$j]["userSecondName"] . " " . $data[$j]["userFirstName"] . '</h5>';
                 echo "</div>";
                 echo "</div>";
                 echo '<br>';
