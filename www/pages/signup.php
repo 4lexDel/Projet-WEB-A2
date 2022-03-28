@@ -28,14 +28,14 @@
             $controleur = new Controleur();
 
             switch ($_POST["role"]) {
-                case '1':
+                case '1':   //Admin/pilote
                 case '3':
                     $controleur->insertUser($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["role"], $userCreated);
 
                     break;
 
                 default:
-                    //Pilote/etudiant/
+                    //Del/etudiant/
                     #secondName, firstName, login, mdp1, mdp2, promo
                     $controleur->insertUserInPromo($_POST["secondName"], $_POST["firstName"], $_POST["login"], $_POST["mdp1"], $_POST["promo"], $_POST["role"], $userCreated);
 

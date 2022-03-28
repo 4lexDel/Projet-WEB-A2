@@ -15,21 +15,13 @@
     <?php require "../components/connect.php" ?>
     <?php include "../components/header.php" ?>
 
-    <style>
-        label,
-        output {
-            color: white;
-            font-weight: bold;
-        }
-    </style>
-
     <div class="container-fluid">
         <div class="row justify-content-center">
             <br><br>
-            <div class="col-sm-3 element" style="border-radius:10px;margin:10px; background-color : rgb(140,140,140); ">
+            <div class="col-sm-3">
                 <form action="" class="form-signin">
                     <div class="row justify-content-center">
-                        <div style="background-color : rgb(140,140,140); margin:10px; padding:10px;">
+                        <div>
                             <div class="col-mdd-2">
                                 <label for="objet">Objet</label>
                                 <br><br>
@@ -169,10 +161,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-8 element" style="background-color : rgb(140,140,140); border-radius:10px;
-                                                margin:10px; 
-                                                padding:10px;
-                                                justify-content: space-evenly;
+            <div class="col-sm-8" style="justify-content: space-evenly;
                                                 align-items: center;
                                                 overflow: auto;
                                                 height:800px">
@@ -188,62 +177,8 @@
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/script/script.js"></script>
-    <script src="../assets/script/deleteSearch.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            function hideForm() {
-                //$('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange').attr("disabled",true);
-                $('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange, #skillSelect').parent().hide();
-                //$('#searchInfo, #secondName, #firstName, #localitySelect, #schoolYearSelect, #sectorSelect, #wageRange').parent().css("opacity", "0.3");
-            }
-
-            function showElement(element) {
-                //element.attr("disabled",false);
-                element.parent().show();
-                //element.parent().css("opacity", "1");
-
-            }
-
-            updateForm(); //On l'appelle une premiere fois
-
-            $("#objetSelect").change(function() {
-                updateForm()
-            });
-
-            function updateForm() {
-                console.log($("#objetSelect").val());
-
-                switch ($("#objetSelect").val()) {
-                    case "etudiant":
-                        //nom, prenom, promo
-                        hideForm();
-                        showElement($('#secondName, #firstName, #schoolYearSelect'));
-                        break;
-
-                    case "delegue":
-                        hideForm();
-                        showElement($('#secondName, #firstName, #schoolYearSelect'));
-                        break;
-
-                    case "pilote":
-                        hideForm();
-                        showElement($('#secondName, #firstName, #schoolYearSelect'));
-                        break;
-
-                    case "entreprise":
-                        hideForm();
-                        showElement($('#localitySelect, #sectorSelect, #searchInfo'));
-                        break;
-
-                    case "offreStage":
-                        hideForm();
-                        showElement($('#localitySelect, #sectorSelect, #searchInfo, #wageRange, #skillSelect'));
-                        break;
-                }
-            }
-        });
-    </script>
+    <script src="./recherche/actionSearch.js"></script>
+    <script src="./recherche/displayBehavior.js"></script>
 
 </body>
 

@@ -65,7 +65,7 @@ class Users
     }
 
 
-    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc,&$name)
+    public function select_wish_list_from_user(&$sqlClient, &$string, &$desc, &$name)
     {
         try {
 
@@ -78,7 +78,7 @@ class Users
             $stmt->execute();
 
             $nbRow = $stmt->rowCount();           //Contenu des tables
-            $nbCol = $stmt->columnCount();
+            //$nbCol = $stmt->columnCount();
 
             $data = $stmt->fetchAll();
 
@@ -99,9 +99,28 @@ class Users
                 $brand = $data[$row][6];
 
                 if ($active == $row) {
+
                     $display = 'active';
 
-                    $desc = $description .'  Nombre de poste --> '. $nb_place;
+                    $desc .= '<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Postuler</button>
+                    <input type="hidden"  name="nb_page" value="' . $row . '" >
+                    </div> 
+                    </form>
+                    </div>
+                    </div>
+                    </div>
+                    <a href="candidature.php?delete=1&page=' . $row . '" >
+                    <button type="button" class="btn btn-primary">Retirer
+                    </button></a>
+                    </div>
+                    <li style="display: inline;"></li>
+                    </div>
+                    <div style="margin: 1em;">
+                    <p>';
+
+                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -181,12 +200,16 @@ class Users
                 $stmt->bindValue(4, "$mdp");
                 $stmt->bindValue(5, $role);
 
-                //echo "ROLE : $role";
+                $stmt->execute();
+                $stmt->closeCursor();
+
+                $stmt = $sqlClient->prepare("INSERT INTO belong(idUser, idSchoolYear) VALUES(?, ?); ");
+
+                $stmt->bindValue(1, $this->getUserId($sqlClient, $login));
+                $stmt->bindValue(2, "$promo");
 
                 $stmt->execute();
-
                 $stmt->closeCursor();
-                
             } else {
                 $userCreated = -2;
             }
@@ -211,6 +234,142 @@ class Users
             $stmt->closeCursor();
 
             return $data[0]["idUser"];
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+
+    public function delete_save(&$sqlClient, $id_page)
+    {
+        try {
+            /* delete save from id_user and row from this sql query -->
+            
+           SELECT save.idInternship , save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = 101 limit 1 offset 1;
+            */
+            $stmt = $sqlClient->prepare("DELETE FROM save
+            WHERE idInternship = ( SELECT save.idInternship
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ") 
+            AND idUser = ( SELECT save.idUser
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ")");
+
+            /*
+            echo $id_page;
+            echo $_SESSION['idUser'];
+
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, $id_page);
+            $stmt->bindValue(3, $_SESSION['idUser']);
+            $stmt->bindValue(4, $id_page);
+*/
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function postuler(&$sqlClient, $cv, $lettre_de_motivation, $id_page)
+    {
+        try {
+            session_start();
+
+            echo "In user postuler";
+
+            $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
+            VALUES(
+                (" . $_SESSION['idUser'] . "),
+                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . "),
+                ('?'),
+                ('?')
+            );");
+
+            $stmt->bindValue(1, $cv);
+            $stmt->bindValue(2, $lettre_de_motivation);
+
+            echo ($_SESSION["idUser"]);                                     //SESSION
+            echo ($id_page);
+            echo ($cv);
+            echo ($lettre_de_motivation);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function addToWishList(&$sqlClient, $id)
+    {
+        try {
+            session_start();
+
+            $stmt = $sqlClient->prepare("SELECT * FROM save WHERE idUser = ? AND idInternship = ?");
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, "$id");
+            $stmt->execute();
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+
+            $stmt->closeCursor();
+
+            if ($nbRow == 0) {
+                $stmt = $sqlClient->prepare("INSERT INTO save (idUser, idInternship) VALUES(?, ?)");
+
+                $stmt->bindValue(1, $_SESSION['idUser']);
+                $stmt->bindValue(2, "$id");
+                $stmt->execute();
+
+                $data = $stmt->fetchAll();
+
+                $stmt->closeCursor();
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteUser(&$sqlClient, $id)
+    {
+        echo "go";
+        try {
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM correspond where idCompany = ?"
+            );
+          /*  $stmt->bindValue(1, "$id");                         //correspond      EVALUATE/ BELONG/ APPLYFOR/ SAVE
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM locate where idCompany = ?"
+            );                                                  //locate
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM evaluate where idCompany = ?"          //evaluate
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM intership where idCompany = ?"          //internship
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM company where idCompany = ?"       //company
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();*/
         } catch (\Throwable $th) {
             throw $th;
         }

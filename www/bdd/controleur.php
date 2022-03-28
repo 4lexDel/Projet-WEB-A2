@@ -1,12 +1,12 @@
 <?php
 
-require_once "../bdd/table/users.class.php";
-require_once "../bdd/table/locality.class.php";
-require_once "../bdd/table/sector.class.php";
-require_once "../bdd/table/schoolYear.class.php";
-require_once "../bdd/table/skill.class.php";
-require_once "../bdd/table/company.class.php";
-require_once "../bdd/table/internship.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/users.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/locality.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/sector.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/schoolYear.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/skill.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/company.class.php";
+require_once $_SERVER["DOCUMENT_ROOT"]."/bdd/table/internship.class.php";
 
 
 class Controleur{
@@ -72,6 +72,10 @@ class Controleur{
         $this->_users->select_wish_list_from_user($this->mysqlClient, $string, $desc, $name);
     }
 
+    public function addToWishList($id){
+        $this->_users->addToWishList($this->mysqlClient, $id);
+    }
+
     public function insertUser($secondName, $firstName, $login, $mdp, $role, &$userCreated){
         $this->_users->insertUser($this->mysqlClient, $secondName, $firstName, $login, $mdp, $role, $userCreated);
     }
@@ -88,8 +92,17 @@ class Controleur{
     public function insertNewInternship($company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skill){
         $this->_intership->insertNewInternship($this->mysqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skill);
     }
-    public function delete_save($id_user,$id_internship){
-        $this->_users->delete_save($this->mysqlClient,$id_user,$id_internship);
+    public function delete_save($id_page){
+        $this->_users->delete_save($this->mysqlClient, $id_page);
+    }
+    public function postuler($cv,$lettre_de_motivation,$id_page){
+        $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
+    }
+    public function deleteCompany($id){
+        $this->_company->deleteCompany($this->mysqlClient, $id);
+    }
+    public function deleteUser($id){
+        $this->_user->deleteUser($this->mysqlClient, $id);
     }
     public function selectSkills(&$data, &$nbRow, &$nbCol){
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
