@@ -61,7 +61,7 @@
                 </form>
             </div>
         </div>
-        <?php include_once("./recherche/MyCompany.php")?>
+        <?php include_once("./modifs/myCompany.php")?>
         <!--
         <br>
         <div style="text-align: -webkit-center;">
