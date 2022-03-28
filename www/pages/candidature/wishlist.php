@@ -40,29 +40,15 @@
 
             require "../bdd/controleur.php";
 
-            
+
 
             $controleur = new Controleur();
             $string = '';
             $desc = '';
             $name = '';
             $controleur->select_wish_list_from_user($string, $desc, $name);
+
             echo $string;
-
-            if (isset($_GET["page"])) {
-                $current_page = $_GET['page'];
-            }
-            
-
-            //echo $current_page;
-            
-            if (isset($_POST["lettre_de_motivation"],$_POST["cv"],$_POST["nb_page"])) {
-                $controleur->postuler($_POST["cv"],$_POST["lettre_de_motivation"],$_POST["nb_page"]);
-            }
-
-
-
-
 
             ?>
 
@@ -114,7 +100,7 @@
 
                                 </div>
 
-<!--
+                                <!--
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
 
@@ -142,30 +128,35 @@
 
 
                         -->
-                <?php
-                echo $desc;
-
-                ini_set('display_errors', 1);
-                ini_set('display_startup_errors', 1);
-                error_reporting(E_ALL);
-
-                if (isset($_GET["delete"],$_GET["page"])) {
-                    $controleur->delete_save($_GET["page"]);
-
-                }
-
-                
+                                <?php
+                                echo $desc;
 
 
-                ?>
-
-                </p>
-
-            </div>
-
-
-        </div>
+                                if (isset($_GET["page"])) {
+                                    $current_page = $_GET['page'];
+                                }
 
 
 
-    </div>
+                                if (isset($_POST["lettre_de_motivation"], $_POST["cv"], $_POST["nb_page"])) {
+                                    $controleur->postuler($_POST["cv"], $_POST["lettre_de_motivation"], $_POST["nb_page"]);
+                                }
+
+
+
+                                if (isset($_GET["delete"], $_GET["page"])) {
+                                    $controleur->delete_save($_GET["page"]);
+                                }
+
+                                ?>
+
+                                </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
