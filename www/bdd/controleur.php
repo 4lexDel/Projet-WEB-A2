@@ -130,4 +130,5 @@ class Controleur{
     public function selectSkills(&$data, &$nbRow, &$nbCol){
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
     }
+
 }

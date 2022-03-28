@@ -124,7 +124,7 @@ class Users
                     <div style="margin: 1em;">
                     <p>';
 
-                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                    $desc .= $description . '<br>  Nombre de poste --> ' . $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -412,7 +412,7 @@ class Users
 
             $user_id = $_SESSION['idUser'];
 
-            $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ?;');
+            $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company`,applyfor.cv,applyfor.coverLetter FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ?;');
 
             $stmt->bindParam(1, $user_id);
 
@@ -438,6 +438,8 @@ class Users
                 $nb_place = $data[$row][4];
                 $description = $data[$row][5];
                 $brand = $data[$row][6];
+                $cv = $data[$row][7];
+                $cover_letter = $data[$row][8];
 
                 if ($active == $row) {
 
@@ -465,7 +467,9 @@ class Users
                     
                 ';
 
-                    $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                    $desc .= $description . '<br>  Nombre de poste --> ' . $nb_place;
+                    $desc .= '<br>Mon CV --> '.$cv.'<br> Ma lettre de Motivation -->'.$cover_letter;
+
                 } else {
                     $display = '';
                 }
@@ -508,6 +512,10 @@ class Users
             throw $th;
         }
     }
+
+
+    
+
 
 
 }// end user class
