@@ -41,13 +41,22 @@ if (!isset($_SESSION["AUTH"])) {
             </div>
             <div class="mb-3">
                 <label for="Sector" class="form-label">Secteur</label>
-                <select name="Sector" id="Sector" class="form-control">
-                    <option value="1">Secteur 1</option>
-                    <option value="2">Secteur 2</option>
-                    <option value="3">Secteur 3</option>
+                <select name="Sector" id="Sector" class="form-select col-md-2">
+                    <?php
+                    $data;
+                    $nbRow;
+                    $nbCol;
+
+                    $controleur = new Controleur();
+                    $controleur->selectSector($data, $nbRow, $nbCol);
+
+                    for ($j = 0; $j < $nbRow; $j++) {
+                        echo '<option value="' . $data[$j]["idSector"] . '">' . $data[$j]["sector"] . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
-            <div class="locality">
+            <div class="mb-3">
                 <label for="city">Ville</label>
                 <select name="locality" id="locality" class="form-select col-md-2">
                     <?php

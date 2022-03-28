@@ -160,6 +160,7 @@
                         </div>
                     </div>
                 </form>
+                <br><br>
             </div>
             <div class="col-sm-8" style="justify-content: space-evenly;
                                                 align-items: center;
