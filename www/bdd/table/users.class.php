@@ -145,10 +145,6 @@ class Users
         }
     }
 
-
-
-
-
     public function userExist(&$sqlClient, $login)
     {
         try {
@@ -376,10 +372,25 @@ class Users
             $stmt->execute();
             $stmt->closeCursor();
 
+
+            $stmt = $sqlClient->prepare(
+                "SET FOREIGN_KEY_CHECKS = 0"
+            );
+            $stmt->execute();
+            $stmt->closeCursor();
+
+
             $stmt = $sqlClient->prepare(
                 "DELETE FROM users where idUser = ?"       //user
             );  
             $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+
+            $stmt = $sqlClient->prepare(
+                "SET FOREIGN_KEY_CHECKS = 1"
+            );
             $stmt->execute();
             $stmt->closeCursor();
         } catch (\Throwable $th) {
