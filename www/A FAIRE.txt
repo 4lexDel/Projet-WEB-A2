@@ -54,3 +54,9 @@ Continuer les boutons !
 
 
 ----------------------------------------PWA----------------------------------------
+
+
+
+BUG :
+
+- Nom collé dans la recherche
