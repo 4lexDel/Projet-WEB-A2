@@ -35,31 +35,32 @@ class Internship
             throw $th;
         }
     }
-    public function insertNewInternship(&$sqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality){
+    public function insertNewInternship(&$sqlClient, $company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skills){
         try {
             $stmt = $sqlClient->prepare(
-            "INSERT INTO intership(
-                intership,
-                startDate,
-                endDate,
-                WageMonth,
-                releaseDate,
-                nbPlace,
-                descInternship,
-                idCompany,
-                idLocality
+            "   INSERT INTO intership(
+                    intership,
+                    startDate,
+                    endDate,
+                    WageMonth,
+                    releaseDate,
+                    nbPlace,
+                    descInternship,
+                    idCompany,
+                    idLocality
                 ) 
-            values (
-                ?,
-                ?,
-                ?,
-                ?,
-                NOW(),
-                ?,
-                ?,
-                ?,
-                ?)
-            ;");
+                values (
+                    ?,
+                    ?,
+                    ?,
+                    ?,
+                    NOW(),
+                    ?,
+                    ?,
+                    ?,
+                    ?
+                );
+            ");
             $stmt->bindValue(1,"$internship");
             $stmt->bindValue(2,"$StartDate");
             $stmt->bindValue(3,"$EndDate");
@@ -68,7 +69,38 @@ class Internship
             $stmt->bindValue(6,"$descInternship");
             $stmt->bindValue(7,"$company");
             $stmt->bindValue(8,"$locality");
+
             $stmt->execute();
+
+            foreach ($skills as $skill) {
+                $stmt = $sqlClient->prepare(
+                    "   INSERT INTO need (
+                            idSkill,
+                            idInternship
+                        )
+                        Values (
+                            ?,
+                            (SELECT idInternship from intership order by idInternship DESC limit 1)       
+                        );
+                    ");
+                $stmt->bindValue(1, $skill);
+                $stmt->execute();
+            }
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function selectSkills(&$sqlClient, &$data, &$nbRow, &$nbCol){
+        try {
+            $stmt = $sqlClient->prepare("SELECT * FROM Skill");
+            
+            $stmt->execute();
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+            $nbCol = $stmt->columnCount();
+
+            $data = $stmt->fetchAll();
+            
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;

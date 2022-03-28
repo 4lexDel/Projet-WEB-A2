@@ -9,7 +9,8 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["EndDate"],
         $_POST["WageMonth"],
         $_POST["nbPlace"],
-        $_POST["descInternship"])
+        $_POST["descInternship"],
+        $_POST["skill"])
     ) {
         echo $_POST["company"].'<br>';
         echo $_POST["internship"].'<br>';
@@ -18,6 +19,10 @@ if (!isset($_SESSION["AUTH"])) {
         echo $_POST["WageMonth"].'<br>';
         echo $_POST["nbPlace"].'<br>';
         echo $_POST["descInternship"].'<br>';
+        foreach ($_POST["skill"] as $skill) {
+            echo $skill.'<br>';
+        }
+        echo $_POST["skill"].'<br>';
         echo $_SESSION["idUser"];
 
         $controleur = new Controleur();
@@ -29,7 +34,8 @@ if (!isset($_SESSION["AUTH"])) {
             $_POST["WageMonth"],
             $_POST["nbPlace"],
             $_POST["descInternship"],
-            $_POST["locality"]
+            $_POST["locality"],
+            $_POST["skill"]
         );
     }
 }
@@ -84,6 +90,21 @@ if (!isset($_SESSION["AUTH"])) {
                     for ($j = 0; $j < $nbRow; $j++) {
                         echo '<option value="' . $data[$j]["idLocality"] . '">' . $data[$j]["city"] . '</option>';
                     }
+                    ?>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="skill" class="form-label">Compétences</label>
+                <select name="skill" class="form-control" id="skill" multiple>
+                    <?php
+                        $data;
+                        $nbRow;
+                        $nbCol;
+                        $controleur = new Controleur();
+                        $controleur->selectSkills($data, $nbRow, $nbCol);
+                        for ($j = 0; $j < $nbRow; $j++) {
+                            echo '<option value="' . $data[$j]["idSkill"] . '">' . $data[$j]["skill"] . '</option>';
+                        }
                     ?>
                 </select>
             </div>
