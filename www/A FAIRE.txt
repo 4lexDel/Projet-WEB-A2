@@ -28,9 +28,10 @@ Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
 
 
 ----------------------------------------Creation----------------------------------------
-- possibilité de voir nos entreprises
+- possibilité de voir nos entreprises               ==> osef ou checkbox dans la recherche
 - verifier qu'on exploite bien toute la BDD !!
-- Et les modiffs ?
+
+- Et les modiffs ?                                                                          ==> modal dans espace recherche
 
 
 

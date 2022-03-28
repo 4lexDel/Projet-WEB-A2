@@ -16,7 +16,8 @@ class Internship
             INNER JOIN skill ON skill.idSkill = need.idSkill 
             INNER JOIN locality ON locality.idLocality = intership.idLocality 
             INNER JOIN company ON company.idCompany = intership.idCompany 
-            WHERE intership like ? AND city like ? AND skill like ? AND WageMonth >= ?");
+            WHERE intership like ? AND city like ? AND skill like ? AND WageMonth >= ?
+            GROUP BY intership.idInternship");
 
             $stmt->bindValue(1, "%$searchInfo%");
             $stmt->bindValue(2, "%$localitySelect%");
@@ -101,6 +102,42 @@ class Internship
 
             $data = $stmt->fetchAll();
             
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteInternship(&$sqlClient, $id)
+    {
+        echo "go";
+        try {
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM need where idInternship = ?"
+            );
+            $stmt->bindValue(1, "$id");                         //      NEED/ APPLYFOR/ SAVE
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM applyFor where idInternship = ?"
+            );                                                  
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM save where idInternship = ?"          
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM intership where idInternship = ?"          
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;

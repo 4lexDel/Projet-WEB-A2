@@ -337,39 +337,39 @@ class Users
         echo "go";
         try {
             $stmt = $sqlClient->prepare(
-                "DELETE FROM correspond where idCompany = ?"
+                "DELETE FROM evaluate where idUser = ?"
             );
-          /*  $stmt->bindValue(1, "$id");                         //correspond      EVALUATE/ BELONG/ APPLYFOR/ SAVE
+            $stmt->bindValue(1, "$id");                         //evaluate      EVALUATE/ BELONG/ APPLYFOR/ SAVE
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM locate where idCompany = ?"
-            );                                                  //locate
+                "DELETE FROM belong where idUser = ?"
+            );                                                  //belong
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM evaluate where idCompany = ?"          //evaluate
-            );
-            $stmt->bindValue(1, "$id");
-            $stmt->execute();
-            $stmt->closeCursor();
-
-            $stmt = $sqlClient->prepare(
-                "DELETE FROM intership where idCompany = ?"          //internship
+                "DELETE FROM applyFor where idUser = ?"          //applyFor
             );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM company where idCompany = ?"       //company
+                "DELETE FROM save where idUser = ?"       //save
             );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
-            $stmt->closeCursor();*/
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM users where idUser = ?"       //user
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }

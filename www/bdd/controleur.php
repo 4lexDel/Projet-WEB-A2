@@ -102,7 +102,10 @@ class Controleur{
         $this->_company->deleteCompany($this->mysqlClient, $id);
     }
     public function deleteUser($id){
-        $this->_user->deleteUser($this->mysqlClient, $id);
+        $this->_users->deleteUser($this->mysqlClient, $id);
+    }
+    public function deleteInternship($id){
+        $this->_intership->deleteInternship($this->mysqlClient, $id);
     }
     public function selectSkills(&$data, &$nbRow, &$nbCol){
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
