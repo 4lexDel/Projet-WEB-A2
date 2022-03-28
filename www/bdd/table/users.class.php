@@ -145,10 +145,6 @@ class Users
         }
     }
 
-
-
-
-
     public function userExist(&$sqlClient, $login)
     {
         try {
