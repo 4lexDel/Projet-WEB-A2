@@ -14,6 +14,11 @@ Pagination
 Suivis
 
 
+bindValue passait un parametre en string la solution --> 
+
+$stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT );
+
+
 
 ----------------------------------------Modération----------------------------------------
 
