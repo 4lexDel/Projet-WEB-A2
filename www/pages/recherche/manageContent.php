@@ -14,6 +14,7 @@ if(isset($_GET["type"], $_GET["id"], $_GET["objet"])){
 
             case 'internship':
                 if($_GET["type"] == "save") $controleur->addToWishList($_GET["id"]);
+                if($_GET["type"] == "delete") $controleur->deleteInternship($_GET["id"]);
 
                 break;
 

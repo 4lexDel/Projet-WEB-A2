@@ -65,6 +65,11 @@ class Users
     }
 
 
+
+
+
+
+
     public function select_wish_list_from_user(&$sqlClient, &$string, &$desc, &$name)
     {
         try {
@@ -165,6 +170,10 @@ class Users
         }
     }
 
+
+
+
+
     public function insertUser(&$sqlClient, $secondName, $firstName, $login, $mdp, $role, &$userCreated)
     {
         try {
@@ -187,6 +196,9 @@ class Users
             throw $th;
         }
     }
+
+
+
 
     public function insertUserInPromo(&$sqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated)
     {
@@ -218,6 +230,8 @@ class Users
         }
     }
 
+
+
     public function getUserId(&$sqlClient, $login)
     {
         try {
@@ -243,26 +257,23 @@ class Users
     public function delete_save(&$sqlClient, $id_page)
     {
         try {
-            /* delete save from id_user and row from this sql query -->
             
-           SELECT save.idInternship , save.idUser
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = 101 limit 1 offset 1;
-            */
+        
             $stmt = $sqlClient->prepare("DELETE FROM save
             WHERE idInternship = ( SELECT save.idInternship
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ") 
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?) 
             AND idUser = ( SELECT save.idUser
-            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . ")");
+            FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?)");
 
-            /*
+
             echo $id_page;
             echo $_SESSION['idUser'];
 
             $stmt->bindValue(1, $_SESSION['idUser']);
-            $stmt->bindValue(2, $id_page);
+            $stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT );
             $stmt->bindValue(3, $_SESSION['idUser']);
-            $stmt->bindValue(4, $id_page);
-*/
+            $stmt->bindValue(4, (int) $id_page, PDO::PARAM_INT );
+
             $stmt->execute();
 
             $stmt->closeCursor();
@@ -271,28 +282,29 @@ class Users
         }
     }
 
+
+
     public function postuler(&$sqlClient, $cv, $lettre_de_motivation, $id_page)
     {
         try {
-            session_start();
+            //session_start();
 
             echo "In user postuler";
 
             $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
             VALUES(
-                (" . $_SESSION['idUser'] . "),
-                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = " . $_SESSION['idUser'] . " limit 1 offset " . $id_page . "),
-                ('?'),
-                ('?')
+                (?),
+                (SELECT save.idInternship FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?),
+                (?),
+                (?)
             );");
 
-            $stmt->bindValue(1, $cv);
-            $stmt->bindValue(2, $lettre_de_motivation);
-
-            echo ($_SESSION["idUser"]);                                     //SESSION
-            echo ($id_page);
-            echo ($cv);
-            echo ($lettre_de_motivation);
+            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(2, $_SESSION['idUser']);
+            $stmt->bindValue(3, (int) $id_page, PDO::PARAM_INT );
+            
+            $stmt->bindValue(4, $cv);
+            $stmt->bindValue(5, $lettre_de_motivation);
 
             $stmt->execute();
 
@@ -337,39 +349,54 @@ class Users
         echo "go";
         try {
             $stmt = $sqlClient->prepare(
-                "DELETE FROM correspond where idCompany = ?"
+                "DELETE FROM evaluate where idUser = ?"
             );
-          /*  $stmt->bindValue(1, "$id");                         //correspond      EVALUATE/ BELONG/ APPLYFOR/ SAVE
+            $stmt->bindValue(1, "$id");                         //evaluate      EVALUATE/ BELONG/ APPLYFOR/ SAVE
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM locate where idCompany = ?"
-            );                                                  //locate
+                "DELETE FROM belong where idUser = ?"
+            );                                                  //belong
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM evaluate where idCompany = ?"          //evaluate
-            );
-            $stmt->bindValue(1, "$id");
-            $stmt->execute();
-            $stmt->closeCursor();
-
-            $stmt = $sqlClient->prepare(
-                "DELETE FROM intership where idCompany = ?"          //internship
+                "DELETE FROM applyFor where idUser = ?"          //applyFor
             );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "DELETE FROM company where idCompany = ?"       //company
+                "DELETE FROM save where idUser = ?"       //save
             );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
-            $stmt->closeCursor();*/
+            $stmt->closeCursor();
+
+
+            $stmt = $sqlClient->prepare(
+                "SET FOREIGN_KEY_CHECKS = 0"
+            );
+            $stmt->execute();
+            $stmt->closeCursor();
+
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM users where idUser = ?"       //user
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+
+            $stmt = $sqlClient->prepare(
+                "SET FOREIGN_KEY_CHECKS = 1"
+            );
+            $stmt->execute();
+            $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }

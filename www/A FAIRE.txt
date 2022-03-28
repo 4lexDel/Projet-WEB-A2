@@ -14,6 +14,11 @@ Pagination
 Suivis
 
 
+bindValue passait un parametre en string la solution --> 
+
+$stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT );
+
+
 
 ----------------------------------------Modération----------------------------------------
 
@@ -28,9 +33,10 @@ Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
 
 
 ----------------------------------------Creation----------------------------------------
-- possibilité de voir nos entreprises
+- possibilité de voir nos entreprises               ==> osef ou checkbox dans la recherche
 - verifier qu'on exploite bien toute la BDD !!
-- Et les modiffs ?
+
+- Et les modiffs ?                                                                          ==> modal dans espace recherche
 
 ----------------------------------------SIGNUP----------------------------------------
 Finir les insert

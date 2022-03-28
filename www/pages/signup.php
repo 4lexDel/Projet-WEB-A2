@@ -74,23 +74,23 @@
                     </ul>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="secondName" name="secondName" placeholder="Second name">
+                        <input type="text" class="form-control" id="secondName" name="secondName" placeholder="Second name" required>
                         <label for="floatingInput">Second name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name">
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
                         <label for="floatingInput">First name</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="Login">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
                         <label for="floatingInput">Login</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword1" name="mdp1" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword1" name="mdp1" placeholder="Password" required>
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword2" name="mdp2" placeholder="Confirm password">
+                        <input type="password" class="form-control" id="floatingPassword2" name="mdp2" placeholder="Confirm password" required>
                         <label for="floatingPassword">Confirm password</label>
                     </div>
                     <div class="tab-content" id="myTabContent">
