@@ -402,4 +402,97 @@ class Users
             throw $th;
         }
     }
+
+
+
+
+
+
+public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$name)
+{
+    try {
+
+        $user_id = $_SESSION['idUser'];
+
+        $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company` FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ?;');
+
+        $stmt->bindParam(1, $user_id);
+
+        $stmt->execute();
+
+        $nbRow = $stmt->rowCount();           //Contenu des tables
+        //$nbCol = $stmt->columnCount();
+
+        $data = $stmt->fetchAll();
+
+        $string = '';
+        if (isset($_GET["page"])) {
+            $active = $_GET["page"];
+        } else {
+            $active = 0;
+        }
+
+        for ($row = 0; $row < $nbRow; $row++) {
+            $nom = $data[$row][0];
+            $date_start = $data[$row][1];
+            $date_end = $data[$row][2];
+            $date_relase = $data[$row][3];
+            $nb_place = $data[$row][4];
+            $description = $data[$row][5];
+            $brand = $data[$row][6];
+
+            if ($active == $row) {
+
+                $display = 'active';
+
+                $desc .= '<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Postuler</button>
+                <input type="hidden"  name="nb_page" value="' . $row . '" >
+                </div> 
+                </form>
+                </div>
+                </div>
+                </div>
+                <a href="candidature.php?delete=1&page=' . $row . '" >
+                <button type="button" class="btn btn-primary">Retirer
+                </button></a>
+                </div>
+                <li style="display: inline;"></li>
+                </div>
+                <div style="margin: 1em;">
+                <p>';
+
+                $desc .= $description . '  Nombre de poste --> ' . $nb_place;
+                $name = $nom;
+            } else {
+                $display = '';
+            }
+
+            $string .= '
+            <a href="candidature.php?page=' . $row . '" class="list-group-item list-group-item-action ' . $display . ' py-3 lh-tight" aria-current="true">
+                <div class="d-flex w-100 align-items-center justify-content-between">
+                    <strong class="mb-1">' . $nom . '</strong>
+                    <small>' . $brand . '</small>
+                </div>
+            <div class="col-10 mb-1 small">Début ' . $date_start . ' Fin ' . $date_end . ' Publié le ' . $date_relase . '</div>
+            </a>';
+        }
+    } catch (\Throwable $th) {
+        throw $th;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}// end user class

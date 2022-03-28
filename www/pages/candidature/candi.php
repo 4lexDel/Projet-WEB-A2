@@ -19,8 +19,29 @@
             </a>
 
 
-            
- 
+            <?php
+
+            ini_set('display_errors', 1);
+            ini_set('display_startup_errors', 1);
+            error_reporting(E_ALL);
+
+
+            //require "../bdd/controleur.php";
+
+
+
+            $controleur = new Controleur();
+            $string = '';
+            $desc = '';
+            $name = '';
+            $controleur->select_candidature_from_user($string, $desc, $name);
+
+            echo $string;
+
+            ?>
+
+
+
         </div>
     </div>
     <!--Infos Stage Précis-->
