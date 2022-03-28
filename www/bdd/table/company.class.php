@@ -70,7 +70,7 @@ class Company
     {
         try {
             $stmt = $sqlClient->prepare(
-                "SELECT idCompany, company from company where idUser = ?"
+                "SELECT * from company where idUser = ?"
             );
             $idUser = $_SESSION['idUser'];
             $stmt->bindValue(1, "$idUser");

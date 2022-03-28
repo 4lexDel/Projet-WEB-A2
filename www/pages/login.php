@@ -65,11 +65,11 @@
                     <h1 class="h3 mb-3 fw-normal">Please login</h1>
 
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingInput" name="login" placeholder="Login">
+                        <input type="text" class="form-control" id="floatingInput" name="login" placeholder="Login" required>
                         <label for="floatingInput">Login</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" name="mdp" placeholder="Password">
+                        <input type="password" class="form-control" id="floatingPassword" name="mdp" placeholder="Password" required>
                         <label for="floatingPassword">Password</label>
                     </div>
 

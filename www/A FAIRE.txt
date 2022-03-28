@@ -38,12 +38,6 @@ Pour l'instant : if ($_SESSION['role'] == "Administrateur") {
 
 - Et les modiffs ?                                                                          ==> modal dans espace recherche
 
-
-
-----------------------------------------Video d'anglais !!----------------------------------------
-
-
-
 ----------------------------------------SIGNUP----------------------------------------
 Finir les insert
 

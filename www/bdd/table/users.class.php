@@ -268,9 +268,6 @@ class Users
             FROM `intership` INNER JOIN `save` ON intership.idInternship = save.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE save.idUser = ? limit 1 offset ?)");
 
 
-            echo $id_page;
-            echo $_SESSION['idUser'];
-
             $stmt->bindValue(1, $_SESSION['idUser']);
             $stmt->bindValue(2, (int) $id_page, PDO::PARAM_INT );
             $stmt->bindValue(3, $_SESSION['idUser']);
@@ -291,8 +288,7 @@ class Users
         try {
             //session_start();
 
-            echo "In user postuler";
-
+           
             $stmt = $sqlClient->prepare("INSERT INTO `applyfor`(`idUser`, `idInternship`, `cv`, `coverLetter`)
             VALUES(
                 (?),
@@ -394,7 +390,7 @@ class Users
 
             $stmt = $sqlClient->prepare(
                 "DELETE FROM users where idUser = ?"       //user
-            );
+            );  
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
