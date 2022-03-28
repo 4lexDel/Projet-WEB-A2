@@ -3,7 +3,7 @@ SIGNUP : ajout des données + verif
 Probleme lien actif dans le header ==> petite condition php/ ou petit code jquery pour switch les class
 
 
-AJouTE D'ElemeNt DanS la WhIshIlist
+AJ0uT3 D'3lemeNt DanS 1a WhI5hIl15t
 
 
 Pagination
