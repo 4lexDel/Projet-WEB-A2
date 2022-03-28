@@ -162,13 +162,20 @@
                 </form>
                 <br><br>
             </div>
+            <div class="rating"><!--
+		--><a href="#5" title="Give 5 stars">☆</a><!--
+		--><a href="#4" title="Give 4 stars">☆</a><!--
+		--><a href="#3" title="Give 3 stars">☆</a><!--
+		--><a href="#2" title="Give 2 stars">☆</a><!--
+		--><a href="#1" title="Give 1 star">☆</a>
+	</div>
             <div class="col-sm-8" style="justify-content: space-evenly;
                                                 align-items: center;
                                                 overflow: auto;
                                                 height:800px">
 
                 <?php
-                    require_once "./recherche/search.php";
+                require_once "./recherche/search.php";
                 ?>
             </div>
         </div>
