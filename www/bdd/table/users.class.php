@@ -124,7 +124,7 @@ class Users
                     <div style="margin: 1em;">
                     <p>';
 
-                    $desc .= $description . '<br>  Nombre de poste --> ' . $nb_place;
+                    $desc .= $description . '<br> Nombre de poste : ' . $nb_place;
                     $name = $nom;
                 } else {
                     $display = '';
@@ -467,8 +467,8 @@ class Users
                     
                 ';
 
-                    $desc .= $description . '<br>  Nombre de poste --> ' . $nb_place;
-                    $desc .= '<br>Mon CV --> '.$cv.'<br> Ma lettre de Motivation -->'.$cover_letter;
+                    $desc .= $description . '<br>  Nombre de poste : ' . $nb_place;
+                    $desc .= '<br>Mon CV : '.$cv.'<br> Ma lettre de Motivation : '.$cover_letter;
 
                 } else {
                     $display = '';
