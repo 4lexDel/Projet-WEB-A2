@@ -162,24 +162,25 @@
                 </form>
                 <br><br>
             </div>
+
             <div class="col-sm-8" style="justify-content: space-evenly;
                                                 align-items: center;
                                                 overflow: auto;
                                                 height:800px">
 
                 <?php
-                    require_once "./recherche/search.php";
+                require_once "./recherche/search.php";
                 ?>
             </div>
         </div>
-    </div>
 
-    <?php include "../components/footer.php" ?>
-    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
-    <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/script/script.js"></script>
-    <script src="./recherche/actionSearch.js"></script>
-    <script src="./recherche/displayBehavior.js"></script>
+        <?php include "../components/footer.php" ?>
+        <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+        <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/script/script.js"></script>
+        <script src="./recherche/actionSearch.js"></script>
+        <script src="./recherche/displayBehavior.js"></script>
+        <script src="./recherche/starSystem.js"></script>
 
 </body>
 

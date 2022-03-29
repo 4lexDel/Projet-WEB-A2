@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <?php require "../components/connect.php" ?>
-    <?php include "../components/header.php" ?>
+    <?php require_once $_SERVER["DOCUMENT_ROOT"]. "/components/connect.php"; ?>
+    <?php include_once $_SERVER["DOCUMENT_ROOT"]. "/components/header.php"; ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
         <li class="nav-item" role="presentation" style="Width: 50%;text-align: center;">
             <button class="nav-link active" id="Entreprise-tab" data-bs-toggle="tab" data-bs-target="#Entreprise" type="button" role="tab" aria-controls="Entreprise" aria-selected="true" style="width: 100%">Entreprise</button>
@@ -26,16 +26,16 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane show active" id="Entreprise" role="tabpanel" aria-labelledby="Entreprise-tab">
             <div class="form-floating">
-                <?php include "./creation/entreprise.php";?>
+                <?php include_once $_SERVER["DOCUMENT_ROOT"]. "/pages/creation/entreprise.php"; ?>
             </div>
         </div>
         <div class="tab-pane fade" id="Annonce" role="tabpanel" aria-labelledby="Annonce-tab">
             <div class="form-floating">
-                <?php include "./creation/annonce.php" ?>
+                <?php include_once $_SERVER["DOCUMENT_ROOT"]. "/pages/creation/annonce.php"; ?>
             </div>
         </div>
     </div>
-    <?php include "../components/footer.php" ?>
+    <?php include_once "../components/footer.php" ?>
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/script/script.js"></script>

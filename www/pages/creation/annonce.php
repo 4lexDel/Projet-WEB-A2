@@ -1,6 +1,5 @@
 <?php
-$path = "../bdd/controleur.php";
-require_once($path);
+require_once($_SERVER["DOCUMENT_ROOT"]. "/bdd/controleur.php");
 if (!isset($_SESSION["AUTH"])) {
     if (isset(
         $_POST["company"],
@@ -19,7 +18,7 @@ if (!isset($_SESSION["AUTH"])) {
         echo $_POST["WageMonth"].'<br>';
         echo $_POST["nbPlace"].'<br>';
         echo $_POST["descInternship"].'<br>';
-        foreach ($_POST["skill"] as $skill) {
+        foreach ($_POST["skill"] as $skill) {               //Maybe ?
             echo $skill.'<br>';
         }
         echo $_SESSION["idUser"];
