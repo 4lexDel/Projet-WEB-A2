@@ -9,13 +9,6 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["Sector"],
         $_POST["locality"])
     ) {
-        echo $_POST["company"].'<br>';
-        echo $_POST["eMail"].'<br>';
-        echo $_POST["descCompany"].'<br>';
-        echo $_POST["Sector"].'<br>';
-        echo $_POST["locality"].'<br>';
-        echo $_SESSION["idUser"];
-
         $controleur = new Controleur();
         $controleur->insertNewCompany(
             $_POST["company"],
