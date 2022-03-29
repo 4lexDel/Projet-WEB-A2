@@ -162,13 +162,7 @@
                 </form>
                 <br><br>
             </div>
-            <div class="rating"><!--
-		--><a href="#5" title="Give 5 stars">☆</a><!--
-		--><a href="#4" title="Give 4 stars">☆</a><!--
-		--><a href="#3" title="Give 3 stars">☆</a><!--
-		--><a href="#2" title="Give 2 stars">☆</a><!--
-		--><a href="#1" title="Give 1 star">☆</a>
-	</div>
+
             <div class="col-sm-8" style="justify-content: space-evenly;
                                                 align-items: center;
                                                 overflow: auto;
@@ -179,14 +173,14 @@
                 ?>
             </div>
         </div>
-    </div>
 
-    <?php include "../components/footer.php" ?>
-    <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
-    <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/script/script.js"></script>
-    <script src="./recherche/actionSearch.js"></script>
-    <script src="./recherche/displayBehavior.js"></script>
+        <?php include "../components/footer.php" ?>
+        <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
+        <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/script/script.js"></script>
+        <script src="./recherche/actionSearch.js"></script>
+        <script src="./recherche/displayBehavior.js"></script>
+        <script src="./recherche/starSystem.js"></script>
 
 </body>
 
