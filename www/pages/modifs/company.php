@@ -12,7 +12,7 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["locality"])
     ) {
         $controleur = new Controleur();
-        $controleur->UpdateCompany(
+        $controleur->updateCompany(
             $_POST["idCompany"],
             $_POST["company"],
             $_POST["eMail"],

@@ -19,19 +19,19 @@ require_once($path);
             <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
                 <form style="margin: 1em;">
                     <div class="mb-3">
-                        <input type="text" name="idCompany" id="idCompany" hidden value="'.$data[$j]["idCompany"].'">
+                        <input type="text" name="idCompany" name="idCompany" hidden value="'.$data[$j]["idCompany"].'">
                     </div>
                     <div class="mb-3">
                         <label for="company" class="form-label">Nom de l\'entreprise</label>
-                        <input type="text" class="form-control" id="company" value="'.$data[$j]["company"].'">
+                        <input type="text" class="form-control" name="company" value="'.$data[$j]["company"].'">
                     </div>
                     <div class="mb-3">
                         <label for="eMail" class="form-label">EMail</label>
-                        <input type="email" class="form-control" id="eMail" value="'.$data[$j]["eMail"].'">
+                        <input type="email" class="form-control" name="eMail" value="'.$data[$j]["eMail"].'">
                     </div>
                     <div class="mb-3">
                         <label for="descCompany" class="form-label">Description Entreprise</label>
-                        <textarea name="descCompany" class="form-control" id="descCompany" style="resize: none;" oninput=\'this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"\' maxlength="400">'.$data[$j]["descCompany"].'</textarea>
+                        <textarea name="descCompany" class="form-control" name="descCompany" style="resize: none;" oninput=\'this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"\' maxlength="400">'.$data[$j]["descCompany"].'</textarea>
                     </div>
                     <div class="mb-3" style="display: flex;justify-content: space-evenly;">
                         <div class="mb-3">

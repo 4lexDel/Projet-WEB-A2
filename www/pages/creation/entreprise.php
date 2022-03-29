@@ -1,7 +1,6 @@
 <?php
 
-$path = "../bdd/controleur.php";
-require_once($path);
+require_once($_SERVER["DOCUMENT_ROOT"]. "/bdd/controleur.php");
 if (!isset($_SESSION["AUTH"])) {
     if (isset(
         $_POST["company"],
