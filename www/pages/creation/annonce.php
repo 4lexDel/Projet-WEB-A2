@@ -11,18 +11,6 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["descInternship"],
         $_POST["skill"])
     ) {
-        echo $_POST["company"].'<br>';
-        echo $_POST["internship"].'<br>';
-        echo $_POST["StartDate"].'<br>';
-        echo $_POST["EndDate"].'<br>';
-        echo $_POST["WageMonth"].'<br>';
-        echo $_POST["nbPlace"].'<br>';
-        echo $_POST["descInternship"].'<br>';
-        foreach ($_POST["skill"] as $skill) {               //Maybe ?
-            echo $skill.'<br>';
-        }
-        echo $_SESSION["idUser"];
-
         $controleur = new Controleur();
         $controleur->insertNewInternship(
             $_POST["company"],
