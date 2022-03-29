@@ -444,6 +444,20 @@ class Users
 
                 if ($active == $row) {
 
+                    if ($step == 2) {
+                        $step = "2: La réponse par l'entreprise a été envoyée.";
+                    } elseif ($step == 3) {
+                        $step = "3: Votre fiche de validation a bien été reçue.";
+                    } elseif ($step == 4) {
+                        $step = "4: Votre fiche de validation a bien été signée par le pilote.";
+                    } elseif ($step == 5) {
+                        $step = "5: Votre fiche de validation a bien été signée et la convention a été envoyée.";
+                    } elseif ($step == 6) {
+                        $step = "6: La convention de stage a été signée.";
+                    } else {
+                        $step = "1: Votre demande a bien été envoyée.";
+                    }
+
                     $display = 'active';
 
                     $desc .= '<div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
@@ -456,7 +470,7 @@ class Users
                     <button type="button" class="btn btn-primary">Retirer
                     </button></a>
                     </div>
-                <li style="display: inline;">Statut : '. $step .'</li>
+                <li style="display: inline;">Statut : ' . $step . ' </li>
             </div>
             <div style="margin: 1em;">
                 <p>
@@ -466,8 +480,7 @@ class Users
                 ';
 
                     $desc .= $description . '<br>  Nombre de poste : ' . $nb_place;
-                    $desc .= '<br>Mon CV : '.$cv.'<br> Ma lettre de Motivation : '.$cover_letter;
-
+                    $desc .= '<br>Mon CV : ' . $cv . '<br> Ma lettre de Motivation : ' . $cover_letter;
                 } else {
                     $display = '';
                 }
@@ -510,15 +523,17 @@ class Users
             throw $th;
         }
     }
-    public function getUserInfos(&$sqlClient, &$data, &$nbRow, &$nbCol){
+    public function getUserInfos(&$sqlClient, &$data, &$nbRow, &$nbCol)
+    {
         try {
             $stmt = $sqlClient->prepare(
                 "SELECT users.idUser, userSecondName, userFirstName, login, password, idRole, schoolyear.idSchoolYear, schoolYear from users
                 LEFT JOIN belong on belong.idUser=users.idUser
                 LEFT JOIN schoolyear on schoolyear.idSchoolYear=belong.idSchoolYear
                 WHERE users.idUser = ?
-                ");
-            
+                "
+            );
+
             $stmt->bindValue(1, $_SESSION['idUser']);
 
             $stmt->execute();
@@ -529,10 +544,4 @@ class Users
             throw $th;
         }
     }
-
-
-    
-
-
-
 }// end user class
