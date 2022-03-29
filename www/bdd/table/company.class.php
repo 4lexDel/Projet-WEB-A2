@@ -61,7 +61,7 @@ class Company
                 $stmt->bindValue(1, $ville);
                 $stmt->execute();
             }
-            
+
 
             $stmt->closeCursor();
         } catch (\Throwable $th) {
@@ -135,12 +135,14 @@ class Company
     public function evaluateCompany(&$sqlClient, $id, $grade)
     {
         try {
+            session_start();
             $stmt = $sqlClient->prepare(
-                "INSERT INTO company(idUser, idCompany, grade) values (?, ?, ?);"
+                "INSERT INTO evaluate(idUser, idCompany, grade) values (?, ?, ?);"
             );
             $idUser = $_SESSION['idUser'];
-            $stmt->bindValue(1, "$idUser");
-            $stmt->bindValue(2, "$id");
+            echo "var session : " . $idUser;
+            $stmt->bindValue(1, $idUser);
+            $stmt->bindValue(2, $id);
             $stmt->bindValue(3, $grade);
 
             $stmt->execute();

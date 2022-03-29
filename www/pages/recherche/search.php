@@ -105,7 +105,7 @@ if (isset($_GET["objet"])) {
                 echo '<div class="card-header">';
                 echo $t_data["sector"];
 
-                echo '<div class="rateBar">';
+                echo '<div>';
                 ?>
 
                 <button data-id=<?php echo $t_data["idCompany"] ?> type="button" class="btn btn-success justify-content-left mx-2 startNoteModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
