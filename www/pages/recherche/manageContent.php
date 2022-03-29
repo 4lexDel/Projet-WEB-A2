@@ -9,6 +9,9 @@ if(isset($_GET["type"], $_GET["id"], $_GET["objet"])){
     switch ($_GET["objet"]) {
         case 'company':
             if($_GET["type"] == "delete") $controleur->deleteCompany($_GET["id"]);
+            if($_GET["type"] == "evaluate") {
+                echo "EVALUATE : ".$_GET["id"]." | Note : ".$_GET["value"]."/5";
+            }
 
             break;
 
