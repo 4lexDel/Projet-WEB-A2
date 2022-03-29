@@ -25,4 +25,15 @@ class Locality{
         }
         
     }
+    public function selectLocalityComp(&$sqlClient, &$data, $idCompany){
+        try {
+            $stmt = $sqlClient->prepare("SELECT idLocality FROM locate where idCompany = ?");
+            $stmt->bindValue(1, $idCompany);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+}
 }

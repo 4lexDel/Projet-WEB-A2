@@ -4,6 +4,8 @@ require_once($path);
     $data;
     $nbRow;
     $nbCol;
+    $reminder1;
+    $reminder2;
     $controleur = new Controleur();
     $controleur->selectUsersCompany($data, $nbRow, $nbCol);
     if ($nbRow) {
@@ -13,6 +15,8 @@ require_once($path);
         </div>';
     }
     for ($j = 0; $j < $nbRow; $j++) {
+        $controleur->selectSectorComp($reminder1, $data[$j]["idCompany"]);
+        $controleur->selectLocalityComp($reminder2, $data[$j]["idCompany"]);
         echo '<br>
         <div style="text-align: -webkit-center;">
             <h3>'.$data[$j]["company"].'</h3>
@@ -36,16 +40,15 @@ require_once($path);
                     <div class="mb-3">
                         <label for="Sector" class="form-label">Secteur</label>
                         <select name="Sector" id="Sector" required class="form-select col-md-2" multiple>';
-                            
-                            $data2;
-                            $nbRow2;
-                            $nbCol2;
-
-                            $controleur = new Controleur();
                             $controleur->selectSector($data2, $nbRow2, $nbCol2);
+                            for ($i = 0; $i < $nbRow2; $i++) {
+                                echo '<option value="' . $data2[$i]["idSector"].'" ';
+                                
+                                foreach ($reminder1 as $value) {
+                                    if($data2[$i]["idSector"]==$value["idSector"]){ echo ' selected ';}
+                                }
 
-                            for ($j = 0; $j < $nbRow2; $j++) {
-                                echo '<option value="' . $data2[$j]["idSector"] . '">' . $data2[$j]["sector"] . '</option>';
+                                echo '>' . $data2[$i]["sector"] . '</option>';
                             }
                         echo '
                         </select>
@@ -53,14 +56,13 @@ require_once($path);
                     <div class="mb-3">
                         <label for="city">Ville</label>
                         <select name="locality" id="locality" required class="form-select col-md-2" multiple>';
-                            $data3;
-                            $nbRow3;
-                            $nbCol3;
-                            $controleur = new Controleur();
-                            $controleur->selectLocality($data3, $nbRow3, $nbCol3);
-
-                            for ($j = 0; $j < $nbRow3; $j++) {
-                                echo '<option value="' . $data3[$j]["idLocality"] . '">' . $data3[$j]["city"] . '</option>';
+                            $controleur->selectLocality($data2, $nbRow2, $nbCol2);
+                            for ($i = 0; $i < $nbRow2; $i++) {
+                                echo '<option value="' . $data2[$i]["idLocality"].'" ';
+                                foreach ($reminder2 as $value) {
+                                    if( $data2[$i]["idLocality"]==$value["idLocality"] ){ echo ' selected ';}
+                                }
+                                echo '>' . $data2[$i]["city"] . '</option>';
                             }
                             echo '
                         </select>

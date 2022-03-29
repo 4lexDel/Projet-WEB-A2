@@ -142,4 +142,12 @@ class Controleur{
     public function updateCompany($idCompany,$company,$eMail,$Sector,$descCompany,$locality){
         $this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
     }
+
+    public function selectLocalityComp(&$data, $idCompany){
+        $this->_locality->selectLocalityComp($this->mysqlClient, $data,  $idCompany);
+    }
+
+    public function selectSectorComp(&$data, $idCompany){
+        $this->_sector->selectSectorComp($this->mysqlClient, $data, $idCompany);
+    }
 }
