@@ -33,6 +33,38 @@ require_once($path);
                         <label for="descCompany" class="form-label">Description Entreprise</label>
                         <textarea name="descCompany" class="form-control" name="descCompany" style="resize: none;" oninput=\'this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"\' maxlength="400">'.$data[$j]["descCompany"].'</textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="Sector" class="form-label">Secteur</label>
+                        <select name="Sector" id="Sector" required class="form-select col-md-2" multiple>';
+                            
+                            $data2;
+                            $nbRow2;
+                            $nbCol2;
+
+                            $controleur = new Controleur();
+                            $controleur->selectSector($data2, $nbRow2, $nbCol2);
+
+                            for ($j = 0; $j < $nbRow2; $j++) {
+                                echo '<option value="' . $data2[$j]["idSector"] . '">' . $data2[$j]["sector"] . '</option>';
+                            }
+                        echo '
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city">Ville</label>
+                        <select name="locality" id="locality" required class="form-select col-md-2" multiple>';
+                            $data3;
+                            $nbRow3;
+                            $nbCol3;
+                            $controleur = new Controleur();
+                            $controleur->selectLocality($data3, $nbRow3, $nbCol3);
+
+                            for ($j = 0; $j < $nbRow3; $j++) {
+                                echo '<option value="' . $data3[$j]["idLocality"] . '">' . $data3[$j]["city"] . '</option>';
+                            }
+                            echo '
+                        </select>
+                    </div>
                     <div class="mb-3" style="display: flex;justify-content: space-evenly;">
                         <div class="mb-3">
                             <button type="submit" class="btn btn-primary">Submit</button>

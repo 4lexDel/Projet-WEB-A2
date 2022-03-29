@@ -135,11 +135,11 @@ class Controleur{
         $this->_users->getUserInfos($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function updateProfil(){
-        $this->_users->updateProfil();
+    public function updateProfil($secondName,$firstName,$login,$password,$promo){
+        $this->_users->updateProfil($this->mysqlClient,$secondName,$firstName,$login,$password,$promo);
     }
     
-    public function updateCompany(){
-        $this->_company->updateCompany();
+    public function updateCompany($idCompany,$company,$eMail,$Sector,$descCompany,$locality){
+        $this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
     }
 }
