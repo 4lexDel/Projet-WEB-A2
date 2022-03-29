@@ -412,7 +412,7 @@ class Users
 
             $user_id = $_SESSION['idUser'];
 
-            $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company`,applyfor.cv,applyfor.coverLetter FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ?;');
+            $stmt = $sqlClient->prepare('SELECT `intership`,`startDate`,`endDate`,`releaseDate`,`nbPlace`,`descInternship`,`company`,applyfor.cv,applyfor.coverLetter,applyfor.step FROM `intership` INNER JOIN `applyfor` ON intership.idInternship = applyfor.idInternship INNER JOIN `company` on company.idCompany = intership.idCompany WHERE applyfor.idUser = ?;');
 
             $stmt->bindParam(1, $user_id);
 
@@ -440,6 +440,7 @@ class Users
                 $brand = $data[$row][6];
                 $cv = $data[$row][7];
                 $cover_letter = $data[$row][8];
+                $step = $data[$row][9];
 
                 if ($active == $row) {
 
@@ -455,13 +456,10 @@ class Users
                     <button type="button" class="btn btn-primary">Retirer
                     </button></a>
                     </div>
-                <li style="display: inline;">Statut :</li>
+                <li style="display: inline;">Statut : '. $step .'</li>
             </div>
             <div style="margin: 1em;">
                 <p>
-
-
-                
 
 
                     
