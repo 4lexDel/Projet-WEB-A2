@@ -61,3 +61,11 @@ BUG :
 Questions ??
  - Ou sont les status des applyfor ???
  - 
+
+
+
+Emilien --> 
+
+ - Mise en forme de candidature.php
+ - Status
+ - Admin doit donner des droits au déléguée dans la recherche ajouter un modal si l'user est un admin
