@@ -17,6 +17,7 @@
     <?php include "./modifs/profil.php" ?>
     <?php include "./modifs/company.php" ?>
     <main>
+        <!--
         <div style="text-align: -webkit-center;">
             <h3>Profil</h3>
             <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
@@ -45,6 +46,7 @@
                         <label for="floatingInput" class="form-label">Promotion</label>
                         <select class="form-control" id="floatingInput" name="promo" placeholder="Quel est votre promotion ?">
                                     <?php
+                                    /*
                                     require_once "../bdd/controleur.php";
 
                                     $data;
@@ -58,7 +60,7 @@
                                         $id = $data[$j]["idSchoolYear"];
                                         $value = $data[$j]["schoolYear"];
                                         echo '<option value="' . $id . '">' . $value . '</option>';
-                                    }
+                                    }*/
                                     ?>
                                 </select>
                     </div>
@@ -73,6 +75,8 @@
                 </form>
             </div>
         </div>
+                                -->
+        <?php include_once("./modifs/myUserInfo.php")?>
         <?php include_once("./modifs/myCompanies.php")?>
         <!--
         <br>

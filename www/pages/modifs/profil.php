@@ -8,7 +8,8 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["firstName"], 
         $_POST["login"], 
         $_POST["mdp1"], 
-        $_POST["role"])
+        $_POST["role"],
+        $_POST["schoolyear"])
     ) {
         $controleur = new Controleur();
         $controleur->updateProfil(

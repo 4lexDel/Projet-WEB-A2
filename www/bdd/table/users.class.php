@@ -508,6 +508,25 @@ class Users
             throw $th;
         }
     }
+    public function getUserInfos(&$sqlClient, &$data, &$nbRow, &$nbCol){
+        try {
+            $stmt = $sqlClient->prepare(
+                "SELECT users.idUser, userSecondName, userFirstName, login, password, idRole, schoolyear.idSchoolYear, schoolYear from users
+                LEFT JOIN belong on belong.idUser=users.idUser
+                LEFT JOIN schoolyear on schoolyear.idSchoolYear=belong.idSchoolYear
+                WHERE users.idUser = ?
+                ");
+            
+            $stmt->bindValue(1, $_SESSION['idUser']);
+
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 
 
 }// end user class

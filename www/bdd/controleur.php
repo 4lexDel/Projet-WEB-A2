@@ -130,4 +130,16 @@ class Controleur{
     public function selectSkills(&$data, &$nbRow, &$nbCol){
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
     }
+
+    public function getUserInfos(&$data, &$nbRow, &$nbCol){
+        $this->_users->getUserInfos($this->mysqlClient, $data, $nbRow, $nbCol);
+    }
+
+    public function updateProfil(){
+        $this->_users->updateProfil();
+    }
+    
+    public function updateCompany(){
+        $this->_company->updateCompany();
+    }
 }
