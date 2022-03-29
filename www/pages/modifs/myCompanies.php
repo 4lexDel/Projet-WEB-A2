@@ -23,31 +23,29 @@ require_once($path);
             <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
                 <form style="margin: 1em;">
                     <div class="mb-3">
-                        <input type="text" name="idCompany" name="idCompany" hidden value="'.$data[$j]["idCompany"].'">
+                        <input type="text" name="idCompany" name="idCompany" hidden value="'.$data[$j]["idCompany"].'" required>
                     </div>
                     <div class="mb-3">
                         <label for="company" class="form-label">Nom de l\'entreprise</label>
-                        <input type="text" class="form-control" name="company" value="'.$data[$j]["company"].'">
+                        <input type="text" class="form-control" name="company" value="'.$data[$j]["company"].'" required>
                     </div>
                     <div class="mb-3">
                         <label for="eMail" class="form-label">EMail</label>
-                        <input type="email" class="form-control" name="eMail" value="'.$data[$j]["eMail"].'">
+                        <input type="email" class="form-control" name="eMail" value="'.$data[$j]["eMail"].'" required>
                     </div>
                     <div class="mb-3">
                         <label for="descCompany" class="form-label">Description Entreprise</label>
-                        <textarea name="descCompany" class="form-control" name="descCompany" style="resize: none;" oninput=\'this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"\' maxlength="400">'.$data[$j]["descCompany"].'</textarea>
+                        <textarea name="descCompany" class="form-control" name="descCompany" style="resize: none;" oninput=\'this.style.height = "";this.style.height = this.scrollHeight+ 5 + "px"\' maxlength="400" required>'.$data[$j]["descCompany"].'</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="Sector" class="form-label">Secteur</label>
-                        <select name="Sector" id="Sector" required class="form-select col-md-2" multiple>';
+                        <select name="Sector" required class="form-select col-md-2" multiple required>';
                             $controleur->selectSector($data2, $nbRow2, $nbCol2);
                             for ($i = 0; $i < $nbRow2; $i++) {
                                 echo '<option value="' . $data2[$i]["idSector"].'" ';
-                                
                                 foreach ($reminder1 as $value) {
                                     if($data2[$i]["idSector"]==$value["idSector"]){ echo ' selected ';}
                                 }
-
                                 echo '>' . $data2[$i]["sector"] . '</option>';
                             }
                         echo '
@@ -55,7 +53,7 @@ require_once($path);
                     </div>
                     <div class="mb-3">
                         <label for="city">Ville</label>
-                        <select name="locality" id="locality" required class="form-select col-md-2" multiple>';
+                        <select name="locality" required class="form-select col-md-2" multiple required>';
                             $controleur->selectLocality($data2, $nbRow2, $nbCol2);
                             for ($i = 0; $i < $nbRow2; $i++) {
                                 echo '<option value="' . $data2[$i]["idLocality"].'" ';
@@ -68,10 +66,8 @@ require_once($path);
                         </select>
                     </div>
                     <div class="mb-3" style="display: flex;justify-content: space-evenly;">
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary">Accepter Changements</button>
+                            <button type="submit" class="btn btn-danger">Supprimer Entreprise</button>
                     </div>
                 </form>
             </div>
