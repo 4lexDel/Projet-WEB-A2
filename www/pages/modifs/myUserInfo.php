@@ -38,11 +38,9 @@ echo    '
 $reminder = $data[0]["idSchoolYear"];
 $controleur->selectSchoolYear($data, $nbRow, $nbCol);
 for ($j = 0; $j < $nbRow; $j++) {
-    $id = $data[$j]["idSchoolYear"];
-    $value = $data[$j]["schoolYear"];
-    echo '<option value="' . $id . '" ';
-        if ($reminder==$id) {echo'selected';}; 
-    echo'>' . $value . '</option>';
+    echo '<option value="' . $data[$j]["idSchoolYear"] . '" ';
+        if ($reminder==$data[$j]["idSchoolYear"]) {echo'selected';}; 
+    echo'>' . $data[$j]["schoolYear"] . '</option>';
 }
                             echo '</select>
                 </div>
