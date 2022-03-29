@@ -57,7 +57,7 @@
     </div>
 
     <!--Infos Stage Précis-->
-    <div style="width: 70%;background:white;">
+    <div style="width: 70%;background:white; height:500px;">
         <!--Header Stage-->
         <div style="display:flex;justify-content: flex-start; margin-left: 1em;margin-top: 1em;">
             <img src="../assets/img/stage.png" alt="Stage.png" width="100px">

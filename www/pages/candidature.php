@@ -58,7 +58,7 @@
                 <button class="nav-link ' . $candi_nav . '" id="Candi-tab" data-bs-toggle="tab" data-bs-target="#Candi" type="button" role="tab" aria-controls="Candi" aria-selected="false" style="width: 100%">Mes Candidatures</button>
             </li>
         </ul>
-        <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent" >
 
             <div class="tab-pane fade ' . $wish_tab . '" id="Wishlist" role="tabpanel" aria-labelledby="Wishlist-tab">
 
