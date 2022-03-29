@@ -129,4 +129,23 @@ class Company
             throw $th;
         }
     }
+
+    public function evaluateCompany(&$sqlClient, $id, $grade)
+    {
+        try {
+            $stmt = $sqlClient->prepare(
+                "INSERT INTO company(idUser, idCompany, grade) values (?, ?, ?);"
+            );
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(1, "$idUser");
+            $stmt->bindValue(2, "$id");
+            $stmt->bindValue(3, $grade);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
