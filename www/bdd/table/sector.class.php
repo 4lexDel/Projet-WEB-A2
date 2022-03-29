@@ -25,4 +25,15 @@ class Sector{
         }
         
     }
+    public function selectSectorComp(&$sqlClient, &$data, $idCompany){
+        try {
+            $stmt = $sqlClient->prepare("SELECT idSector FROM correspond where idCompany = ?");
+            $stmt->bindValue(1, $idCompany);
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

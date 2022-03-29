@@ -50,16 +50,18 @@ class Company
             $stmt = $sqlClient->prepare(
                 "INSERT INTO correspond(idCompany, idSector) values ((SELECT idCompany from company order by idCompany DESC limit 1),?);"
             );
-            $stmt->bindValue(1, $sector);
-
-            $stmt->execute();
-
+            foreach ($sector as $domaine) {
+                $stmt->bindValue(1, $domaine);
+                $stmt->execute();
+            }
             $stmt = $sqlClient->prepare(
                 "INSERT INTO locate(idLocality ,idCompany) values (? ,(SELECT idCompany from company order by idCompany DESC limit 1));"
             );
-            $stmt->bindValue(1, $locality);
-
-            $stmt->execute();
+            foreach ($locality as $ville) {
+                $stmt->bindValue(1, $ville);
+                $stmt->execute();
+            }
+            
 
             $stmt->closeCursor();
         } catch (\Throwable $th) {

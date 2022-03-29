@@ -9,13 +9,6 @@ if (!isset($_SESSION["AUTH"])) {
         $_POST["Sector"],
         $_POST["locality"])
     ) {
-        echo $_POST["company"].'<br>';
-        echo $_POST["eMail"].'<br>';
-        echo $_POST["descCompany"].'<br>';
-        echo $_POST["Sector"].'<br>';
-        echo $_POST["locality"].'<br>';
-        echo $_SESSION["idUser"];
-
         $controleur = new Controleur();
         $controleur->insertNewCompany(
             $_POST["company"],
@@ -40,7 +33,7 @@ if (!isset($_SESSION["AUTH"])) {
             </div>
             <div class="mb-3">
                 <label for="Sector" class="form-label">Secteur</label>
-                <select name="Sector" id="Sector" required class="form-select col-md-2">
+                <select name="Sector[]" id="Sector" required class="form-select col-md-2" multiple>
                     <?php
                     $data;
                     $nbRow;
@@ -56,8 +49,8 @@ if (!isset($_SESSION["AUTH"])) {
                 </select>
             </div>
             <div class="mb-3">
-                <label for="city">Ville</label>
-                <select name="locality" id="locality" required class="form-select col-md-2">
+                <label for="locality">Ville</label>
+                <select name="locality[]" id="locality" required class="form-select col-md-2" multiple>
                     <?php
                     $data;
                     $nbRow;
