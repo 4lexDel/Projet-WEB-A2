@@ -1,33 +1,33 @@
 {
-    "name": "Hello World",
-    "short_name": "Hello",
+    "name": "Job Catching",
+    "short_name": "JC",
     "icons": [{
-      "src": "images/hello-icon-128.png",
+      "src": "images/jc-icon-128.png",
         "sizes": "128x128",
         "type": "image/png"
       }, {
-        "src": "images/hello-icon-144.png",
+        "src": "images/jc-icon-144.png",
         "sizes": "144x144",
         "type": "image/png"
       }, {
-        "src": "images/hello-icon-152.png",
+        "src": "images/jc-icon-152.png",
         "sizes": "152x152",
         "type": "image/png"
       }, {
-        "src": "images/hello-icon-192.png",
+        "src": "images/jc-icon-192.png",
         "sizes": "192x192",
         "type": "image/png"
       }, {
-        "src": "images/hello-icon-256.png",
+        "src": "images/jc-icon-256.png",
         "sizes": "256x256",
         "type": "image/png"
       }, {
-        "src": "images/hello-icon-512.png",
+        "src": "images/jc-icon-512.png",
         "sizes": "512x512",
         "type": "image/png"
       }],
     "lang": "fr",
-    "start_url": "/",
+    "start_url": "/pages/login.php",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "white"
