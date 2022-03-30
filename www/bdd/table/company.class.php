@@ -67,13 +67,12 @@ class Company
             throw $th;
         }
     }
-    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol){
+    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol, $id){
         try {
             $stmt = $sqlClient->prepare(
                 "SELECT * from company where idUser = ?"
             );
-            $idUser = $_SESSION['idUser'];
-            $stmt->bindValue(1, "$idUser");
+            $stmt->bindValue(1, $id);
 
             $stmt->execute();
 
@@ -242,6 +241,19 @@ class Company
 
             $stmt->closeCursor();
 
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function DeleteUserCompanies(&$sqlClient, $id){
+        try{
+            $data;
+            $nbRow;
+            $nbCol;
+            $this->selectUsersCompany($sqlClient, $data, $nbRow, $nbCol, $id);
+            foreach ($data as $value) {
+                $this->deleteCompany($sqlClient, $value['idCompany']);
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
