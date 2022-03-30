@@ -110,6 +110,27 @@ class Company
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
+                "DELETE FROM need WHERE idInternship IN (SELECT idInternship from intership WHERE idCompany=?)"          //evaluate
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+            
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM applyfor WHERE idInternship IN (SELECT idInternship from intership WHERE idCompany=?)"          //evaluate
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM save WHERE idInternship IN (SELECT idInternship from intership WHERE idCompany=?)"          //evaluate
+            );
+            $stmt->bindValue(1, "$id");
+            $stmt->execute();
+            $stmt->closeCursor();
+
+            $stmt = $sqlClient->prepare(
                 "DELETE FROM intership where idCompany = ?"          //internship
             );
             $stmt->bindValue(1, "$id");
