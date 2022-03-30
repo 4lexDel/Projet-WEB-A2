@@ -76,11 +76,11 @@
 
                     <div class="form-floating">
                         <input type="text" class="form-control" id="secondName" name="secondName" placeholder="Second name" required>
-                        <label for="floatingInput">Second name</label>
+                        <label for="floatingInput">Nom</label>
                     </div>
                     <div class="form-floating">
                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
-                        <label for="floatingInput">First name</label>
+                        <label for="floatingInput">Prénom</label>
                     </div>
                     <div class="form-floating">
                         <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
@@ -88,11 +88,11 @@
                     </div>
                     <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword1" name="mdp1" placeholder="Password" required>
-                        <label for="floatingPassword">Password</label>
+                        <label for="floatingPassword">Mot de passe</label>
                     </div>
                     <div class="form-floating">
                         <input type="password" class="form-control" id="floatingPassword2" name="mdp2" placeholder="Confirm password" required>
-                        <label for="floatingPassword">Confirm password</label>
+                        <label for="floatingPassword">Confirmer votre mot de passe</label>
                     </div>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="student-tab">

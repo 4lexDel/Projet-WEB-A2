@@ -17,7 +17,7 @@
         <div class="row justify-content-center">
 
             <h1>Job catching</h1>
-            <br>s
+            <br>
 
             <div style="display: flex;flex-direction: row;">
                 <img src="../assets/img/jobCatching.jpg" width="900px" height="450px" alt="">
