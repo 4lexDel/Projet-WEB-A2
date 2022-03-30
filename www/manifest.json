@@ -27,7 +27,7 @@
         "type": "image/png"
       }],
     "lang": "fr",
-    "start_url": "/www/pages/candidature.php",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "white",
     "theme_color": "white"
