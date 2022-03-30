@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/style/style.css">
+    <link rel="icon" href="../images/jc-icon-512.png">
 
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="white"/> 

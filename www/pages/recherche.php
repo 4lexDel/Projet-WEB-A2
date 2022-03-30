@@ -12,6 +12,7 @@
 
     <link rel="manifest" href="../manifest.json">
     <meta name="theme-color" content="white"/> 
+    <link rel="icon" href="../images/jc-icon-512.png">
 </head>
 
 <body>
