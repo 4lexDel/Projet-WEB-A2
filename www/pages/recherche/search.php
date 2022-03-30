@@ -102,7 +102,7 @@ if (isset($_GET["objet"])) {
             foreach ($data as $t_data) {
 
                 echo '<div class="card">';
-                echo '<div class="card-header">';
+                echo '<div class="card-header">';  
                 echo $t_data["sector"];
 
                 echo '<div>';
@@ -134,7 +134,13 @@ if (isset($_GET["objet"])) {
 
                 echo '<p class="card-text">' . $t_data["descCompany"] . '</p>';
                 echo "</div>";
-                echo '<div class="card-footer">' . $t_data["eMail"];
+                echo '<div class="card-footer">';
+                echo '<p>'.$t_data["email"].'</p>';
+                if($t_data["gradeAVG"] == -1) echo "<p>Aucune(s) note(s) attribuée(s)</p>";
+                else {
+                    echo "<p>AVG note : ".(int)$t_data["gradeAVG"]."/5 - Nb note(s) : ".$t_data["gradeNB"]."</p>";
+
+                }
                 echo "</div>";
                 echo "</div>";
                 echo '<br>';
@@ -249,7 +255,7 @@ if (isset($_GET["objet"])) {
                         <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 0 0 1h2A1.5 1.5 0 0 0 14 9.5v-8A1.5 1.5 0 0 0 12.5 0h-9A1.5 1.5 0 0 0 2 1.5v8A1.5 1.5 0 0 0 3.5 11h2a.5.5 0 0 0 0-1h-2z"></path>
                         <path fill-rule="evenodd" d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"></path>
                     </svg>
-                    Ajouter à ma wishlist
+                    Sauvegarder
                 </button>
                 <?php
                 if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote") {
@@ -270,6 +276,7 @@ if (isset($_GET["objet"])) {
                 echo "</div>";
                 echo '<div class="card-footer">';
                 echo '<p>Gratification : ' . $data[$j]["WageMonth"] . ' €</p>';
+                echo '<p>Nb de place : ' . $data[$j]["nbPlace"] . '</p>';
                 echo '<p>Contact : ' . $data[$j]["eMail"] . '</p>';
                 echo "</div>";
                 echo "</div>";

@@ -140,7 +140,7 @@ class Controleur{
     }
 
     public function selectLocalityComp(&$data, $idCompany){
-        $this->_locality->selectLocalityComp($this->mysqlClient, $data,  $idCompany);
+        $this->_locality->selectLocalityComp($this->mysqlClient, $data, $idCompany);
     }
 
     public function selectSectorComp(&$data, $idCompany){
