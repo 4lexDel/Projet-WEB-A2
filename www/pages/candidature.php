@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/vendors/jqueryUI/jquery-ui.min.css">
     <link rel="stylesheet" href="../assets/style/style.css">
+
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="white"/> 
+    <link rel="icon" href="../images/jc-icon-512.png">
+
 </head>
 
 <body>
@@ -90,7 +95,9 @@
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/script/script.js"></script>
+
     <script src="../main.js" ></script>
+
 </body>
 
 </html>

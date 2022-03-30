@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/vendors/jqueryUI/jquery-ui.min.css">
     <link rel="stylesheet" href="../assets/style/style.css">
+
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="white"/> 
+    <link rel="icon" href="../images/jc-icon-512.png">
 </head>
 
 <body>
@@ -181,6 +185,7 @@
         <script src="./recherche/actionSearch.js"></script>
         <script src="./recherche/displayBehavior.js"></script>
         <script src="./recherche/starSystem.js"></script>
+        <script src="../main.js" ></script>
 
 </body>
 
