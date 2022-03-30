@@ -3,12 +3,10 @@
 class Company
 {
 
-    public function __construct()
-    {
+    public function __construct(){
     }
 
-    public function selectCompanySearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect)
-    {
+    public function selectCompanySearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect){
         try {
             $stmt = $sqlClient->prepare("SELECT * 
             FROM company
@@ -34,8 +32,7 @@ class Company
             throw $th;
         }
     }
-    public function insertNewCompany(&$sqlClient, $company, $eMail, $sector, $descCompany, $locality)
-    {
+    public function insertNewCompany(&$sqlClient, $company, $eMail, $sector, $descCompany, $locality){
         try {
             $stmt = $sqlClient->prepare(
                 "INSERT INTO company(company, nbCESIStudent, eMail, descCompany, idUser) values (? , 0, ? , ?, ?);"
@@ -61,15 +58,14 @@ class Company
                 $stmt->bindValue(1, $ville);
                 $stmt->execute();
             }
-            
+
 
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
         }
     }
-    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol)
-    {
+    public function selectUsersCompany(&$sqlClient, &$data, &$nbRow, &$nbCol){
         try {
             $stmt = $sqlClient->prepare(
                 "SELECT * from company where idUser = ?"
@@ -90,8 +86,7 @@ class Company
         }
     }
 
-    public function deleteCompany(&$sqlClient, $id)
-    {
+    public function deleteCompany(&$sqlClient, $id){
         try {
             $stmt = $sqlClient->prepare(
                 "DELETE FROM correspond where idCompany = ?"
@@ -172,6 +167,24 @@ class Company
                 $stmt->bindValue(1, $ville);
                 $stmt->execute();
             }
+        }catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function evaluateCompany(&$sqlClient, $id, $grade){
+        try {
+            session_start();
+            $stmt = $sqlClient->prepare(
+                "INSERT INTO evaluate(idUser, idCompany, grade) values (?, ?, ?);"
+            );
+            $idUser = $_SESSION['idUser'];
+            echo "var session : " . $idUser;
+            $stmt->bindValue(1, $idUser);
+            $stmt->bindValue(2, $id);
+            $stmt->bindValue(3, $grade);
+
+            $stmt->execute();
+
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;

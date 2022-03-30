@@ -48,6 +48,8 @@ Finir les insert
 Continuer les boutons !
 
 
+Rechercher entreprise par note
+
 ----------------------------------------PWA----------------------------------------
 
 

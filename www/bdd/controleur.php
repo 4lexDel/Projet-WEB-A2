@@ -76,8 +76,6 @@ class Controleur{
         $this->_users->select_candidature_from_user($this->mysqlClient, $string, $desc, $name);
     }
 
- 
-
     public function addToWishList($id){
         $this->_users->addToWishList($this->mysqlClient, $id);
     }
@@ -110,8 +108,6 @@ class Controleur{
         $this->_users->delete_candidature_save($this->mysqlClient, $id_page);
     }
 
-
-
     public function postuler($cv,$lettre_de_motivation,$id_page){
         $this->_users->postuler($this->mysqlClient, $cv, $lettre_de_motivation, $id_page);
     }
@@ -136,11 +132,11 @@ class Controleur{
     }
 
     public function updateProfil($secondName,$firstName,$login,$password,$promo){
-        $this->_users->updateProfil($this->mysqlClient,$secondName,$firstName,$login,$password,$promo);
+        //$this->_users->updateProfil($this->mysqlClient,$secondName,$firstName,$login,$password,$promo);
     }
     
     public function updateCompany($idCompany,$company,$eMail,$Sector,$descCompany,$locality){
-        $this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
+        //$this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
     }
 
     public function selectLocalityComp(&$data, $idCompany){
@@ -149,5 +145,9 @@ class Controleur{
 
     public function selectSectorComp(&$data, $idCompany){
         $this->_sector->selectSectorComp($this->mysqlClient, $data, $idCompany);
+    }
+
+    public function evaluateCompany($id, $grade){
+        $this->_company->evaluateCompany($this->mysqlClient, $id, $grade);
     }
 }
