@@ -90,6 +90,7 @@
     <script src="../assets/vendors/jquery/jquery-3.6.0.min.js"></script>
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/script/script.js"></script>
+    <script src="../main.js" ></script>
 </body>
 
 </html>
