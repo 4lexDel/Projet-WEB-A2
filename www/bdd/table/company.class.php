@@ -10,13 +10,15 @@ class Company
     public function selectCompanySearch(&$sqlClient, &$data, &$nbRow, &$nbCol, $searchInfo, $localitySelect, $sectorSelect)
     {
         try {
-            $stmt = $sqlClient->prepare("SELECT * 
+            $stmt = $sqlClient->prepare("SELECT sector, company.idCompany, company, city, descCompany, email, COALESCE(AVG(grade), -1) as gradeAVG, COUNT(grade) as gradeNB
             FROM company
-            INNER JOIN correspond ON company.idCompany = correspond.idCompany 
-            INNER JOIN sector ON sector.idSector = correspond.idSector
-            INNER JOIN locate ON locate.idCompany = company.idCompany
-            INNER JOIN locality ON locality.idLocality = locate.idLocality
-            WHERE company.company like ? AND locality.city like ? AND sector.sector like ?");
+                INNER JOIN correspond ON company.idCompany = correspond.idCompany 
+                INNER JOIN sector ON sector.idSector = correspond.idSector
+                INNER JOIN locate ON locate.idCompany = company.idCompany
+                INNER JOIN locality ON locality.idLocality = locate.idLocality
+                LEFT JOIN evaluate ON evaluate.idCompany = company.idCompany
+            WHERE company.company like ? AND locality.city like ? AND sector.sector like ?
+            GROUP BY locality.city, company.company");
 
             $stmt->bindValue(1, "%$searchInfo%");
             $stmt->bindValue(2, "%$localitySelect%");
@@ -137,6 +139,20 @@ class Company
         try {
             session_start();
             $stmt = $sqlClient->prepare(
+                "SELECT * FROM evaluate WHERE idUser = ? AND idCompany=?"
+            );
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(1, $idUser);
+            $stmt->bindValue(2, $id);
+
+            $stmt->execute();
+
+            $nbRow = $stmt->rowCount();           //Contenu des tables
+
+            if($nbRow > 0) $this->deleteEvaluation($sqlClient, $id);                                             //Note existante
+            $stmt->closeCursor();
+//////////////////////////////////////////////
+            $stmt = $sqlClient->prepare(
                 "INSERT INTO evaluate(idUser, idCompany, grade) values (?, ?, ?);"
             );
             $idUser = $_SESSION['idUser'];
@@ -148,6 +164,25 @@ class Company
             $stmt->execute();
 
             $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function deleteEvaluation(&$sqlClient, $id){
+        try {
+            session_start();
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM evaluate WHERE idUser = ? AND idCompany=?"
+            );
+            $idUser = $_SESSION['idUser'];
+            $stmt->bindValue(1, $idUser);
+            $stmt->bindValue(2, $id);
+
+            $stmt->execute();
+
+            $stmt->closeCursor();
+
         } catch (\Throwable $th) {
             throw $th;
         }
