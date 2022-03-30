@@ -92,8 +92,8 @@ class Controleur{
         $this->_company->insertNewCompany($this->mysqlClient,$company, $eMail, $sector, $descCompany, $locality);
     }
 
-    public function selectUsersCompany(&$data, &$nbRow, &$nbCol){
-        $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol);
+    public function selectUsersCompany(&$data, &$nbRow, &$nbCol, $id){
+        $this->_company->selectUsersCompany($this->mysqlClient, $data, $nbRow, $nbCol, $id);
     }
 
     public function insertNewInternship($company, $internship, $StartDate, $EndDate, $WageMonth, $nbPlace, $descInternship, $locality, $skill){
@@ -117,6 +117,7 @@ class Controleur{
     }
 
     public function deleteUser($id){
+        $this->_company->DeleteUserCompanies($this->mysqlClient, $id);
         $this->_users->deleteUser($this->mysqlClient, $id);
     }
     public function deleteInternship($id){
@@ -131,12 +132,12 @@ class Controleur{
         $this->_users->getUserInfos($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function updateProfil($secondName,$firstName,$login,$password,$promo){
-        //$this->_users->updateProfil($this->mysqlClient,$secondName,$firstName,$login,$password,$promo);
+    public function updateProfil($id,$secondName,$firstName,$login,$password,$promo){
+        $this->_users->updateProfil($this->mysqlClient,$id,$secondName,$firstName,$login,$password,$promo);
     }
     
     public function updateCompany($idCompany,$company,$eMail,$Sector,$descCompany,$locality){
-        //$this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
+        $this->_company->updateCompany($this->mysqlClient,$idCompany,$company,$eMail,$Sector,$descCompany,$locality);
     }
 
     public function selectLocalityComp(&$data, $idCompany){

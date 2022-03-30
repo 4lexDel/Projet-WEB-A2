@@ -384,7 +384,8 @@ class Users
             $stmt->closeCursor();
 
             $stmt = $sqlClient->prepare(
-                "UPDATE company SET idUser = null WHERE idUser = ?"       //user
+                "DELETE FROM company
+                WHERE idUser = ?"       //user
             );
             $stmt->bindValue(1, "$id");
             $stmt->execute();
@@ -539,6 +540,40 @@ class Users
             $stmt->execute();
 
             $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function updateProfil(&$sqlClient,$id,$secondName,$firstName,$login,$password,$promo){
+        try {
+            $stmt = $sqlClient->prepare(
+                "UPDATE users 
+                set userSecondName=?,
+                userFirstName=?,
+                login=?,
+                password=?
+                where idUser=?;
+                "
+            );
+
+            $stmt->bindValue(1, $secondName);
+            $stmt->bindValue(2, $firstName);
+            $stmt->bindValue(3, $login);
+            $stmt->bindValue(4, $password);
+            $stmt->bindValue(5, $id);
+
+            $stmt->execute();
+            $stmt = $sqlClient->prepare(
+                "UPDATE belong 
+                set idSchoolYear=?
+                where idUser=?;
+                "
+            );
+            $stmt->bindValue(1, $promo);
+            $stmt->bindValue(2, $id);
+            $stmt->execute();
+
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
