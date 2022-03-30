@@ -18,7 +18,11 @@
                     <li><a href="./home.php" class="nav-link px-2 link-secondary">Accueil</a></li>
                     <li><a href="./recherche.php" class="nav-link px-2 link-dark">Recherche de stage</a></li>
                     <li><a href="./candidature.php" class="nav-link px-2 link-dark">Mes candidatures</a></li>
-                    <li><a href="./creation.php" class="nav-link px-2 link-dark">Espace création</a></li>
+                    <?php
+                    if (!($_SESSION['role'] == "Etudiant")) {
+                        echo '<li><a href="./creation.php" class="nav-link px-2 link-dark">Espace création</a></li>';
+                    }
+                    ?>
                 </ul>
             </div>
             <div class="col-lg-3">
