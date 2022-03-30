@@ -37,7 +37,7 @@ if (!isset($_SESSION["AUTH"])) {
                         $nbRow;
                         $nbCol;
                         $controleur = new Controleur();
-                        $controleur->selectUsersCompany($data, $nbRow, $nbCol);
+                        $controleur->selectUsersCompany($data, $nbRow, $nbCol, $_SESSION['idUser']);
                         for ($j = 0; $j < $nbRow; $j++) {
                             echo '<option value="' . $data[$j]["idCompany"] . '">' . $data[$j]["company"] . '</option>';
                         }
