@@ -58,7 +58,7 @@ function sendAJAXRequest(type, id, objet) {
     });
     request.always(function() {
         //Code à jouer après done OU fail quoi qu'il arrive
-        //window.location.reload();
+        window.location.reload();
         console.log("Request !");
     });
 }
@@ -86,7 +86,7 @@ function sendAJAXRequest(type, id, objet, value) {
     });
     request.always(function() {
         //Code à jouer après done OU fail quoi qu'il arrive
-        //window.location.reload();
+        window.location.reload();
         console.log("Request !");
     });
 }
