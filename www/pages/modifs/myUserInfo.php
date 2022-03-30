@@ -11,7 +11,9 @@ echo    '
         <div style="text-align: -webkit-center;">
         <h3>Profil</h3>
         <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
-            <form style="margin: 1em;">
+            <form id="Update"></form>
+            <form id="Delete"></form>
+            <div style="margin: 1em;">
                 <div>
                     <label for="userSecondName" class="form-label">Nom</label>
                     <input type="text" class="form-control" name="userSecondName" value="'.$data[0]["userSecondName"].'" required>
@@ -45,11 +47,11 @@ for ($j = 0; $j < $nbRow; $j++) {
                     echo '</select>
                 </div>
                 <div style="display: flex;justify-content: space-evenly;margin-top: 1em;">
-                    <button type="submit" class="btn btn-primary">Accepter Changements</button>
-                    <button type="submit" class="btn btn-danger">Supprimer Compte</button>
+                    <button form="Update" name="ProfileUpd" value="Yes" type="submit" class="btn btn-primary">Accepter Changements</button>
+                    <button form="Delete" name="ProfileDel" value="Yes" type="submit" class="btn btn-danger">Supprimer Compte</button>
                 </div>
 
-            </form>
+            </div>
         </div>
         </div>
         ';

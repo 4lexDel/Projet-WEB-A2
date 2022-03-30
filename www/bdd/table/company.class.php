@@ -131,4 +131,50 @@ class Company
             throw $th;
         }
     }
+    public function updateCompany(&$sqlClient, $idCompany,$company,$eMail,$Sector,$descCompany,$locality){
+        try {
+            $stmt = $sqlClient->prepare(
+                "UPDATE company
+                set company=?, 
+                eMail=?, 
+                descCompany=?
+                where idCompany=?"
+            );
+            $stmt->bindValue(1, "$company");
+            $stmt->bindValue(2, "$eMail");
+            $stmt->bindValue(3, "$descCompany");
+            $stmt->bindValue(4, "$idCompany");
+            $stmt->execute();
+
+            $stmt = $sqlClient->prepare("DELETE from correspond where idCompany = ?");
+            $stmt->bindValue(1, $idCompany);
+            $stmt->execute();
+
+            $stmt = $sqlClient->prepare(
+                "INSERT INTO correspond(idCompany, idSector) values (?,?);"
+            );
+            $stmt->bindValue(1, $idCompany);
+            foreach ($Sector as $domaine) {
+                
+                $stmt->bindValue(2, $domaine);
+                $stmt->execute();
+            }
+
+            $stmt = $sqlClient->prepare("DELETE from locate where idCompany = ?");
+            $stmt->bindValue(1, $idCompany);
+            $stmt->execute();
+
+            $stmt = $sqlClient->prepare(
+                "INSERT INTO locate(idLocality ,idCompany) values (?,?);"
+            );
+            $stmt->bindValue(2, $idCompany);
+            foreach ($locality as $ville) {
+                $stmt->bindValue(1, $ville);
+                $stmt->execute();
+            }
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
