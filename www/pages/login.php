@@ -36,21 +36,21 @@
             if ($nbRow > 0) {
                 $auth = 1;                                       //L'utilisateur est t'il existant ?
                 $_SESSION['auth'] = true;
+
+                $_SESSION['login'] = $data[0]["login"];
+                $_SESSION['secondName'] = $data[0]["userSecondName"];             //On recup les données clients
+                $_SESSION['firstName'] = $data[0]["userFirstName"];
+                $_SESSION['role'] = $data[0]["role"];
+                $_SESSION['idUser'] = $data[0]["idUser"];
             } else $auth = -1;
 
-            echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
+            /*echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;
             echo "<br>";
             print_r($data);
             echo '<br> LOGIN : ' . $data[0]["login"];
             echo '<br> NOM : ' . $data[0]["userSecondName"];
             echo '<br> PRENOM : ' . $data[0]["userFirstName"];
-            echo '<br> ROLE : ' . $data[0]["role"];
-
-            $_SESSION['login'] = $data[0]["login"];
-            $_SESSION['secondName'] = $data[0]["userSecondName"];             //On recup les données clients
-            $_SESSION['firstName'] = $data[0]["userFirstName"];
-            $_SESSION['role'] = $data[0]["role"];
-            $_SESSION['idUser'] = $data[0]["idUser"];
+            echo '<br> ROLE : ' . $data[0]["role"];*/
         }
     }
     if (isset($_SESSION['auth']) && $_SESSION['auth']) {
