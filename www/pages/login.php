@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/style/style.css">
+
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="white"/> 
 </head>
 
 <body>
@@ -106,6 +109,7 @@
     </div>
 
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../main.js" ></script>
 
 </body>
 
