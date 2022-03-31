@@ -23,7 +23,11 @@ if(isset($_GET["type"], $_GET["id"], $_GET["objet"])){
                 break;
 
                 case 'user':
-                if($_GET["type"] == "delete") $controleur->deleteUser($_GET["id"]);
+                    if($_GET["type"] == "delete") $controleur->deleteUser($_GET["id"]);
+                    if($_GET["type"] == "moderate") {
+                        echo "Moderate : ".$_GET["id"]." | Rank : ".$_GET["value"];
+                        $controleur->updateUserRank($_GET["id"], $_GET["value"]);
+                    }
 
                 break;
     }

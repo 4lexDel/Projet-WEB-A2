@@ -63,12 +63,6 @@ class Users
         }
     }
 
-
-
-
-
-
-
     public function select_wish_list_from_user(&$sqlClient, &$string, &$desc, &$name)
     {
         try {
@@ -169,10 +163,6 @@ class Users
         }
     }
 
-
-
-
-
     public function insertUser(&$sqlClient, $secondName, $firstName, $login, $mdp, $role, &$userCreated)
     {
         try {
@@ -195,9 +185,6 @@ class Users
             throw $th;
         }
     }
-
-
-
 
     public function insertUserInPromo(&$sqlClient, $secondName, $firstName, $login, $mdp, $promo, $role, &$userCreated)
     {
@@ -232,8 +219,6 @@ class Users
         }
     }
 
-
-
     public function getUserId(&$sqlClient, $login)
     {
         try {
@@ -254,7 +239,6 @@ class Users
             throw $th;
         }
     }
-
 
     public function delete_save(&$sqlClient, $id_page)
     {
@@ -280,8 +264,6 @@ class Users
             throw $th;
         }
     }
-
-
 
     public function postuler(&$sqlClient, $cv, $lettre_de_motivation, $id_page)
     {
@@ -401,11 +383,6 @@ class Users
             throw $th;
         }
     }
-
-
-
-
-
 
     public function select_candidature_from_user(&$sqlClient, &$string, &$desc, &$name)
     {
@@ -574,6 +551,26 @@ class Users
             $stmt->bindValue(2, $id);
             $stmt->execute();
 
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function updateUserRank(&$sqlClient, $id, $rank){
+        try {
+            $stmt = $sqlClient->prepare(
+                "UPDATE users 
+                set rank=?
+                where idUser=?;
+                "
+            );
+
+            $stmt->bindValue(1, $rank);
+            $stmt->bindValue(2, $id);
+
+            $stmt->execute();
+            
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;

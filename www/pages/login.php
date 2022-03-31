@@ -42,6 +42,7 @@
                 $_SESSION['firstName'] = $data[0]["userFirstName"];
                 $_SESSION['role'] = $data[0]["role"];
                 $_SESSION['idUser'] = $data[0]["idUser"];
+                $_SESSION['rank'] = $data[0]["rank"];
             } else $auth = -1;
 
             /*echo "Ligne : " . $nbRow . " Colonne : " . $nbCol;

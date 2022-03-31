@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/style/style.css">
 
     <link rel="manifest" href="../manifest.json">
-    <meta name="theme-color" content="white"/> 
+    <meta name="theme-color" content="white" />
     <link rel="icon" href="../images/jc-icon-512.png">
 </head>
 
@@ -19,22 +19,22 @@
     <?php include '../components/header.php' ?>
     <main class="container-fluid">
         <div class="row justify-content-center">
+            <div class="col-sm-12">
+                <h1>Job catching</h1>
+                <br>
 
-            <h1>Job catching</h1>
-            <br>
-
-            <div style="display: flex;flex-direction: row;">
-                <img src="../assets/img/jobCatching.jpg" width="900px" height="450px" alt="">
-                <p style="line-break: strict;margin: 1em;font-size: small;">
-                    Bienvenue sur Job catching !
-                    Ce merveilleux site vous propose de nombreux outils pour vous accompagner dans votre recherche de stage.
-                </p>
+                <div style="display: flex;flex-direction: row;">
+                    <img src="../assets/img/jobCatching.jpg" width="900px" height="450px" alt="">
+                    <p style="line-break: strict;margin: 1em;font-size: small;">
+                        Bienvenue sur Job catching !
+                        Ce merveilleux site vous propose de nombreux outils pour vous accompagner dans votre recherche de stage.
+                    </p>
+                </div>
             </div>
-
         </div>
     </main>
     <?php include '../components/footer.php' ?>
-    <script src="../main.js" ></script>
+    <script src="../main.js"></script>
 </body>
 
 </html>
