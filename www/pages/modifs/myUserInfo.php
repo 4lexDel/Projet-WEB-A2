@@ -3,10 +3,14 @@ require_once "../bdd/controleur.php";
 $data;
 $nbRow;
 $nbCol;
-$IdUser;
-$IdUser = $_SESSION['idUser'];
+$id;
+if (isset($_POST['idUser'])) {
+    $id = $_POST['idUser'];
+} else {
+    $id = $_SESSION['idUser'];
+}
 $controleur = new Controleur();
-$controleur->getUserInfos($data, $nbRow, $nbCol, $IdUser);
+$controleur->getUserInfos($data, $nbRow, $nbCol, $id);
 echo    '
         <div style="text-align: -webkit-center;">
         <h3>Profil</h3>
@@ -32,10 +36,6 @@ echo    '
                 <div>
                     <label for="password" class="form-label">Mot de passe</label>
                     <input form="Update" type="password" class="form-control" name="password" value="'.$data[0]["password"].'" required>
-                </div>
-                <div>
-                    <label for="passwordval" class="form-label">Confirmer Mot de passe</label>
-                    <input form="Update" type="password" class="form-control" name="passwordval" required>
                 </div>
                 <div>
                     <label for="floatingInput" class="form-label">Promotion</label>

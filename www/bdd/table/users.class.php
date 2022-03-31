@@ -501,7 +501,7 @@ class Users
             throw $th;
         }
     }
-    public function getUserInfos(&$sqlClient, &$data, &$nbRow, &$nbCol)
+    public function getUserInfos(&$sqlClient, &$data, &$nbRow, &$nbCol, $id)
     {
         try {
             $stmt = $sqlClient->prepare(
@@ -512,7 +512,7 @@ class Users
                 "
             );
 
-            $stmt->bindValue(1, $_SESSION['idUser']);
+            $stmt->bindValue(1, $id);
 
             $stmt->execute();
 
