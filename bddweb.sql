@@ -294,7 +294,7 @@ CREATE TABLE `intership` (
 --
 
 INSERT INTO `intership` (`idInternship`, `intership`, `startDate`, `endDate`, `WageMonth`, `releaseDate`, `nbPlace`, `descInternship`, `idCompany`, `idLocality`) VALUES
-(1, 'NOM', '2022-04-04', '2022-07-04', 600, '2022-02-02', 3, 'Cannabis (les cannabis) est un genre botanique qui rassemble des plantes annuelles de la famille des Cannabaceae. Ce sont toutes des plantes originaires d\'Asie centrale ou d\'Asie du Sud. La classification dans ce genre est encore discutée. Selon la majorité des auteurs il contiendrait une seule espèce, le Chanvre cultivé (Cannabis sativa L.), parfois subdivisée en plusieurs sous-espèces1, généralement sativa, indica et ruderalis (syn. spontanea), tandis que d\'autres considèrent que ce sont de simples variétés. Les plantes riches en fibres et pauvres en Tétrahydrocannabinol (THC) donnent le « chanvre agricole » qui pousse dans les zones tempérées, exploité pour ses sous-produits (fibres, graines...) aux usages industriels variés, tandis que le « chanvre indien », qui pousse en climat équatorial, est au contraire très riche en résine et exploité pour ses propriétés médicales et psychotropes.', 6, 12),
+
 (2, 'NOM', '2022-04-29', '2022-09-29', 700, '2022-02-02', 1, 'A remplir', 15, 20),
 (4, 'NOM', '2022-05-24', '2022-11-24', 800, '2022-02-02', 3, 'A remplir', 8, 20),
 (5, 'NOM', '2022-05-01', '2022-08-01', 1000, '2022-02-02', 3, 'A remplir', 1, 1),
