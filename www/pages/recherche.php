@@ -30,9 +30,11 @@
                                 <label for="objet">Objet</label>
                                 <br><br>
                                 <select name="objet" id="objetSelect" class="form-select col-md-2">
+                                    <?php if($_SESSION["rank"] > 1){ ?>
                                     <option value="etudiant">Etudiant</option>
                                     <option value="delegue">Délégué</option>
                                     <option value="pilote">Pilote</option>
+                                    <?php } ?>
                                     <option value="entreprise">Entreprise</option>
                                     <option value="offreStage">Offre de stage</option>
                                 </select>
