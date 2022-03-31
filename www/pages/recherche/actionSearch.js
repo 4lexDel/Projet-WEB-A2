@@ -7,6 +7,13 @@ $(document).ready(function() {
         });
     });
 
+    $('.startModerateButton').each(function() {
+        console.log("start");
+        $(this).click(function() {
+            $('#moderateButton').attr({ "data-id": $(this).attr('data-id') });
+        });
+    });
+
     $('.deleteButton').each(function(index) {
         $(this).click(function() {
             var id = $(this).attr("data-id");
@@ -32,6 +39,15 @@ $(document).ready(function() {
         var note = $(this).parent().parent().find('.note').val();
 
         sendAJAXRequest("evaluate", id, objet, note);
+    });
+
+    $('#moderateButton').click(function() {
+        var id = $(this).attr("data-id");
+        var objet = $(this).attr("data-objet");
+
+        var rank = $(this).parent().parent().find('select').val();
+
+        sendAJAXRequest("moderate", id, objet, rank);
     });
 });
 
@@ -86,7 +102,7 @@ function sendAJAXRequest(type, id, objet, value) {
     });
     request.always(function() {
         //Code à jouer après done OU fail quoi qu'il arrive
-        window.location.reload();
+        //window.location.reload();
         console.log("Request !");
     });
 }

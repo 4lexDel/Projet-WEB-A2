@@ -151,4 +151,8 @@ class Controleur{
     public function evaluateCompany($id, $grade){
         $this->_company->evaluateCompany($this->mysqlClient, $id, $grade);
     }
+
+    public function updateUserRank($id, $rank){
+        $this->_users->updateUserRank($this->mysqlClient, $id, $rank);
+    }
 }

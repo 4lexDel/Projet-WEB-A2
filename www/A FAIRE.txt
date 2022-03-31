@@ -74,3 +74,11 @@ Emilien -->
 
  - Status
  - Admin doit donner des droits au déléguée dans la recherche ajouter un modal si l'user est un admin
+
+
+Alex -->
+
+- Stat etoffer certaines info dans la recherche
+- verifier + ajouter Modération
+- verifier quon a rien oublier
+- tester
