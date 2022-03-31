@@ -20,7 +20,20 @@ class Skill{
             $stmt->closeCursor();
         } catch (\Throwable $th) {
             throw $th;
-        }
-        
+        }   
+    }
+    public function selectSkillIdInt(&$sqlClient, &$data, $id){
+        try {
+            echo 'OUI';
+            $stmt = $sqlClient->prepare("SELECT * FROM need where idInternship=?");
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+
+            $data = $stmt->fetchAll();
+
+            $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }   
     }
 }

@@ -63,8 +63,8 @@ class Internship
                 );
             ");
             $stmt->bindValue(1,"$internship");
-            $stmt->bindValue(2,"$StartDate");
-            $stmt->bindValue(3,"$EndDate");
+            $stmt->bindValue(2,$StartDate);
+            $stmt->bindValue(3,$EndDate);
             $stmt->bindValue(4,"$WageMonth");
             $stmt->bindValue(5,"$nbPlace");
             $stmt->bindValue(6,"$descInternship");
@@ -139,6 +139,72 @@ class Internship
             $stmt->bindValue(1, "$id");
             $stmt->execute();
             $stmt->closeCursor();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function selectInternshipIDCompany(&$sqlClient, &$data, $id){
+        try {
+            $stmt = $sqlClient->prepare(
+                "SELECT * FROM intership where idCompany = ?"
+            );
+            $stmt->bindValue(1, "$id");                         
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function updateInternship(&$sqlClient,$idInternship,$intership,$startDate,$endDate,$WageMonth,$nbPlace,$locality,$skill,$descInternship,$idCompany){
+        try {
+            $stmt = $sqlClient->prepare(
+                "UPDATE intership
+                SET
+                intership=?,
+                startDate=?,
+                endDate=?,
+                WageMonth=?,
+                nbPlace=?,
+                descInternship=?,
+                idCompany=?,
+                idLocality=?
+                WHERE idInternship = ?"
+            );
+            $stmt->bindValue(1,$intership);
+            $stmt->bindValue(2,$startDate);
+            $stmt->bindValue(3,$endDate);
+            $stmt->bindValue(4,$WageMonth);
+            $stmt->bindValue(5,$nbPlace);
+            $stmt->bindValue(6,"$descInternship");
+            $stmt->bindValue(7,$idCompany);
+            $stmt->bindValue(8,$locality);
+            $stmt->bindValue(9,$idInternship);
+            $stmt->execute();
+
+            $stmt = $sqlClient->prepare(
+                "DELETE FROM need where idInternship = ?"
+            );
+            $stmt->bindValue(1,$idInternship);
+            $stmt->execute();
+            $stmt = $sqlClient->prepare(
+                "INSERT INTO need (
+                    idSkill,
+                    idInternship
+                )
+                Values (
+                    ?,
+                    ?
+                )"
+            );
+            $stmt->bindValue(2, $idInternship);
+            foreach ($skill as $value) {
+                $stmt->bindValue(1,$value);
+                $stmt->execute();
+            }
+            $stmt->closeCursor();
+            
         } catch (\Throwable $th) {
             throw $th;
         }
