@@ -155,4 +155,10 @@ class Controleur{
     public function updateUserRank($id, $rank){
         $this->_users->updateUserRank($this->mysqlClient, $id, $rank);
     }
+    public function selectInternshipIDCompany(&$data, $id){
+        $this->_intership->selectInternshipIDCompany($this->mysqlClient, $data, $id);
+    }
+    public function selectSkillIdInt(&$data, $id){
+        $this->_skill->selectSkillIdInt($this->mysqlClient, $data, $id);
+    }
 }

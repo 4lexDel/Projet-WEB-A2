@@ -143,5 +143,19 @@ class Internship
             throw $th;
         }
     }
+    public function selectInternshipIDCompany(&$sqlClient, &$data, $id){
+        try {
+            $stmt = $sqlClient->prepare(
+                "SELECT * FROM intership where idCompany = ?"
+            );
+            $stmt->bindValue(1, "$id");                         
+            $stmt->execute();
+            $data = $stmt->fetchAll();
+            $stmt->closeCursor();
+            
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
 
