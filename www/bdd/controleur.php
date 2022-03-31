@@ -128,8 +128,8 @@ class Controleur{
         $this->_intership->selectSkills($this->mysqlClient, $data, $nbRow, $nbCol);
     }
 
-    public function getUserInfos(&$data, &$nbRow, &$nbCol){
-        $this->_users->getUserInfos($this->mysqlClient, $data, $nbRow, $nbCol);
+    public function getUserInfos(&$data, &$nbRow, &$nbCol, $id){
+        $this->_users->getUserInfos($this->mysqlClient, $data, $nbRow, $nbCol, $id);
     }
 
     public function updateProfil($id,$secondName,$firstName,$login,$password,$promo){

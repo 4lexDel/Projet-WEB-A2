@@ -7,7 +7,13 @@ require_once($path);
     $reminder1;
     $reminder2;
     $controleur = new Controleur();
-    $controleur->selectUsersCompany($data, $nbRow, $nbCol, $_SESSION['idUser']);
+    $id;
+    if (isset($_POST['idUser'])) {
+        $id = $_POST['idUser'];
+    } else {
+        $id = $_SESSION['idUser'];
+    }
+    $controleur->selectUsersCompany($data, $nbRow, $nbCol, $id);
     if ($nbRow) {
         echo '<br>
         <div style="text-align: -webkit-center;">

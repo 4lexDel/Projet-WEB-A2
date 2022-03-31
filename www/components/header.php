@@ -16,8 +16,9 @@
             <div class="col-lg-7">
                 <ul class="nav mb-2 justify-content-center">
                     <li><a href="./home.php" class="nav-link px-2 link-secondary">Accueil</a></li>
-                    <li><a href="./recherche.php" class="nav-link px-2 link-dark">Recherche de stage</a></li>
+                    <li><a href="./recherche.php" class="nav-link px-2 link-dark">Recherche</a></li>
                     <li><a href="./candidature.php" class="nav-link px-2 link-dark">Mes candidatures</a></li>
+                    <li><a href="./modifier.php" class="nav-link px-2 link-dark">Modifier</a></li>
                     <?php
                     if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote" || $_SESSION['rank'] > 1) {
                         echo '<li><a href="./creation.php" class="nav-link px-2 link-dark">Espace création</a></li>';
