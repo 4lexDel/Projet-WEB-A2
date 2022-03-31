@@ -19,7 +19,7 @@
                     <li><a href="./recherche.php" class="nav-link px-2 link-dark">Recherche de stage</a></li>
                     <li><a href="./candidature.php" class="nav-link px-2 link-dark">Mes candidatures</a></li>
                     <?php
-                    if (!($_SESSION['role'] == "Etudiant")) {
+                    if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote" || $_SESSION['rank'] > 1) {
                         echo '<li><a href="./creation.php" class="nav-link px-2 link-dark">Espace création</a></li>';
                     }
                     ?>
