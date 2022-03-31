@@ -68,7 +68,7 @@
             <div class="tab-pane fade ' . $wish_tab . '" id="Wishlist" role="tabpanel" aria-labelledby="Wishlist-tab">
 
                 <div class="form-floating">
-                ';
+                ';  
         include "./candidature/wishlist.php";
         echo '
                 </div>
