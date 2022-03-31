@@ -16,7 +16,7 @@ class Company
                 INNER JOIN locality ON locality.idLocality = locate.idLocality
                 LEFT JOIN evaluate ON evaluate.idCompany = company.idCompany
             WHERE company.company like ? AND locality.city like ? AND sector.sector like ?
-            GROUP BY locality.city, company.company");
+            GROUP BY company.company");
 
             $stmt->bindValue(1, "%$searchInfo%");
             $stmt->bindValue(2, "%$localitySelect%");

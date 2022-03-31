@@ -10,7 +10,7 @@ if (isset($_GET["objet"])) {
             for ($j = 0; $j < $nbRow; $j++) {
                 echo '<div class="card">';
                 echo '<div class="card-header">';
-                echo $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
+                echo 'ID : ' . $data[$j]["idUser"] . " | " . $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
 
                 if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote" || $_SESSION['rank'] > 1) {
 ?>
@@ -40,7 +40,7 @@ if (isset($_GET["objet"])) {
             for ($j = 0; $j < $nbRow; $j++) {
                 echo '<div class="card">';
                 echo '<div class="card-header">';
-                echo $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
+                echo 'ID : ' . $data[$j]["idUser"] . " | " . $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
                 echo "<div>";
 
                 if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote") {
@@ -105,7 +105,7 @@ if (isset($_GET["objet"])) {
             for ($j = 0; $j < $nbRow; $j++) {
                 echo '<div class="card">';
                 echo '<div class="card-header">';
-                echo $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
+                echo 'ID : ' . $data[$j]["idUser"] . " | " . $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
 
                 if ($_SESSION['role'] == "Administrateur" || $_SESSION['rank'] > 2) {
             ?>
@@ -138,7 +138,7 @@ if (isset($_GET["objet"])) {
 
                 echo '<div class="card">';
                 echo '<div class="card-header">';
-                echo $t_data["sector"];
+                echo 'ID : ' . $t_data["idCompany"] . " | " . $t_data["sector"];
 
                 echo '<div>';
                 ?>
@@ -280,7 +280,7 @@ if (isset($_GET["objet"])) {
             for ($j = 0; $j < $nbRow; $j++) {
                 echo '<div class="card">';
                 echo '<div class="card-header">';
-                echo "<strong>" . $data[$j]["company"] . "</strong>" . "Publié le : " . $data[$j]["releaseDate"];
+                echo 'ID : ' . $data[$j]["idInternship"] . " | " . "<strong>" . $data[$j]["company"] . "</strong>" . "Publié le : " . $data[$j]["releaseDate"];
 
                 echo '<div>';
             ?>
