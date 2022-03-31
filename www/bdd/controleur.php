@@ -161,4 +161,7 @@ class Controleur{
     public function selectSkillIdInt(&$data, $id){
         $this->_skill->selectSkillIdInt($this->mysqlClient, $data, $id);
     }
+    public function updateInternship($idInternship,$intership,$startDate,$endDate,$WageMonth,$nbPlace,$locality,$skill,$descInternship,$idCompany){
+        $this->_intership->updateInternship($this->mysqlClient,$idInternship,$intership,$startDate,$endDate,$WageMonth,$nbPlace,$locality,$skill,$descInternship,$idCompany);
+    }
 }

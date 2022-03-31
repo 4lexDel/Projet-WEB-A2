@@ -28,10 +28,10 @@ require_once($path);
             <h3>'.$data[$j]["company"].'</h3>
             <div style="display: flex; width: 45%;justify-content: center;flex-direction: column;text-align: center;">
                 <form id="Update'.$j.'" method="post"></form>
-                <form id="Delete'.$j.'" method="post"><input type="text" name="idCompany" name="idCompany" hidden value="'.$data[$j]["idCompany"].'" required></form>
+                <form id="Delete'.$j.'" method="post"><input type="text" name="idCompany" hidden value="'.$data[$j]["idCompany"].'" required></form>
                 <div style="margin: 1em;">
                     <div class="mb-3">
-                        <input form="Update'.$j.'" type="text" name="idCompany" name="idCompany" hidden value="'.$data[$j]["idCompany"].'" required>
+                        <input form="Update'.$j.'" type="text" name="idCompany" hidden value="'.$data[$j]["idCompany"].'" required>
                     </div>
                     <div class="mb-3">
                         <label for="company" class="form-label">Nom de l\'entreprise</label>

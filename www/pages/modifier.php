@@ -20,6 +20,7 @@
     <?php include_once $_SERVER["DOCUMENT_ROOT"]. "/components/header.php"; ?>
     <?php include "./modifs/profil.php" ?>
     <?php include "./modifs/company.php" ?>
+    <?php include "./modifs/offers.php" ?>
     <ul class="nav nav-tabs" id="myTab" role="tablist" style="justify-content: space-evenly;">
         <li class="nav-item" role="presentation" style="Width: 33%;text-align: center;">
             <button class="nav-link active" id="Profil-tab" data-bs-toggle="tab" data-bs-target="#Profil" type="button" role="tab" aria-controls="Profil" aria-selected="true" style="width: 100%">Profil</button>
