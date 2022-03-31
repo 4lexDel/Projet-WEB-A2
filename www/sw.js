@@ -18,7 +18,8 @@ if (workbox) {
 
 var cacheName = 'hello-pwa';
 var filesToCache = [
-  '/pages/offline.html'
+  '/pages/offline.html',
+  '/assets/img/linuxdrip.jpeg'
 ];
 
 /* Start the service worker and cache all of the app's content */
