@@ -12,10 +12,11 @@ if (isset($_GET["objet"])) {
                 echo '<div class="card-header">';
                 echo 'ID : ' . $data[$j]["idUser"] . " | " . $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
 
-                if ($_SESSION['role'] == "Administrateur"|| $_SESSION['rank']>2 || $_SESSION['role'] == "Pilote") {
-?>                  <form action="./modifier.php" method="post">
-                    <input type="text" name="idUser" hidden value="<?php echo $data[$j]["idUser"] ?>">
-                    <button type="submit" class="btn btn-outline-dark justify-content-left startModerateButton">Modifier</button>
+                if ($_SESSION['role'] == "Administrateur" || $_SESSION['rank'] > 2 || $_SESSION['role'] == "Pilote") {
+?>
+                    <form action="./modifier.php" method="post">
+                        <input type="text" name="idUser" hidden value="<?php echo $data[$j]["idUser"] ?>">
+                        <button type="submit" class="btn btn-outline-dark justify-content-left startModerateButton">Modifier</button>
                     </form>
                     <button data-objet="user" data-id=<?php echo $data[$j]["idUser"] ?> type="button" class="btn btn-outline-danger justify-content-left deleteButton">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -55,16 +56,16 @@ if (isset($_GET["objet"])) {
                     </button>
                 <?php
                 }
-                if ($_SESSION['role'] == "Administrateur" || $_SESSION['rank']>2 || $_SESSION['role'] == "Pilote") {
-                    ?>
+                if ($_SESSION['role'] == "Administrateur" || $_SESSION['rank'] > 2 || $_SESSION['role'] == "Pilote") {
+                ?>
                     <form action="./modifier.php" method="post">
                         <input type="text" name="idUser" hidden value="<?php echo $data[$j]["idUser"] ?>">
                         <button type="submit" class="btn btn-outline-dark justify-content-left startModerateButton">Modifier</button>
                     </form>
-                    <?php
+                <?php
                 }
 
-                
+
 
                 if ($_SESSION['role'] == "Administrateur" || $_SESSION['role'] == "Pilote" || $_SESSION['rank'] > 1) {
                 ?>
@@ -120,7 +121,7 @@ if (isset($_GET["objet"])) {
                 echo '<div class="card-header">';
                 echo 'ID : ' . $data[$j]["idUser"] . " | " . $data[$j]["schoolYear"] . " - " . $data[$j]["role"];
 
-                if ($_SESSION['role'] == "Administrateur" || $_SESSION('rank')>2 ) {
+                if ($_SESSION['role'] == "Administrateur" || $_SESSION('rank') > 2) {
             ?>
                     <form action="./modifier.php" method="post">
                         <input type="text" name="idUser" hidden value="<?php echo $data[$j]["idUser"] ?>">
